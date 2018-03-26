@@ -1,0 +1,17 @@
+{
+  "name": "package.json",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "Faker": "^0.7.2",
+    "ejs": "^2.5.7",
+    "module_name": "^1.0.0",
+    "nodemon": "^1.17.2"
+  }
+}

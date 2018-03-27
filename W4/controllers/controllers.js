@@ -1,7 +1,21 @@
 const users = require('../models/db');
+
 module.exports.fetchMainPage =
     function(req,res){
-        res.sendFile(__dirname + "/" + "index.html");
+        var path = require("path");
+        res.sendFile(path.join(__dirname, '..', 'index.html'));
+    };
+
+module.exports.fetchMainPageCSS =
+    function(req,res){
+        var path = require("path");
+        res.sendFile(path.join(__dirname, '..', 'index.css'));
+    };
+
+module.exports.fetchMainPageBg =
+    function(req,res){
+        var path = require("path");
+        res.sendFile(path.join(__dirname, '..', 'srilanka_school.jpg'));
     };
 
 module.exports.fetchAllUsers =
@@ -12,5 +26,5 @@ module.exports.fetchAllUsers =
 module.exports.fetchUser =
     function(req,res){
     const user = users[req.params.id];
-    res.render('post_template',{user:user});
+    res.render('user.ejs',{user:user});
     };

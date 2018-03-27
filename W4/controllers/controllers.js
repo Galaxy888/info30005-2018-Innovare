@@ -4,12 +4,12 @@ module.exports.fetchMainPage =
         res.sendFile(__dirname + "/" + "index.html");
     };
 
-module.exports.fetchAllPosts =
+module.exports.fetchAllUsers =
     function(req,res){
         res.send(users);
     };
 
-module.exports.fetchPost =
+module.exports.fetchUser =
     function(req,res){
     const user = users[req.params.id];
     res.render('post_template',{user:user});

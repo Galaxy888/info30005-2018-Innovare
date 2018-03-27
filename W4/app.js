@@ -10,7 +10,7 @@ const users=require("./models/db");
 const PORT = process.env.PORT||3000;
 
 app.get('/',function(req,res){
-    res.send("Hello World");
+    res.send(url("./W4/index.html"));
 });
 
 

@@ -1,10 +1,9 @@
-// var app = express();
 const express = require('express');
 const app = express();
-
+const router = require('./W4/routers/router.js');
 
 app.set('view engine','ejs');
-
+app.get(router);
 
 const users=require("./models/db");
 const PORT = process.env.PORT||3000;

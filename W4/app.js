@@ -10,8 +10,19 @@ const users=require("./models/db");
 const PORT = process.env.PORT||3000;
 
 app.get('/',function(req,res){
-    res.send(url("./W4/index.html"));
+    // res.send("Hello World");
+    // res.sendFile('index.html', {root: __dirname })
+    res.sendFile(__dirname + "/" + "index.html");
 });
+
+app.get('/index.css', function(req, res) {
+    res.sendFile(__dirname + "/" + "index.css");
+});
+
+app.get('/srilanka_school.jpg', function(req, res) {
+    res.sendFile(__dirname + "/" + "srilanka_school.jpg");
+});
+
 
 
 app.get('/users',function(req,res){

@@ -1,7 +1,7 @@
 const users = require('../models/db');
 module.exports.fetchMainPage =
     function(req,res){
-        res.send('Welcome to my Blog!');
+        res.send(url("index.html"));
     };
 
 module.exports.fetchAllPosts =
@@ -13,5 +13,4 @@ module.exports.fetchPost =
     function(req,res){
     const user = users[req.params.id];
     res.render('post_template',{user:user});
-
     };

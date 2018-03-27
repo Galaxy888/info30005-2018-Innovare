@@ -1,0 +1,50 @@
+body, html {
+    height: 100%;
+}
+.bg {
+    background-image: url("W4/srilanka_school.jpg");
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.text-block {
+    position: absolute;
+    text-align: center;
+    top: 25%;
+    right: 30%;
+    left: 30%;
+    background-color: rgba(255, 255, 255, 0.4);
+    color: black;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-top: 20px;
+    font-family: "Sitka Text";
+}
+
+title-text {
+    font-size: 80px;
+    text-align: center;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid greenyellow;
+    border-radius: 4px;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}

@@ -23,9 +23,7 @@ for (i = 0; i < numUsers; i++) {
         "address": address,
         "email": email
 
-
     }
-}
-;
+};
 
 module.exports = users;

@@ -1,7 +1,7 @@
 const users = require('../models/db');
 module.exports.fetchMainPage =
     function(req,res){
-        res.send(url("index.html"));
+        res.sendFile(__dirname + "/" + "index.html");
     };
 
 module.exports.fetchAllPosts =

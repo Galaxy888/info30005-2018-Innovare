@@ -27,6 +27,7 @@ body, html {
 .text-block {
     position: absolute;
     text-align: center;
+    min-width: 400px;
     top: 25%;
     right: 30%;
     left: 30%;

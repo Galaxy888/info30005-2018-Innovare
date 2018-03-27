@@ -3,19 +3,19 @@ const users = require('../models/db');
 module.exports.fetchMainPage =
     function(req,res){
         var path = require("path");
-        res.sendFile(path.join(__dirname, '..', 'index.html'));
+        res.sendFile(path.join(__dirname, '..', '/views/index.html'));
     };
 
 module.exports.fetchMainPageCSS =
     function(req,res){
         var path = require("path");
-        res.sendFile(path.join(__dirname, '..', 'index.css'));
+        res.sendFile(path.join(__dirname, '..', '/views/index.css'));
     };
 
 module.exports.fetchMainPageBg =
     function(req,res){
         var path = require("path");
-        res.sendFile(path.join(__dirname, '..', 'srilanka_school.jpg'));
+        res.sendFile(path.join(__dirname, '..', '/views/srilanka_school.jpg'));
     };
 
 module.exports.fetchAllUsers =

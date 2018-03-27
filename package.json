@@ -1,7 +1,7 @@
 {
   "name": "package.json",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,10 +12,11 @@
     "ejs": "^2.5.7",
     "express": "^4.16.3",
     "faker": "^4.1.0",
-    "module_name": "^1.0.0",
-    "nodemon": "^1.17.2",
-    "npm": "^5.8.0"
+    "nodemon": "^1.17.2"
   },
   "devDependencies": {},
-  "description": ""
+  "description": "",
+  "engines": {
+    "node": "8.9.4"
+  }
 }

@@ -1,0 +1,58 @@
+@charset "utf-8";
+body{
+    background: #eee;
+}
+
+.pageWrap{
+    width: 1180px;
+    margin:0 auto;
+}
+
+.page-layout{
+    min-height: 527px;
+    height: auto !important;
+    height: 527px;
+    margin-top: 23px;
+    padding:66px 0 0;
+    background: #fff;
+}
+
+.reg-page-layout{
+    min-height: 227px;
+    height: auto !important;
+    height: 527px;
+    margin-top: 23px;
+    padding:16px 0;
+    background: #fff;
+}
+
+
+.reg-header{
+    height:90px;
+    border-bottom: 1px solid #d9d9d9;
+    overflow:hidden;
+    background: #fff;
+}
+
+.reg-header .logo{
+    float: left;
+    width: 180px;
+    height: 90px;
+    background: url(img/logo.png) no-repeat;
+}
+
+.reg-header .pageName{
+    float:left;
+    height:40px;
+    line-height:40px;
+    padding-left:10px;
+    margin-left:20px;
+    margin-top:20px;
+    font-size:26px;
+    border-left:1px solid #ebebeb;
+}
+
+
+.lg-form_wrap{
+    position: relative;
+}

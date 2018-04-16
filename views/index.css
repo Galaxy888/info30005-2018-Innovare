@@ -33,7 +33,7 @@ body, html {
     right: 20%;
     left: 20%;
     /*background-color: rgba(255, 255, 255, 0.4);*/
-    color: black;
+    color: white;
     margin-left: auto;
     margin-right: auto;
     padding-left: 35px;
@@ -51,14 +51,16 @@ title-text {
 input[type=text] {
     width: 300px;
     padding: 12px 20px;
+    color: white;
+    background-color: rgba(0,0,0,0.4);
     margin: 8px 0;
     box-sizing: border-box;
-    border: 2px solid greenyellow;
+    border: 2px solid white;
     border-radius: 4px;
 }
 
 input[type=button], input[type=login], input[type=reset] {
-    background-color: #4CAF50;
+    background-color: rgba(0,0,0,0.6);
     width: 280px;
     border: none;
     color: white;

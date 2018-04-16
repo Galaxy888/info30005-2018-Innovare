@@ -1,6 +1,7 @@
 body, html {
     height: 100%;
     color: white;
+    font-family: "Lato";
 }
 #web_bg {
     position:fixed;
@@ -38,35 +39,43 @@ body, html {
     margin-right: auto;
     padding-left: 35px;
     padding-right: 35px;
-    padding-top: 20px;
+    padding-top: 10px;
     font-family: "Lato";
 }
 
 title-text {
-    font-size: 35px;
+    font-size: 80px;
     color: white;
     text-align: center;
 }
 
 input[type=text] {
     width: 300px;
-    padding: 12px 20px;
+    padding: 10px 10px;
     color: white;
     background-color: rgba(0,0,0,0.4);
-    margin: 8px 0;
+    margin: 4px 0;
     box-sizing: border-box;
     border: 2px solid white;
     border-radius: 4px;
 }
 
-input[type=button], input[type=login], input[type=reset] {
-    background-color: rgba(0,0,0,0.6);
-
-    width: 280px;
+button[type=submit] {
+    background-color: rgba(0,0,0,0.7);
+    width: 300px;
     border: none;
     color: white;
     padding: 10px 10px;
     text-align: center;
-    margin: 4px 2px;
-    cursor: pointer;
+    margin: 0px 0px;
+}
+
+button[type=small] {
+    background-color: rgba(255,255,255,0.6);
+    width: 150px;
+    border: none;
+    color: black;
+    padding: 10px 10px;
+    text-align: center;
+    margin: 0px 0px;
 }

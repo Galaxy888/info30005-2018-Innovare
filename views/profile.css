@@ -205,3 +205,16 @@ main .helper span {
         pointer-events: none;
     }
 }
+
+
+
+button[type=submit] {
+    background-color: rgba(0,0,0,0.7);
+    width: 300px;
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    margin: 0px 0px;
+    border-radius: 4px;
+}

@@ -31,7 +31,6 @@ body, html {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-
 .text-block {
     position: absolute;
     text-align: center;
@@ -54,10 +53,10 @@ body, html {
     width: 100%;
     font-size: 50px;
     color: white;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.5);
     text-align: left;
     border-bottom: black 20px;
-    box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.5);
 }
 
 header-text {

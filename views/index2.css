@@ -1,5 +1,8 @@
 body, html {
     height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
 
 main_text {
@@ -20,7 +23,7 @@ main_text {
     animation: imageAnimation 30s linear infinite 0s;
     backface-visibility: hidden;
     background-size: cover;
-    background-position: center center;
+    background-position: center;
     color: transparent;
     height: 100%;
     left: 0px;
@@ -29,6 +32,8 @@ main_text {
     top: 0px;
     width: 100%;
     z-index: 0;
+    margin: 0;
+    padding: 0;
 }
 
 /* Add images to slideshow */

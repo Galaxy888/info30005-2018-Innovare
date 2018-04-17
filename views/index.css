@@ -93,7 +93,7 @@ button[type=submit]:hover {
     background-color: rgba(0,0,0,0.4);
 }
 
-button[type=small] {
+button[id=button] {
     background-color: rgba(255,255,255,0.6);
     width: 150px;
     border: none;
@@ -103,6 +103,6 @@ button[type=small] {
     margin: 0px 0px;
     border-radius: 4px;
 }
-button[type=small]:hover {
+button[id=button]:hover {
     background-color: rgba(255,255,255,0.4);
 }

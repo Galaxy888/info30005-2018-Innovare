@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="signup.css">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open Sans">
+    <meta charset="UTF-8">
+    <title>LiveSchool-sign up-teacher</title>
+</head>
+
+<body>
+
+<div id="web_bg" style="background-image: url(srilanka_school.jpg);"></div>
+
+<div class="bg_darken_box">
+
+    <div class="text-block">
+        <title-text> Welcome to LiveSchool sign up for teacher account! </title-text>
+
+        <div class="form-main">
+            <form id="myForm" id="myForm">
+                <input type="hidden" name="appCode" id="appCode" value="sr" />
+                <input type="hidden" name="state" id="state" value="" />
+                <input type="hidden" name="roleType" id="roleType" value="4" />
+
+
+                <div class="form-item">
+                    <div class="field"><input class="ipt" type="text" id="email" name="email" placeholder="Please enter your email address"></div>
+                </div>
+
+                <div class="form-item">
+                    <div class="field"><input class="ipt" type="text" id="name" name="name" placeholder="Please enter your name"></div>
+                </div>
+
+                <div class="form-item">
+                    <div class="field">
+                        <input type="text" id="password" name="password" class="ipt" placeholder="Password should be 6-14 characters long"/>
+                    </div>
+                </div>
+
+                <div class="form-item">
+                    <div class="field">
+                        <input type="text" id="repeatPassword" name="repeatPassword" class="ipt" placeholder="Please re-enter your password to confirm"/>
+                    </div>
+                </div>
+
+                <content-text> Please select the subject you can teach: </content-text>
+
+                <div class="form-item">
+                    <div class="field">
+                        <select id="specialty" name="specialty" class="chosen-select"><option value="01" title="English">English</option><option value="02" title="Maths">Maths</option><option value="03" title="History">History</option><option value="04" title="Physics">Physics</option><option value="05" title="Chemistry">Chemistry</option><option value="06" title="Biology">Biology</option><option value="07" title="Phychology">Phychology</option><option value="08" title="Computer Science">Computer Science</option><option value="09" title="Music">Music</option><option value="10" title="Art">Art</option></select>
+                    </div>
+                </div>
+
+                <content-text> Please select the your location and time zone: </content-text>
+
+                <div class="form-item">
+                    <div class="field field-location">
+                        <span class="st"><select id="countryId" name="countryId" class="countrySelect chosen-select area"><option value="">Please select country...</option></select></span>
+                        <span class="st"><select id="provinceId" name="provinceId" class="stateSelect chosen-select area"><option value="">Please select state...</option></select></span>
+                        <span class="st"><select id="cityId" name="cityId" class="citySelect chosen-select area"><option value="">Please select city...</option></select></span>
+                    </div>
+                </div>
+
+                <div class="form-item">
+                    <div class="field field-timezone">
+                        <span class="st"><select id="timezoneId" name="timezoneId" class="timezoneSelect chosen-select timezone"><option value="">Please select time zone...</option></select></span>
+                    </div>
+                </div>
+
+            </form>
+
+            <form action="./index.html">
+                <button type="small">Sign up now!</button>
+            </form><br>
+
+            </head>
+
+
+        </div>
+    </div>
+
+
+
+    </div>
+</div>
+
+</body>
+</html>

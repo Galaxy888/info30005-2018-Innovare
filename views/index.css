@@ -93,7 +93,7 @@ button[type=submit]:hover {
     background-color: rgba(0,0,0,0.4);
 }
 
-button[id=button] {
+button[class=button_signup] {
     background-color: rgba(255,255,255,0.6);
     width: 150px;
     border: none;
@@ -103,6 +103,6 @@ button[id=button] {
     margin: 0px 0px;
     border-radius: 4px;
 }
-button[id=button]:hover {
+button[class=button_signup]:hover {
     background-color: rgba(255,255,255,0.4);
 }

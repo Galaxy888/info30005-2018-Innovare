@@ -9,10 +9,6 @@
 <body>
 
 <script>
-    function getId(v) {
-        return document.getElementById(v);
-    }
-
     var x = 'dashboard';
     function c(y) {
         if (y != x) {
@@ -22,11 +18,6 @@
         }
         x = y;
     }
-
-    function removeElement() {
-        document.getElementById("school").style.display = "none";
-    }
-
 </script>
 
 <nav class="menu" tabindex="0">
@@ -45,37 +36,14 @@
     </ul>
 </nav>
 
-
-<!--<div class="side-bar J-side-bar">-->
-<!--<ul>-->
-<!--<li><a href="#" onclick="c('home');"><i class="icon-home"></i>Home</a></li>-->
-<!--<li><a href="#" onclick="c('school');"><i class="icon-school"></i>School</a></li>-->
-<!--<li><a href="#" onclick="c('class');"><i class="icon-class"></i>Class</a></li>-->
-<!--<li><a href="#" onclick="c('subject');"><i class="icon-subject"></i>Subject</a></li>-->
-<!--<li><a href="#" onclick="c('timetable');"><i class="icon-timetable"></i>Timetable</a></li>-->
-<!--<li><a href="#" onclick="c('setting');"><i class="icon-setting"></i>Setting</a></li>-->
-<!--</ul>-->
-<!--</div>-->
-
-
-<!--<div id="dashboard" style="display:block">Home</div>-->
-<!--<div id="school" style="display:none">Here are schools</div>-->
-<!--<div id="class" style="display:none">Here are classes</div>-->
-<!--<div id="subject" style="display:none">Here are subjects</div>-->
-<!--<div id="timetable" style="display:none">Here are timetables</div>-->
-<!--<div id="setting" style="display:none">Here are settings</div>-->
-
-
 <main>
     <div class="helper">
-        <!--RESIZE THE WINDOW-->
         <div id="dashboard" style="display:block">Home</div>
         <div id="school" style="display:none">Here are schools</div>
         <div id="class" style="display:none">Here are classes</div>
         <div id="subject" style="display:none">Here are subjects</div>
         <div id="timetable" style="display:none">Here are timetables</div>
         <div id="setting" style="display:none">Here are settings</div>
-        <!--<span>Breakpoints on 900px and 400px</span>-->
     </div>
 </main>
 

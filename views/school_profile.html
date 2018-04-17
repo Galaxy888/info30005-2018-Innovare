@@ -9,10 +9,6 @@
 <body>
 
 <script>
-    function getId(v) {
-        return document.getElementById(v);
-    }
-
     var x = 'dashboard';
     function c(y) {
         if (y != x) {
@@ -22,11 +18,6 @@
         }
         x = y;
     }
-
-    function removeElement() {
-        document.getElementById("school").style.display = "none";
-    }
-
 </script>
 
 <nav class="menu" tabindex="0">
@@ -48,14 +39,12 @@
 
 <main>
     <div class="helper">
-        <!--RESIZE THE WINDOW-->
         <div id="dashboard" style="display:block">Home</div>
         <div id="teacher" style="display:none">Here are teachers</div>
         <div id="class" style="display:none">Here are classes</div>
         <div id="subject" style="display:none">Here are subjects</div>
         <div id="timetable" style="display:none">Here are timetables</div>
         <div id="setting" style="display:none">Here are settings</div>
-        <!--<span>Breakpoints on 900px and 400px</span>-->
     </div>
 </main>
 

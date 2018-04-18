@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <title>LiveSchool</title>
     <link rel="stylesheet" href="profile.css">
-    <link rel="stylesheet" href="index.css">
-
 </head>
 <body>
 
@@ -33,9 +31,10 @@
         <li tabindex="0" class="icon-dashboard"><a href="#" onclick="c('dashboard');"><span>Dashboard</span></a></li>
         <li tabindex="0" class="icon-timetable"><a href="#" onclick="c('timetable');"><span>My Times</span></a></li>
         <li tabindex="0" class="icon-school"><a href="#" onclick="c('school');"><span>Matching Schools</span></a></li>
-        <form action="./index.html">
-            <button type="submit">Log out</button>
-        </form>
+        <li tabindex="0" class="icon-signOut"><a href="./index.html" onclick="c('log_out');"><span>Log out</span></a></li>
+        <!--<form action="./index.html">-->
+            <!--<button type="submit">Log out</button>-->
+        <!--</form>-->
     </ul>
 </nav>
 
@@ -44,6 +43,15 @@
         <div id="dashboard" style="display:block">My next class is on 10 a.m. this Wednesday</br></br></br>
             <form action="./live_school_teacher.html">
                 <button type="submit">Go to Live Class</button>
+            </form>
+            <form>
+                <p1>Subject I teach: Computer Science</p1>
+            </form>
+            <form>
+                <p1>School I connect to: Colegio Intisana </p1>
+            </form>
+            <form>
+                <button type="submit">Contact School</button>
             </form>
         </div>
                 <div id="school" style="display:none">Here are schools</div>

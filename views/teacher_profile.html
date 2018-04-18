@@ -29,27 +29,25 @@
         <h2> Martin </h2>
     </header>
     <ul class="left_part">
+        <p>Short Bio here</p>
         <li tabindex="0" class="icon-dashboard"><a href="#" onclick="c('dashboard');"><span>Dashboard</span></a></li>
         <li tabindex="0" class="icon-timetable"><a href="#" onclick="c('timetable');"><span>My Times</span></a></li>
         <li tabindex="0" class="icon-school"><a href="#" onclick="c('school');"><span>Matching Schools</span></a></li>
+        <form action="./index.html">
+            <button type="submit">Log out</button>
+        </form>
     </ul>
 </nav>
 
 <main>
     <div class="helper">
-        <div id="dashboard" style="display:block">Home</br></br></br>
+        <div id="dashboard" style="display:block">My next class is on 10 a.m. today</br></br></br>
             <form action="./live_school_teacher.html">
-                <button type="submit">Go to Live School</button>
+                <button type="submit">Go to Live Class</button>
             </form>
         </div>
-        <div id="school" style="display:none">Here are schools</div>
-        <div id="class" style="display:none">Here are classes</div>
-        <div id="subject" style="display:none">Here are subjects</div>
-        <div id="timetable" style="display:none">Here are timetables</div>
-        <div id="setting" style="display:none">Here are settings</br></br></br>
-            <form action="./index.html">
-                <button type="submit">Log out</button>
-            </form>
+                <div id="school" style="display:none">Here are schools</div>
+                <div id="timetable" style="display:none">Here are timetables</div>
         </div>
     </div>
 </main>

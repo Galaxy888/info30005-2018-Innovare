@@ -22,12 +22,12 @@ main .helper {
     font-weight: bold;
 }
 main .helper span {
-    color: rgba(255, 255, 255, 0.2);
+    color: rgba(0, 0, 0, 0.2);
     font-size: 0.4em;
     display: block;
 }
 .menu {
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(0, 0, 0, 0.6);
     height: 100vh;
     width: 240px;
     position: fixed;

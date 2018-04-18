@@ -75,8 +75,8 @@ main .helper span {
 .menu ul li.icon-teacher {
     background-image: url("teacher.svg");
 }
-.menu ul li.icon-class {
-    background-image: url("classroom.svg");
+.menu ul li.icon-signOut {
+    background-image: url("Sign out.svg");
 }
 .menu ul li.icon-subject {
     background-image: url("subject.svg");

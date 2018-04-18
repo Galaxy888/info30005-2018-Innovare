@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <title>LiveSchool</title>
     <link rel="stylesheet" href="profile.css">
-    <link rel="stylesheet" href="index.css">
-
 </head>
 <body>
 
@@ -27,15 +25,16 @@
     <header class="avatar">
         <img src="martin_profile.jpg"/>
         <h2> Martin </h2>
+        <p>PhD Candidate & experienced tutor, Department of Computing and Information Systems, Melbourne School of Engineering, University of Melbourne</p>
     </header>
     <ul class="left_part">
-        <p>PhD Candidate & experienced tutor, Department of Computing and Information Systems, Melbourne School of Engineering, University of Melbourne</p>
         <li tabindex="0" class="icon-dashboard"><a href="#" onclick="c('dashboard');"><span>Dashboard</span></a></li>
         <li tabindex="0" class="icon-timetable"><a href="#" onclick="c('timetable');"><span>My Times</span></a></li>
         <li tabindex="0" class="icon-school"><a href="#" onclick="c('school');"><span>Matching Schools</span></a></li>
-        <form action="./index.html">
-            <button type="submit">Log out</button>
-        </form>
+        <li tabindex="0" class="icon-signOut"><a href="./index.html" onclick="c('log_out');"><span>Log out</span></a></li>
+        <!--<form action="./index.html">-->
+            <!--<button type="submit">Log out</button>-->
+        <!--</form>-->
     </ul>
 </nav>
 

@@ -56,7 +56,7 @@ module.exports.fetchSignUpCSS =
         res.sendFile(path.join(__dirname, '..', '/views/signup.css'));
     };
 
-module.exports.fetchSignUPBg =
+module.exports.fetchSignUpBg =
     function(req,res){
         var path = require("path");
         res.sendFile(path.join(__dirname, '..', '/views/srilanka_school.jpg'));

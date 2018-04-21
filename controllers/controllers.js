@@ -15,7 +15,7 @@ module.exports.fetchMainPageCSS =
 module.exports.fetchMainPageBg =
     function(req,res){
         var path = require("path");
-        res.sendFile(path.join(__dirname, '..', '/views/srilanka_school.jpg'));
+        res.sendFile(path.join(__dirname, '..', '/views/school_above.jpg'));
     };
 
 module.exports.fetchAllUsers =

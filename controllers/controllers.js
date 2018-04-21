@@ -16,7 +16,7 @@ module.exports.fetchMainPageCSS =
 module.exports.fetchMainPageLogo =
     function(req,res){
         var path = require("path");
-        res.sendFile(path.join(__dirname, '..', '/views/logo.png'));
+        res.sendFile(path.join(__dirname, '..', '/views/innovare_logo.png'));
     };
 
 module.exports.fetchMainPageBg =
@@ -44,16 +44,22 @@ module.exports.fetchSignUP_school =
         res.sendFile(path.join(__dirname, '..', '/views/signup-school.html'));
     };
 
+module.exports.fetchSignUP_teacher =
+    function(req,res){
+        var path = require("path");
+        res.sendFile(path.join(__dirname, '..', '/views/signup-teacher.html'));
+    };
+
 module.exports.fetchSignUpCSS =
     function(req,res){
         var path = require("path");
         res.sendFile(path.join(__dirname, '..', '/views/signup.css'));
     };
 
-module.exports.fetchSignUP_teacher =
+module.exports.fetchSignUPBg =
     function(req,res){
         var path = require("path");
-        res.sendFile(path.join(__dirname, '..', '/views/signup-teacher.html'));
+        res.sendFile(path.join(__dirname, '..', '/views/srilanka_school.jpg'));
     };
 
 
@@ -88,10 +94,10 @@ module.exports.fetchProfile_setting =
         res.sendFile(path.join(__dirname, '..', '/views/setting.svg'));
     };
 
-module.exports.fetchProfile_subject =
+module.exports.fetchProfile_school =
     function(req,res){
         var path = require("path");
-        res.sendFile(path.join(__dirname, '..', '/views/subject.svg'));
+        res.sendFile(path.join(__dirname, '..', '/views/school.svg'));
     };
 
 module.exports.fetchProfile_teacher =
@@ -112,3 +118,16 @@ module.exports.fetchProfile_signOut =
         var path = require("path");
         res.sendFile(path.join(__dirname, '..', '/views/Sign out.svg'));
     };
+
+module.exports.fetchProfile_martin =
+    function(req,res){
+        var path = require("path");
+        res.sendFile(path.join(__dirname, '..', '/views/martin_profile.jpg'));
+    };
+
+module.exports.fetchProfileBg =
+    function(req,res){
+        var path = require("path");
+        res.sendFile(path.join(__dirname, '..', '/views/sri_lanka_jungle.jpg'));
+    };
+

@@ -28,3 +28,42 @@ module.exports.fetchUser =
     const user = users[req.params.id];
     res.render('user.ejs',{user:user});
     };
+
+
+
+module.exports.fetchSignUP_school =
+    function(req,res){
+        var path = require("path");
+        res.sendFile(path.join(__dirname, '..', '/views/signup-school.html'));
+    };
+
+module.exports.fetchSignUpCSS =
+    function(req,res){
+        var path = require("path");
+        res.sendFile(path.join(__dirname, '..', '/views/signup.css'));
+    };
+
+module.exports.fetchSignUP_teacher =
+    function(req,res){
+        var path = require("path");
+        res.sendFile(path.join(__dirname, '..', '/views/signup-teacher.html'));
+    };
+
+
+module.exports.fetchTeacher_profile =
+    function(req,res){
+        var path = require("path");
+        res.sendFile(path.join(__dirname, '..', '/views/teacher_profile.html'));
+    };
+
+module.exports.fetchSchool_profile =
+    function(req,res){
+        var path = require("path");
+        res.sendFile(path.join(__dirname, '..', '/views/school_profile.html'));
+    };
+
+module.exports.fetchProfileCSS =
+    function(req,res){
+        var path = require("path");
+        res.sendFile(path.join(__dirname, '..', '/views/profile.css'));
+    };

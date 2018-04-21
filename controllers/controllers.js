@@ -16,6 +16,12 @@ module.exports.fetchMainPageCSS =
 module.exports.fetchMainPageLogo =
     function(req,res){
         var path = require("path");
+        res.sendFile(path.join(__dirname, '..', '/views/live_school.png'));
+    };
+
+module.exports.fetchMainPageLogo2 =
+    function(req,res){
+        var path = require("path");
         res.sendFile(path.join(__dirname, '..', '/views/innovare_logo.png'));
     };
 
@@ -35,6 +41,7 @@ module.exports.fetchUser =
     const user = users[req.params.id];
     res.render('user.ejs',{user:user});
     };
+
 
 
 // sign_up

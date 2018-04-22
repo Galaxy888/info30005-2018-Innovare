@@ -151,3 +151,9 @@ module.exports.fetchLiveSchool_teacher =
         var path = require("path");
         res.sendFile(path.join(__dirname, '..', '/views/live_school_teacher.html'));
     };
+
+module.exports.fetchLiveSchool_css =
+    function(req,res){
+        var path = require("path");
+        res.sendFile(path.join(__dirname, '..', '/public/css/profile.css'));
+    };

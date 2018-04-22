@@ -48,13 +48,13 @@ module.exports.fetchUser =
 module.exports.fetchSignUP_school =
     function(req,res){
         var path = require("path");
-        res.sendFile(path.join(__dirname, '..', '/views/signup-school.html'));
+        res.sendFile(path.join(__dirname, '..', '/views/signup_school.html'));
     };
 
 module.exports.fetchSignUP_teacher =
     function(req,res){
         var path = require("path");
-        res.sendFile(path.join(__dirname, '..', '/views/signup-teacher.html'));
+        res.sendFile(path.join(__dirname, '..', '/views/signup_teacher.html'));
     };
 
 module.exports.fetchSignUpCSS =

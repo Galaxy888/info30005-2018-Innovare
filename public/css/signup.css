@@ -67,6 +67,10 @@ content-text {
 
 }
 
+select{
+    width: 200px;
+}
+
 input[type=text] {
     width: 300px;
     padding: 12px 20px;

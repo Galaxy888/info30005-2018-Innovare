@@ -94,7 +94,7 @@ main .helper span {
     background-image: url("../img/teacher.svg");
 }
 .menu ul li.icon-signOut {
-    background-image: url("../img/Sign out.svg");
+    background-image: url("../img/signOut.svg");
 }
 .menu ul li.icon-subject {
     background-image: url("../img/subject.svg");

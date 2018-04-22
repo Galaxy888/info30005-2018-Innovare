@@ -120,10 +120,16 @@ module.exports.fetchProfile_timetable =
         res.sendFile(path.join(__dirname, '..', '/public/img/timetable.svg'));
     };
 
+module.exports.fetchProfile_classroom =
+    function(req,res){
+        var path = require("path");
+        res.sendFile(path.join(__dirname, '..', '/public/img/classroom.svg'));
+    };
+
 module.exports.fetchProfile_signOut =
     function(req,res){
         var path = require("path");
-        res.sendFile(path.join(__dirname, '..', '/public/img/Sign out.svg'));
+        res.sendFile(path.join(__dirname, '..', '/public/img/signOut.svg'));
     };
 
 module.exports.fetchProfile_martin =
@@ -136,6 +142,11 @@ module.exports.fetchProfileBg =
     function(req,res){
         var path = require("path");
         res.sendFile(path.join(__dirname, '..', '/public/img/sri_lanka_jungle.jpg'));
+    };
+module.exports.fetchProfile_melbUni =
+    function(req,res){
+        var path = require("path");
+        res.sendFile(path.join(__dirname, '..', '/public/img/melb_uni.svg'));
     };
 
 

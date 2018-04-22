@@ -27,9 +27,11 @@ router.get('/public/img/setting.svg', controllers.fetchProfile_setting);
 router.get('/public/img/school.svg', controllers.fetchProfile_school);
 router.get('/public/img/teacher.svg', controllers.fetchProfile_teacher);
 router.get('/public/img/timetable.svg', controllers.fetchProfile_timetable);
-router.get('/public/img/Sign out.svg', controllers.fetchProfile_signOut);
+router.get('/public/img/classroom.svg', controllers.fetchProfile_classroom);
+router.get('/public/img/signOut.svg', controllers.fetchProfile_signOut);
 
 router.get('/public/img/martin_profile.jpg', controllers.fetchProfile_martin);
+router.get('/public/img/melb_uni.svg', controllers.fetchProfile_melbUni);
 router.get('/public/img/sri_lanka_jungle.jpg', controllers.fetchProfileBg);
 
 

@@ -33,4 +33,9 @@ router.get('/martin_profile.jpg', controllers.fetchProfile_martin);
 router.get('/sri_lanka_jungle.jpg', controllers.fetchProfileBg);
 
 
+//live_school
+router.get('/live_school_school.html', controllers.fetchLiveSchool_school);
+router.get('/live_school_teacher.html', controllers.fetchLiveSchool_teacher);
+
+
 module.exports = router;

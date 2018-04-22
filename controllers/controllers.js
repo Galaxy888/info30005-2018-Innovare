@@ -138,3 +138,16 @@ module.exports.fetchProfileBg =
         res.sendFile(path.join(__dirname, '..', '/public/img/sri_lanka_jungle.jpg'));
     };
 
+
+//live_school
+module.exports.fetchLiveSchool_school =
+    function(req,res){
+        var path = require("path");
+        res.sendFile(path.join(__dirname, '..', '/views/live_school_school.html'));
+    };
+
+module.exports.fetchLiveSchool_teacher =
+    function(req,res){
+        var path = require("path");
+        res.sendFile(path.join(__dirname, '..', '/views/live_school_teacher.html'));
+    };

@@ -37,22 +37,22 @@ main_text {
 }
 
 /* Add images to slideshow */
-.crossfade > figure:nth-child(1) { background-image: url('srilanka_school.jpg'); }
+.crossfade > figure:nth-child(1) { background-image: url('../../views/srilanka_school.jpg'); }
 .crossfade > figure:nth-child(2) {
     animation-delay: 6s;
-    background-image: url('sri_lanka_tea_plantation.jpg');
+    background-image: url('../../views/sri_lanka_tea_plantation.jpg');
 }
 .crossfade > figure:nth-child(3) {
     animation-delay: 12s;
-    background-image: url('sri_lanka_students.jpg');
+    background-image: url('../../views/sri_lanka_students.jpg');
 }
 .crossfade > figure:nth-child(4) {
     animation-delay: 18s;
-    background-image: url('sri_lanka_jungle.jpg');
+    background-image: url('../../views/sri_lanka_jungle.jpg');
 }
 .crossfade > figure:nth-child(5) {
     animation-delay: 24s;
-    background-image: url('kenyan_school.jpg');
+    background-image: url('../../views/kenyan_school.jpg');
 }
 
 /* Crossfade effect for slideshow with CSS animations */

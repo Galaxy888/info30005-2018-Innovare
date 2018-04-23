@@ -3,11 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>LiveSchool</title>
-    <link rel="stylesheet" type="text/css" href="../public/css/profile.css">
+    <link rel="stylesheet" href="../public/css/profile.css">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open Sans">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Delicious">
+    <script src="/jquery/jquery.js"></script>
+
+
+
 </head>
 <body>
 
-<div id="web_bg" style="background-image: url('../public/img/sri_lanka_jungle.jpg');"></div>
+<div id="web_bg" style="background-image: url('../public/img/sri_lanka_tea_plantation.jpg');"></div>
 
 <script>
     var x = 'dashboard';
@@ -31,31 +38,31 @@
         <li tabindex="0" class="icon-dashboard"><a href="#" onclick="c('dashboard');"><span>Dashboard</span></a></li>
         <li tabindex="0" class="icon-timetable"><a href="#" onclick="c('timetable');"><span>My Times</span></a></li>
         <li tabindex="0" class="icon-school"><a href="#" onclick="c('school');"><span>Matching Schools</span></a></li>
-        <li tabindex="0" class="icon-signOut"><a href="./" onclick="c('log_out');"><span>Log out</span></a></li>
-        <!--<li tabindex="0" class="icon-signOut"><form action="./index.html">-->
-            <!--<button type="submit"><span>Log out</span></button>-->
-        <!--</form></li>-->
+        <li tabindex="0" class="icon-signOut"><a href="./index.html" onclick="c('log_out');"><span>Log out</span></a></li>
+        <!--<form action="./index.html">-->
+            <!--<button type="submit">Log out</button>-->
+        <!--</form>-->
     </ul>
 </nav>
 
 <main>
     <div class="helper">
-        <div id="dashboard" style="display:block">My next class is on 10 a.m. this Wednesday</br></br></br>
-            <form action="./live_school_teacher.html">
-                <button type="submit">Go to Live Class</button>
-            </form>
-            <form>
-                <p1>Subject I teach: Computer Science</p1>
-            </form>
-            <form>
-                <p1>School I connect to: Colegio Intisana </p1>
-            </form>
-            <form>
+        <div id="dashboard">
+            <h1>Dashboard</h1>
+            Next class is Web Programming with Unimelb at 8 a.m. on Wednesday<br><br><br>
+
+            <div style="display: inline-block"><h2>My subjects</h2>
+            Computer Science [remove]</p></div>
+            <div style="display: inline-block; margin-left: 20px"><h2>My schools</h2>
+                Colegio Intisana [contact]</p></div>
+
+
+            <!--<form>
                 <button type="submit">Contact School</button>
-            </form>
+            </form>-->
         </div>
-                <div id="school" style="display:none">Here are schools</div>
-                <div id="timetable" style="display:none">Here are timetables</div>
+
+
         </div>
     </div>
 </main>

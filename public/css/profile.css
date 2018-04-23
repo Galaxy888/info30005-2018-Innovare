@@ -1,5 +1,5 @@
 body {
-    font-family: "Open Sans", Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-family: "Lato";
     color: white;
     padding: 0%;
     margin: 0%;
@@ -27,17 +27,19 @@ main {
     height: 100vh;
 }
 main .helper {
-    background: rgba(0, 0, 0, 0.2);
-    color: #ffea92;
+    background: rgba(255, 255, 255, 0.8);
+    color: black;
     position: absolute;
+    min-width: fit-content;
     top: 50%;
     left: 50%;
     transform: translate3d(-50%, -50%, 0);
     padding: 1.2em 2em;
-    text-align: center;
-    border-radius: 20px;
-    font-size: 2em;
-    font-weight: bold;
+    margin: 20px;
+    text-align: left;
+    border-radius: 5px;
+    /*font-size: 2em;*/
+
 }
 main .helper span {
     color: rgba(0, 0, 0, 0.2);
@@ -58,6 +60,7 @@ main .helper span {
     background: rgba(0, 0, 0, 0.1);
     padding: 2em 0.5em;
     text-align: center;
+    font-size: smaller;
 }
 .menu .avatar img {
     width: 150px;

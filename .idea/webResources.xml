@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebResourcesPaths">
+    <contentEntries>
+      <entry url="file://$PROJECT_DIR$">
+        <entryData>
+          <resourceRoots>
+            <path value="file://$PROJECT_DIR$/node_modules" />
+            <path value="file://$PROJECT_DIR$/node_modules/jquery-schedule" />
+            <path value="file://$PROJECT_DIR$/node_modules/jquery" />
+            <path value="file://$PROJECT_DIR$/node_modules/jquery-schedule/dist" />
+            <path value="file://$PROJECT_DIR$/node_modules/jquery-schedule/src" />
+            <path value="file://$PROJECT_DIR$/node_modules/jquery-schedule/src/js" />
+            <path value="file://$PROJECT_DIR$/node_modules/jquery-schedule/src/scss" />
+            <path value="file://$PROJECT_DIR$/node_modules/jquery-ui" />
+            <path value="file://$PROJECT_DIR$/node_modules/jquery-ui/build" />
+            <path value="file://$PROJECT_DIR$/node_modules/jquery-ui/demos" />
+            <path value="file://$PROJECT_DIR$/node_modules/jquery/dist" />
+            <path value="file://$PROJECT_DIR$/node_modules/jquery/external" />
+            <path value="file://$PROJECT_DIR$/node_modules/jquery/external/sizzle" />
+            <path value="file://$PROJECT_DIR$/node_modules/jquery/external/sizzle/dist" />
+            <path value="file://$PROJECT_DIR$/node_modules/jquery/src" />
+          </resourceRoots>
+        </entryData>
+      </entry>
+    </contentEntries>
+  </component>
+</project>

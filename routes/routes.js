@@ -31,7 +31,7 @@ router.get('/public/img/classroom.svg', controllers.fetchProfile_classroom);
 router.get('/public/img/signOut.svg', controllers.fetchProfile_signOut);
 
 router.get('/public/img/martin_profile.jpg', controllers.fetchProfile_martin);
-router.get('/public/img/melb_uni.svg', controllers.fetchProfile_melbUni);
+router.get('/public/img/colegio_intisana.jpeg', controllers.fetchProfile_colegio_intisana);
 router.get('/public/img/sri_lanka_jungle.jpg', controllers.fetchProfileBg_school);
 router.get('/public/img/sri_lanka_tea_plantation.jpg', controllers.fetchProfileBg_teacher);
 //timetable part

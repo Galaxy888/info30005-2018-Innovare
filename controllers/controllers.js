@@ -148,10 +148,10 @@ module.exports.fetchProfileBg_teacher =
         var path = require("path");
         res.sendFile(path.join(__dirname, '..', '/public/img/sri_lanka_tea_plantation.jpg'));
     };
-module.exports.fetchProfile_melbUni =
+module.exports.fetchProfile_colegio_intisana =
     function(req,res){
         var path = require("path");
-        res.sendFile(path.join(__dirname, '..', '/public/img/melb_uni.svg'));
+        res.sendFile(path.join(__dirname, '..', '/public/img/colegio_intisana.jpeg'));
     };
 //timetable part
 module.exports.fetchProfile_schedule =

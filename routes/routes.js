@@ -34,7 +34,12 @@ router.get('/public/img/martin_profile.jpg', controllers.fetchProfile_martin);
 router.get('/public/img/melb_uni.svg', controllers.fetchProfile_melbUni);
 router.get('/public/img/sri_lanka_jungle.jpg', controllers.fetchProfileBg_school);
 router.get('/public/img/sri_lanka_tea_plantation.jpg', controllers.fetchProfileBg_teacher);
-
+//timetable part
+router.get('/public/css/jquery.schedule.css', controllers.fetchProfile_schedule);
+router.get('/public/css/jquery-ui.css', controllers.fetchProfile_ui);
+router.get('/public/js/jquery.js', controllers.fetchProfile_jquery);
+router.get('/public/js/jquery.schedule.js', controllers.fetchProfile_jquery_schedule);
+router.get('/public/js/jquery-ui.js', controllers.fetchProfile_jquery_ui);
 
 //live_school
 router.get('/live_school_school.html', controllers.fetchLiveSchool_school);

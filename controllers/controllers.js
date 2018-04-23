@@ -153,6 +153,33 @@ module.exports.fetchProfile_melbUni =
         var path = require("path");
         res.sendFile(path.join(__dirname, '..', '/public/img/melb_uni.svg'));
     };
+//timetable part
+module.exports.fetchProfile_schedule =
+    function(req,res){
+        var path = require("path");
+        res.sendFile(path.join(__dirname, '..', '/public/css/jquery.schedule.css'));
+    };
+module.exports.fetchProfile_ui =
+    function(req,res){
+        var path = require("path");
+        res.sendFile(path.join(__dirname, '..', '/public/css/jquery-ui.css'));
+    };
+module.exports.fetchProfile_jquery =
+    function(req,res){
+        var path = require("path");
+        res.sendFile(path.join(__dirname, '..', '/public/js/jquery.js'));
+    };
+module.exports.fetchProfile_jquery_schedule =
+    function(req,res){
+        var path = require("path");
+        res.sendFile(path.join(__dirname, '..', '/public/js/jquery.schedule.js'));
+    };
+module.exports.fetchProfile_jquery_ui =
+    function(req,res){
+        var path = require("path");
+        res.sendFile(path.join(__dirname, '..', '/public/js/jquery-ui.js'));
+    };
+
 
 
 //live_school

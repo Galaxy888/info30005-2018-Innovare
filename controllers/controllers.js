@@ -138,10 +138,15 @@ module.exports.fetchProfile_martin =
         res.sendFile(path.join(__dirname, '..', '/public/img/martin_profile.jpg'));
     };
 
-module.exports.fetchProfileBg =
+module.exports.fetchProfileBg_school =
     function(req,res){
         var path = require("path");
         res.sendFile(path.join(__dirname, '..', '/public/img/sri_lanka_jungle.jpg'));
+    };
+module.exports.fetchProfileBg_teacher =
+    function(req,res){
+        var path = require("path");
+        res.sendFile(path.join(__dirname, '..', '/public/img/sri_lanka_tea_plantation.jpg'));
     };
 module.exports.fetchProfile_melbUni =
     function(req,res){

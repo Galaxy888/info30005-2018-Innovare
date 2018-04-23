@@ -32,7 +32,8 @@ router.get('/public/img/signOut.svg', controllers.fetchProfile_signOut);
 
 router.get('/public/img/martin_profile.jpg', controllers.fetchProfile_martin);
 router.get('/public/img/melb_uni.svg', controllers.fetchProfile_melbUni);
-router.get('/public/img/sri_lanka_jungle.jpg', controllers.fetchProfileBg);
+router.get('/public/img/sri_lanka_jungle.jpg', controllers.fetchProfileBg_school);
+router.get('/public/img/sri_lanka_tea_plantation.jpg', controllers.fetchProfileBg_teacher);
 
 
 //live_school

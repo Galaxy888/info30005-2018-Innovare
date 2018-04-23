@@ -39,7 +39,11 @@ main .helper {
     text-align: left;
     border-radius: 5px;
     /*font-size: 2em;*/
+}
 
+td {
+    vertical-align: top;
+    padding-right: 2em;
 }
 main .helper span {
     color: rgba(0, 0, 0, 0.2);

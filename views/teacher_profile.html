@@ -5,10 +5,23 @@
     <meta charset="UTF-8">
     <title>LiveSchool</title>
     <link rel="stylesheet" href="../public/css/profile.css">
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open Sans">
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Delicious">
-    <script src="/jquery/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open Sans">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Delicious">
+
+    <script src="jquery.js"></script>
+
+    <link rel="stylesheet" href="jquery.schedule.css">
+    <script src="jquery.schedule.js"></script>
+
+    <link rel="stylesheet" href="jquery-ui.css">
+    <script src="jquery-ui.js"></script>
+
+
+
+
+
+
 </head>
 
 <body>
@@ -16,6 +29,7 @@
 <div id="web_bg" style="background-image: url('../public/img/sri_lanka_tea_plantation.jpg');"></div>
 
 <script>
+
     var x = 'dashboard';
     function c(y) {
         if (y != x) {
@@ -24,6 +38,8 @@
         }
         x = y;
     }
+
+
 </script>
 
 <nav class="menu" tabindex="0">
@@ -31,7 +47,8 @@
     <header class="avatar">
         <img src="../public/img/martin_profile.jpg"/>
         <h2> Martin </h2>
-        <p>PhD Candidate & experienced tutor, Department of Computing and Information Systems, Melbourne School of Engineering, University of Melbourne</p>
+        <p>PhD Candidate & experienced tutor, Department of Computing and Information Systems,
+            Melbourne School of Engineering, University of Melbourne</p>
     </header>
     <ul class="left_part">
         <li tabindex="0" class="icon-dashboard"><a href="#" onclick="c('dashboard');"><span>Dashboard</span></a></li>
@@ -49,6 +66,7 @@
         <div id="dashboard">
             <h1>Dashboard</h1>
             Next class is Web Programming with Unimelb at 8 a.m. on Wednesday<br><br><br>
+
 
             <!-- Table containing subject and school information -->
             <table style="width:100%;">
@@ -74,9 +92,53 @@
             </form>-->
         </div>
 
+        <div id="timetable">
+            <h1>Timetable</h1>
+
+            <p>Click and drag mouse to create a new timeslot, or to move an existing one.</p>
+
+            <div id="schedule2" style="width: 600px; height: 300px"></div>
+            <script>
+                $(function () {
+                    $("#schedule").jqs();
+
+                    $("#export").click(function () {
+                        $("#result").val($("#schedule").jqs('export'));
+                    })
+                });
+
+                $("#schedule2").jqs({
+                    mode: "edit",
+                    data: [
+                        {
+                            day: 0,
+                            periods: [
+                                ["20:00", "00:00"],
+                                ["00:00", "02:00"]
+                            ]
+                        }, {
+                            day: 3,
+                            periods: [
+                                ["00:00", "08:30"],
+                                ["09:00", "12:00"]
+                            ]
+                        }
+                        , {
+                            day: 5,
+                            periods: [
+                                ["03:00", "07:30"],
+                                ["06:00", "12:00"]
+                            ]
+                        }
+                    ]
+                });
+
+            </script>
 
         </div>
+
     </div>
+
 </main>
 
 

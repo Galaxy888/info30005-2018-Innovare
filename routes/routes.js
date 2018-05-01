@@ -6,7 +6,7 @@ const controllers = require('../controllers/controllers');
 router.get('/', controllers.fetchMainPage);
 router.get('/public/css/index.css', controllers.fetchMainPageCSS);
 // router.get('/srilanka_school.jpg', controllers.fetchMainPageBg);
-router.get('/public/img/school_above.jpg', controllers.fetchMainPageBg);
+//router.get('/public/img/school_above.jpg', controllers.fetchMainPageBg);
 router.get('/public/img/live_school.png', controllers.fetchMainPageLogo);
 router.get('/public/img/innovare_logo.png', controllers.fetchMainPageLogo2);
 router.get('/users', controllers.fetchAllUsers);
@@ -17,6 +17,12 @@ router.get('/signup_school.html', controllers.fetchSignUP_school);
 router.get('/signup_teacher.html', controllers.fetchSignUP_teacher);
 router.get('/public/css/signup.css', controllers.fetchSignUpCSS);
 router.get('/public/img/srilanka_school.jpg', controllers.fetchSignUpBg);
+
+router.post('/signup_school.html', function(req, res) {
+    var username = req.body.username;
+    var password = req.body.password;
+    var newuser = new User();
+})
 
 // profile
 router.get('/teacher_profile.html', controllers.fetchTeacher_profile);

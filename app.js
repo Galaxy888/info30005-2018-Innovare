@@ -6,6 +6,8 @@ const app = express();
 
 app.use(router);
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
+app.use('/node_modules');
+app.use(express.static('public'));
 
 app.set('view engine','ejs');
 

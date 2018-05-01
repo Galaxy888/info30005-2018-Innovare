@@ -3,7 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>LiveSchool</title>
-    <link rel="stylesheet" type="text/css" href="../public/css/profile.css">
+    <link rel="stylesheet" href="../public/css/profile.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open Sans">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Delicious">
+
+    <script src="../public/js/jquery.js"></script>
+
+    <link rel="stylesheet" href="../public/css/jquery.schedule.css">
+    <script src="../public/js/jquery.schedule.js"></script>
+
+    <link rel="stylesheet" href="../public/css/jquery-ui.css">
+    <script src="../public/js/jquery-ui.js"></script>
 
 </head>
 <body>
@@ -75,12 +86,52 @@
         <div id="teacher" style="display:none">Here are teachers</div>
         <div id="class" style="display:none">Here are classes</div>
         <!--<div id="subject" style="display:none">Here are subjects</div>-->
-        <div id="timetable" style="display:none">Here are timetables</div>
-        <!--<div id="setting" style="display:none">Here are settings</br></br></br>-->
-            <!--<form action="./">-->
-                <!--<button type="submit">Log out</button>-->
-            <!--</form>-->
+
+        <div id="timetable" style="display:none">
+            <h1>Class Times/Availabilities</h1>
+
+            <p>Click on timetable and drag to create a new timeslot, or to move an existing one.</p>
+
+            <div id="schedule2" style="width: 600px; height: 300px"></div>
+            <script>
+                $(function () {
+                    $("#schedule2").jqs();
+
+                    $("#export").click(function () {
+                        $("#result").val($("#schedule2").jqs('export'));
+                    })
+                });
+
+                $("#schedule2").jqs({
+                    mode: "edit",
+                    data: [
+                        {
+                            day: 0,
+                            periods: [
+                                ["20:00", "00:00"],
+                                ["00:00", "02:00"]
+                            ]
+                        }, {
+                            day: 3,
+                            periods: [
+                                ["00:00", "08:30"],
+                                ["09:00", "12:00"]
+                            ]
+                        }
+                        , {
+                            day: 5,
+                            periods: [
+                                ["03:00", "07:30"],
+                                ["06:00", "12:00"]
+                            ]
+                        }
+                    ]
+                });
+
+            </script>
+
         </div>
+
     </div>
 </main>
 

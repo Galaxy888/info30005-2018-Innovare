@@ -4,10 +4,12 @@ const router = require('./routes/routes');
 
 const app = express();
 
+app.set('view engine','ejs');
+
 app.use(router);
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
-
-app.set('view engine','ejs');
+app.use(express.static(__dirname + '/public'));
+// app.use( express.static( "public" ))
 
 const PORT = process.env.PORT||3000;
 

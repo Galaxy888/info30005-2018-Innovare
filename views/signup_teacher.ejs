@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" type="text/css" href="../public/css/signup.css">
+    <link rel="stylesheet" type="text/css" href="/css/signup.css">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open Sans">
     <meta charset="UTF-8">
@@ -11,12 +11,12 @@
 
 <body>
 
-<div id="web_bg" style="background-image: url('../public/img/srilanka_school.jpg');"></div>
+<div id="web_bg" style="background-image: url('/img/srilanka_school.jpg');"></div>
 
 <div class="bg_darken_box">
 
     <div class="text-block">
-        <title-text> Welcome to LiveSchool sign up for school account! </title-text>
+        <title-text> Welcome to LiveSchool sign up for teacher account! </title-text>
 
         <div class="form-main">
             <form id="myForm" id="myForm">
@@ -26,11 +26,11 @@
 
 
                 <div class="form-item">
-                    <div class="field"><input class="ipt" type="text" id="email" name="email" placeholder="Please enter your school's email address"></div>
+                    <div class="field"><input class="ipt" type="text" id="email" name="email" placeholder="Please enter your email address"></div>
                 </div>
 
                 <div class="form-item">
-                    <div class="field"><input class="ipt" type="text" id="name" name="name" placeholder="Please enter your school's name"></div>
+                    <div class="field"><input class="ipt" type="text" id="name" name="name" placeholder="Please enter your name"></div>
                 </div>
 
                 <div class="form-item">
@@ -45,7 +45,7 @@
                     </div>
                 </div>
 
-                <content-text> Please select the subject your school need teachers: </content-text>
+                <content-text> Please select the subject you can teach: </content-text>
 
                 <div class="form-item">
                     <div class="field">
@@ -53,7 +53,7 @@
                     </div>
                 </div>
 
-                <content-text> Please select the country your school is located in: </content-text>
+                <content-text> Please select the the country you currently live in: </content-text>
 
                 <div class="form-item">
                     <div class="field field-location">
@@ -299,11 +299,11 @@
                                 <option value="Yemen">Yemen</option>
                                 <option value="Zambia">Zambia</option>
                                 <option value="Zimbabwe">Zimbabwe</option>
-                       </select></span>
+                        </select></span>
                     </div>
                 </div>
 
-                <content-text> Please select the your school's time zone: </content-text>
+                <content-text> Please select the your time zone: </content-text>
 
                 <div class="form-item">
                     <div class="field field-timezone">
@@ -342,10 +342,11 @@
                         </select></select></span>
                     </div>
                 </div>
-
             </form>
 
-            <button class="button_signup" onclick="{location.href='school_profile.html'}">Sign Up Now!</button>
+
+            <button class="button_signup" onclick="{location.href='teacher_profile.ejs'}">Sign Up Now!</button>
+
 
             </head>
 

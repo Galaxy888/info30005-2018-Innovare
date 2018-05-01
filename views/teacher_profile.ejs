@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>LiveSchool</title>
-    <link rel="stylesheet" href="../public/css/profile.css">
+    <link rel="stylesheet" href="/css/profile.css">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open Sans">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Delicious">
 
-    <script src="../public/js/jquery.js"></script>
+    <script src="/js/jquery.js"></script>
 
-    <link rel="stylesheet" href="../public/css/jquery.schedule.css">
-    <script src="../public/js/jquery.schedule.js"></script>
+    <link rel="stylesheet" href="/css/jquery.schedule.css">
+    <script src="/js/jquery.schedule.js"></script>
 
-    <link rel="stylesheet" href="../public/css/jquery-ui.css">
-    <script src="../public/js/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/css/jquery-ui.css">
+    <script src="/js/jquery-ui.js"></script>
 
 </head>
+
+
+
 <body>
 
-<div id="web_bg" style="background-image: url('../public/img/sri_lanka_jungle.jpg');"></div>
+<div id="web_bg" style="background-image: url('/img/sri_lanka_jungle.jpg');"></div>
 
 <script>
+
     var x = 'dashboard';
     function c(y) {
         if (y != x) {
@@ -30,51 +35,51 @@
         }
         x = y;
     }
+
+
 </script>
 
 <nav class="menu" tabindex="0">
     <div class="smartphone-menu-trigger"></div>
     <header class="avatar">
-        <img src="../public/img/colegio_intisana.jpeg"/>
-        <h2> Colegio Intisana </h2>
+        <img src="/img/martin_profile.jpg"/>
+        <h2> Martin </h2>
+        <p>PhD Candidate & experienced tutor, Department of Computing and Information Systems,
+            Melbourne School of Engineering, University of Melbourne</p>
     </header>
-    <ul>
+    <ul class="left_part">
         <li tabindex="0" class="icon-dashboard"><a href="#" onclick="c('dashboard');"><span>Dashboard</span></a></li>
-        <li tabindex="0" class="icon-timetable"><a href="#" onclick="c('timetable');"><span>Class Times</span></a></li>
-        <li tabindex="0" class="icon-teacher"><a href="#" onclick="c('teacher');"><span>Matching Teachers</span></a></li>
-        <!--<li tabindex="0" class="icon-class"><a href="#" onclick="c('class');"><span>Class</span></a></li>-->
-        <!--<li tabindex="0" class="icon-subject"><a href="#" onclick="c('subject');"><span>Subject</span></a></li>-->
+        <li tabindex="0" class="icon-timetable"><a href="#" onclick="c('timetable');"><span>My Times</span></a></li>
+        <li tabindex="0" class="icon-school"><a href="#" onclick="c('school');"><span>Matching Schools</span></a></li>
         <li tabindex="0" class="icon-signOut"><a href="./" onclick="c('log_out');"><span>Log out</span></a></li>
-        <!--<li tabindex="0" class="icon-setting"><a href="#" onclick="c('setting');"><span>Setting</span></a></li>-->
+        <!--<form action="./index.ejs">-->
+            <!--<button type="submit">Log out</button>-->
+        <!--</form>-->
     </ul>
 </nav>
 
-
 <main>
     <div class="helper">
-        <div id="dashboard" style="display:block">
-            <!--<form action="live_school_teacher.html">-->
-                <!--<button type="submit">Go to Live School</button>-->
-            <!--</form>-->
+        <div id="dashboard">
             <h1>Dashboard</h1>
-            Next class is Web Programming with Martin Reinoso at 8 a.m. on Wednesday<br><br><br>
+            Your next class is Web Programming with Unimelb at 8 a.m. on Wednesday<br><br><br>
+
 
             <!-- Table containing subject and school information -->
             <table style="width:100%;">
                 <tr>
                     <th><h3>My Subjects</h3></th>
-                    <th><h3>My Teachers</h3></th>
+                    <th><h3>My Schools</h3></th>
                 </tr>
                 <tr>
                     <td>
-                        Evolution and Genetics [remove]<br>
+                        Computer Science [remove]<br>
                         Web Programming [remove]<br>
-                        Chinese culture [remove]<br>
+                        IT Project [remove]<br>
                     </td>
                     <td>
-                        Martin Reinoso [contact | remove]<br>
-                        Vincent Wu [contact | remove]<br>
-                        Tony Grace [contact | remove]<br>
+                        Colegio Intisana [contact | remove]<br>
+                        The University of Melbourne [contact | remove]<br>
                     </td>
                 </tr>
             </table>
@@ -83,12 +88,9 @@
                 <button type="submit">Contact School</button>
             </form>-->
         </div>
-        <div id="teacher" style="display:none">Here are teachers</div>
-        <div id="class" style="display:none">Here are classes</div>
-        <!--<div id="subject" style="display:none">Here are subjects</div>-->
 
         <div id="timetable" style="display:none">
-            <h1>Class Times/Availabilities</h1>
+            <h1>My Available Times</h1>
 
             <p>Click on timetable and drag to create a new timeslot, or to move an existing one.</p>
 
@@ -132,7 +134,32 @@
 
         </div>
 
+
+        <div id="school" style="display:none">
+            <h1>Matching Schools</h1>
+
+            <h3>Puthukkudiyiruppu Central College</h3>
+            <p>The school was founded on 5 January 1955 by the Hindu Vittiya Development<br>
+                Association with the name Srisubramanya Vidyalayam. M. Nesaratnam was the<br>
+                school's first principal. Initially it had classes from grade one to grade<br>
+                ten but was later expanded to Advanced Level. The school currently contains<br>
+                classes from grade six to Advanced Level. The school's golden jubilee in 2005<br>
+                was celebrated with the support of old students and an auditorium was donated<br>
+                to the school by old students from the United Kingdom. <b>[Apply to teach!]</b> </b><br></p>
+
+            <h3>Jiangsu Tongzhou High School</h3>
+            <p>Jiangsu Tongzhou High School was established in 1923 and has the history of eighty<br>
+                eight years till now. In 1980, it won the Key High School title. In 2004, it became<br>
+                a member of Four-Star schools of Jiangsu. <b>[Apply to teach!]</b><br></p>
+
+
+        </div>
+
+
+
+
     </div>
+
 </main>
 
 

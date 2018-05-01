@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" type="text/css" href="../public/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open Sans">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Delicious">
@@ -13,12 +13,12 @@
 
 <body>
 
-<div id="web_bg" style="background-image: url('../public/img/school_above.jpg');"></div>
+<div id="web_bg" style="background-image: url('/img/school_above.jpg');"></div>
 
 <div class="bg_darken_box">
     <div class="banner">
-        <img src="../public/img/live_school.png" width="120" height="70" align="left">
-        <img src="../public/img/innovare_logo.png" width="120" height="45" align="right">
+        <img src="/img/live_school.png" width="120" height="70" align="left">
+        <img src="/img/innovare_logo.png" width="120" height="45" align="right">
     </div>
 
     <div class="text-block">
@@ -28,15 +28,15 @@
         <p>LiveSchool offers low-cost teaching to schools in <br>
             developing areas through flexible, live-streamed lessons.</p>
 
-        <form action="./teacher_profile.html">
+        <form action="teacher_profile.ejs">
             <input type="text" name = "email" placeholder="Email"><br>
             <input type="text" name = "password" placeholder="Password"><br><br>
             <button type="submit">Log in</button>
         </form><br>
 
 
-        <button class="button_signup" onclick="{location.href='./signup_school.html'}">School Sign-up</button>
-        <button class="button_signup" onclick="{location.href='./signup_teacher.html'}">Teacher Sign-up</button>
+        <button class="button_signup" onclick="{location.href='signup_school.ejs'}">School Sign-up</button>
+        <button class="button_signup" onclick="{location.href='signup_teacher.ejs'}">Teacher Sign-up</button>
 
 
 

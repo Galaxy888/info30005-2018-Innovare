@@ -1,0 +1,124 @@
+body, html {
+    margin: 0%;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Lato;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.header_image {
+    background: url("sri_lanka_tea_plantation.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    position: relative;
+    width: 100%;
+    height: 280px;
+    display: block;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.bg_darken_box {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+header_text {
+    font-size: 35px;
+    color: rgba(255, 255, 255, 0.9);
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.banner {
+    height: 50px;
+    width: 100%;
+    font-size: 50px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    border-bottom: black 20px;
+    box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Place the navbar at the bottom of the page, and make it stick */
+.navbar {
+    background-color: rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* MENU BAR STUFF FROM W3 SCHOOLS */
+/* Style the links inside the navigation bar */
+.navbar a {
+    float: right;
+    display: block;
+    color: #f2f2f2;
+    padding: 10px 16px;
+    text-decoration: none;
+    font-size: 15px;
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.left_menu_button {
+    float: left;
+}
+
+/* Change the color of links on hover */
+.navbar a:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+/* Add a green background color to the active link */
+.navbar a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Hide the link that should open and close the navbar on small screens */
+.navbar .icon {
+    display: none;
+}
+
+
+/* Everything under header and nav menu */
+.rest_of_page {
+    position: relative;
+    width: fit-content;
+    top: 50px;
+    left: 100px;
+    overflow: hidden;
+}
+
+/* Align table contents at top of cell */
+td {
+    vertical-align: top;
+    padding-right: 50px;
+    border: 1px solid black;
+}
+
+/* Left-hand side profile summary */
+.profile_summary {
+    position: relative;
+    width: 300px;
+    font-size: 12px;
+    text-align: right;
+    color: #636363;
+}
+
+/* Right-hand main content */
+.main_content {
+    font-size: 14px;
+    text-align: left;
+}

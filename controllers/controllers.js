@@ -15,8 +15,8 @@ module.exports.fetchAllUsers =
 
 module.exports.fetchUser =
     function(req,res){
-    const user = users[req.params.id];
-    res.render('user.ejs',{user:user});
+        const user = users[req.params.id];
+        res.render('user.ejs',{user:user});
     };
 
 
@@ -51,5 +51,3 @@ module.exports.fetchSchool_profile =
         // res.sendFile(path.join(__dirname, '..', '/views/school_profile.ejs'));
         res.render('school_profile');
     };
-
-

@@ -9,7 +9,6 @@ body, html {
 }
 
 .header_image {
-    background: url("/img/sri_lanka_tea_plantation.jpg");
     background-size: 100%;
     background-repeat: no-repeat;
     position: relative;

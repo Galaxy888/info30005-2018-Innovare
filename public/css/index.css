@@ -49,14 +49,14 @@ body, html {
 }
 
 .banner {
-    height: 50px;
+    height: 35px;
     width: 100%;
     font-size: 50px;
     color: white;
     background-color: rgba(0, 0, 0, 0.5);
     text-align: left;
     border-bottom: black 20px;
-    box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 5px 15px 35px rgba(0, 0, 0, 0.5);
 }
 
 header-text {

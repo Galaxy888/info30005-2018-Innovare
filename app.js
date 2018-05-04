@@ -2,6 +2,8 @@ const express = require('express');
 const users = require("./models/db");
 const router = require('./routes/routes');
 
+const mongoose = require('mongoose')
+
 const app = express();
 
 app.set('view engine','ejs');

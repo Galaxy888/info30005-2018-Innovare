@@ -5,7 +5,7 @@ module.exports.fetchMainPage =
     function(req,res){
         // var path = require("path");
         // res.sendFile(path.join(__dirname, '..', '/views/index.ejs'));
-        res.render('index');
+        res.render('index.ejs');
     };
 
 module.exports.fetchAllUsers =
@@ -26,14 +26,14 @@ module.exports.fetchSignUP_school =
     function(req,res){
         // var path = require("path");
         // res.sendFile(path.join(__dirname, '..', '/views/signup_school.ejs'));
-        res.render('signup_school');
+        res.render('signup_school.ejs');
     };
 
 module.exports.fetchSignUP_teacher =
     function(req,res){
         // var path = require("path");
         // res.sendFile(path.join(__dirname, '..', '/views/signup_teacher.ejs'));
-        res.render('signup_teacher');
+        res.render('signup_teacher.ejs');
     };
 
 
@@ -42,12 +42,12 @@ module.exports.fetchTeacher_profile =
     function(req,res){
         // var path = require("path");
         // res.sendFile(path.join(__dirname, '..', '/views/teacher_profile.ejs'));
-        res.render('teacher_profile');
+        res.render('teacher_profile.ejs');
     };
 
 module.exports.fetchSchool_profile =
     function(req,res){
         // var path = require("path");
         // res.sendFile(path.join(__dirname, '..', '/views/school_profile.ejs'));
-        res.render('school_profile');
+        res.render('school_profile.ejs');
     };

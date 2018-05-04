@@ -1,20 +1,26 @@
-const express = require('express');
-const users = require("./models/db");
-const router = require('./routes/routes');
+var express = require('express');
+// var users = require("./models/db");
+var bodyParser = require('body-parser');
 
-const mongoose = require('mongoose')
+// Database setup
+require('./models/db.js')
 
-const app = express();
+var router = require('./routes/routes');
+var app = express();
+
+
+app.use(bodyParser.json());
 
 app.set('view engine','ejs');
 
 app.use(router);
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
 app.use(express.static(__dirname + '/public'));
-// app.use( express.static( "public" ))
 
-const PORT = process.env.PORT||3000;
 
+
+// Start the server
+var PORT = process.env.PORT||3000;
 app.listen(PORT, function(){
     console.log('Express listening on port 3000npm ');
 });

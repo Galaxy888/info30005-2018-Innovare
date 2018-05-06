@@ -84,6 +84,7 @@ module.exports.createTeacher =
             "password":req.body.password
             // "photo":req.body.photo
         });
+        console.log("email");
         teacher.save(function(err,newTeacher){
             if(!err){
                 res.send(newTeacher);

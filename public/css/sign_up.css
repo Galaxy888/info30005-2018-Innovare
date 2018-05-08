@@ -2,7 +2,7 @@ body, html, textarea {
     height: 100%;
     width: 100%;
     color: white;
-    font-family: "Lato";
+    font-family: "Playfair Display";
     margin: 0;
     padding: 0;
 }
@@ -45,7 +45,6 @@ body, html, textarea {
     padding-left: 35px;
     padding-right: 35px;
     padding-top: 10px;
-    font-family: "Lato";
 }
 
 .banner {
@@ -81,14 +80,15 @@ textarea {
     height: 50px;
     box-sizing: border-box;
     resize: none;
+    font-family: "Lato";
 }
 
-input:hover, input:focus {
-    background-color: rgba(0,0,0,0.5);
+input:hover, input:focus textarea:hover {
+    background-color: rgba(0,0,0,0.7);
 }
 
 button[type=submit] {
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(100,203,62,0.7);
     width: 300px;
     border: none;
     color: white;
@@ -98,6 +98,7 @@ button[type=submit] {
     border-radius: 4px;
 }
 button[type=submit]:hover {
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(100,203,62,0.5);
 }
+
 

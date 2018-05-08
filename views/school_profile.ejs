@@ -5,6 +5,7 @@
     <title>Profile</title>
     <link rel="stylesheet" href="/css/profiles.css">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Playfair+Display" />
 
     <script src="/js/jquery.js"></script>
     <link rel="stylesheet" href="/css/jquery.schedule.css">
@@ -17,7 +18,7 @@
 <body>
 
 
-<div class = "header_image" style="background: url('/img/lake_house.jpg'); background-size: 100%;">
+<div class = "header_image" style="background: url('/img/lake_house.png'); background-size: 100%;">
 
     <div class="bg_darken_box">
 
@@ -26,7 +27,7 @@
             <img src="/img/innovare_logo.png"  height="40px" align="right">
         </div>
 
-        <header_text>ACCESS FIRST-CLASS ENGLISH TEACHING. ANYWHERE.</header_text>
+        <header_text>TAILORED LESSONS FROM EXPERT TEACHERS</header_text>
 
         <script>
             var x = 'dashboard';
@@ -44,7 +45,7 @@
             <a href="./">Log out</a>
             <a href="#" onclick="c('search_teachers');">Find teachers</a>
             <a href="#" onclick="c('dashboard');">Dashboard</a>
-            <div class = "left_menu_button"><a href="#" onclick="c('about');">About</a></div>
+            <div class = "left_menu_button"><a href="#" onclick="c('about');">About LiveSchool</a></div>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
         </div>
 
@@ -75,15 +76,36 @@
                         <h2>Dashboard</h2>
                         <p>Your next English class is with Luciano Floridi at 3pm on Wednesday</p>
                         <h3>Your Teachers</h3>
-                        <p>Luciano Floridi [Contact | Remove]</p>
-                        <p>Steve Meyer [Contact | Remove]</p>
+                        <p><b>Luciano Floridi</b><br>
+                            I am currently Professor of Philosophy of Information
+                            and Director of the Digital Ethics Lab, at the University of Oxford,
+                            and Research Associate and Fellow in Information Policy at the Department
+                            of Computer Science, University of Oxford.    [Contact | Remove]</p>
+                        <p><b>Steve Meyer</b><br>
+                            I'm a former college professor with formal training in ESL (English
+                            as a Second Language) teaching, and offer custom classes at all levels
+                            of English proficiency.  [Contact | Remove]</p>
                     </div>
 
                     <div id="search_teachers" style="display: none">
                         <h2>Search for matching teachers</h2>
 
-                        <p>Search box will go here.</p>
-
+                        <form action="./">
+                            <p>Choose the day of your English class:</p>
+                            <select name="select_day_of_week">
+                                <option value="" disabled selected hidden>select day...</option>
+                                <option value="Monday">Monday</option>
+                                <option value="Tuesday">Tuesday</option>
+                                <option value="Wednesday">Wednesday</option>
+                                <option value="Thursday">Thursday</option>
+                                <option value="Friday">Friday</option>
+                                <option value="Saturday">Saturday</option>
+                                <option value="Sunday">Sunday</option>
+                            </select><br>
+                            <p>Choose the time of your English class (00:00-23:30):</p>
+                            <input type="text" name = "time" placeholder="select time..."><br><br>
+                            <button type="submit">Search teachers</button>
+                        </form><br>
                     </div>
             </td>
         </tr>

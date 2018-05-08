@@ -5,6 +5,7 @@
     <title>Profile</title>
     <link rel="stylesheet" href="/css/profiles.css">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Playfair+Display" />
 
     <script src="/js/jquery.js"></script>
     <link rel="stylesheet" href="/css/jquery.schedule.css">
@@ -17,16 +18,16 @@
 <body>
 
 
-    <div class = "header_image">
+    <div class = "header_image" style="background: url('/img/winding_road.jpg'); background-size: 100%">
 
         <div class="bg_darken_box">
 
             <div class="banner">
-                <img src="/img/liveschool_logo.png" width="220" height="50" align="left">
-                <img src="/img/innovare_logo.png" width="120" height="45" align="right">
+                <img src="/img/liveschool_logo.png" height="40px" align="left">
+                <img src="/img/innovare_logo.png"  height="40px" align="right">
             </div>
 
-            <header_text>TEACH. ANYWHERE. ANY TIME.</header_text>
+            <header_text>CREATE YOUR OWN SCHEDULE.</header_text>
 
             <script>
                 var x = 'dashboard';
@@ -44,7 +45,7 @@
                 <a href="./">Log out</a>
                 <a href="#" onclick="c('timetable');">Your availabilities</a>
                 <a href="#" onclick="c('dashboard');">Dashboard</a>
-                <div class = "left_menu_button"><a href="#" onclick="c('about');">About</a></div>
+                <div class = "left_menu_button"><a href="#" onclick="c('about');">About LiveSchool</a></div>
                 <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
             </div>
 
@@ -61,8 +62,7 @@
                     <td>
                         <div class = "profile_summary">
                             <img src="/img/luciano_floridi.jpg" width="150"><br>
-                            <p><b>Your Bio</b><br>
-                                I am currently Professor of Philosophy of
+                                <p>I am currently Professor of Philosophy of
                                 Information and Director of the Digital Ethics Lab,
                                 at the University of Oxford, and Research Associate and Fellow
                                 in Information Policy at the Department of Computer Science,
@@ -77,8 +77,13 @@
                                 <h2>Dashboard</h2>
                                 <p>Your next English class is with Puthukkudiyiruppu Central College at 8pm on Wednesday</p>
                                 <h3>Your Schools</h3>
-                                <p>Puthukkudiyiruppu Central College [Contact | Remove]</p>
-                                <p>Jiangsu Tongzhou High School [Contact | Remove]</p>
+                                <b>Puthukkudiyiruppu Central College</b><br>
+                                <p>Our school was founded on 5 January 1955 by the Hindu Vittiya Development
+                                    Association with the name Srisubramanya Vidyalayam. The school currently contains
+                                    classes from grade six to Advanced Level.  [Contact | Remove]<br></p>
+                                <b>Jiangsu Tongzhou High School</b><br>
+                                <p>Large school in eastern China looking for English lessons from a native
+                                    speaker.  [Contact | Remove]<br></p>
                             </div>
 
                             <div id="timetable" style="display: none">
@@ -86,7 +91,7 @@
 
                                 <p>Click on timetable and drag to create a new timeslot, or to move an existing one.</p>
 
-                                <div id="schedule2" style="width: 1700px; height: 100%"></div>
+                                <div id="schedule2" style="width: 600px; height: 100%"></div>
                                 <script>
                                     $(function () {
                                         $("#schedule2").jqs();

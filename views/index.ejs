@@ -7,31 +7,33 @@
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open Sans">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Delicious">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Playfair+Display" />
     <script src = "/js/login.js" type="text/javascript"></script>
     <meta charset="UTF-8">
     <title>LiveSchool</title>
 </head>
 
+
 <body>
 
-<div id="web_bg" style="background-image: url('/img/mountain_road.jpg');"></div>
+<div id="web_bg" style="background-image: url('/img/mountain_road.jpg'); background-size: 100%"></div>
 
 <div class="bg_darken_box">
     <div class="banner">
-        <img src="/img/liveschool_logo.png" width="220" height="50" align="left">
-        <img src="/img/innovare_logo.png" width="120" height="45" align="right">
+        <img src="/img/liveschool_logo.png" height="40px" align="left">
+        <img src="/img/innovare_logo.png"  height="40px" align="right">
     </div>
 
     <div class="text-block">
 
         <header-text>CONNECTING REMOTE SCHOOLS WITH EXPERT TEACHERS</header-text>
 
-        <p>LiveSchool offers low-cost teaching to schools in <br>
+        <p>LiveSchool offers low-cost English teaching to schools in <br>
             developing areas through flexible, live-streamed lessons.</p>
 
         <form action="/teacher_profile">
             <input type="text" name = "email" placeholder="Email"><br>
-            <input type="text" name = "password" placeholder="Password"><br><br>
+            <input type="password" name = "password" placeholder="Password"><br><br>
             <button type="submit">Log in</button>
         </form><br>
 
@@ -40,7 +42,6 @@
         <button class="button_signup" onclick="{location.href='./signup_teacher'}" id="teacher_sign_up">Teacher Sign-up</button>
         <!--<button class="button_signup" id="school_sign_up"><a href="/signup_school">School Sign-up</a></button>-->
         <!--<button class="button_signup" id="teacher_sign_up"><a href="/signup_teacher">Teacher Sign-up</a></button>-->
-
 
 
     </div>

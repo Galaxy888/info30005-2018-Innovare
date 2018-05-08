@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LiveSchool</title>
+    <link rel="stylesheet" href="/css/profile.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open Sans">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Delicious">
+
+    <script src="/js/jquery.js"></script>
+
+    <link rel="stylesheet" href="/css/jquery.schedule.css">
+    <script src="/js/jquery.schedule.js"></script>
+
+    <link rel="stylesheet" href="/css/jquery-ui.css">
+    <script src="/js/jquery-ui.js"></script>
+
+</head>
+<body>
+
+<div id="web_bg" style="background-image: url('/img/sri_lanka_jungle.jpg');"></div>
+
+<script>
+    var x = 'dashboard';
+    function c(y) {
+        if (y != x) {
+            document.getElementById(y).style.display = "block";
+            document.getElementById(x).style.display = "none";
+        }
+        x = y;
+    }
+</script>
+
+<nav class="menu" tabindex="0">
+    <div class="smartphone-menu-trigger"></div>
+    <header class="avatar">
+        <img src="/img/colegio_intisana.jpeg"/>
+        <h2> Colegio Intisana </h2>
+    </header>
+    <ul>
+        <li tabindex="0" class="icon-dashboard"><a href="#" onclick="c('dashboard');"><span>Dashboard</span></a></li>
+        <li tabindex="0" class="icon-timetable"><a href="#" onclick="c('timetable');"><span>Class Times</span></a></li>
+        <li tabindex="0" class="icon-teacher"><a href="#" onclick="c('teacher');"><span>Matching Teachers</span></a></li>
+        <!--<li tabindex="0" class="icon-class"><a href="#" onclick="c('class');"><span>Class</span></a></li>-->
+        <!--<li tabindex="0" class="icon-subject"><a href="#" onclick="c('subject');"><span>Subject</span></a></li>-->
+        <li tabindex="0" class="icon-signOut"><a href="./" onclick="c('log_out');"><span>Log out</span></a></li>
+        <!--<li tabindex="0" class="icon-setting"><a href="#" onclick="c('setting');"><span>Setting</span></a></li>-->
+    </ul>
+</nav>
+
+
+<main>
+    <div class="helper">
+        <div id="dashboard" style="display:block">
+            <!--<form action="live_school_teacher.html">-->
+                <!--<button type="submit">Go to Live School</button>-->
+            <!--</form>-->
+            <h1>Dashboard</h1>
+            Next class is Web Programming with Martin Reinoso at 8 a.m. on Wednesday<br><br><br>
+
+            <!-- Table containing subject and school information -->
+            <table style="width:100%;">
+                <tr>
+                    <th><h3>My Subjects</h3></th>
+                    <th><h3>My Teachers</h3></th>
+                </tr>
+                <tr>
+                    <td>
+                        Evolution and Genetics [remove]<br>
+                        Web Programming [remove]<br>
+                        Chinese culture [remove]<br>
+                    </td>
+                    <td>
+                        Martin Reinoso [contact | remove]<br>
+                        Vincent Wu [contact | remove]<br>
+                        Tony Grace [contact | remove]<br>
+                    </td>
+                </tr>
+            </table>
+
+            <!--<form>
+                <button type="submit">Contact School</button>
+            </form>-->
+        </div>
+        <div id="teacher" style="display:none">Here are teachers</div>
+        <div id="class" style="display:none">Here are classes</div>
+        <!--<div id="subject" style="display:none">Here are subjects</div>-->
+
+        <div id="timetable" style="display:none">
+            <h1>Class Times/Availabilities</h1>
+
+            <p>Click on timetable and drag to create a new timeslot, or to move an existing one.</p>
+
+            <div id="schedule2" style="width: 600px; height: 300px"></div>
+            <script>
+                $(function () {
+                    $("#schedule2").jqs();
+
+                    $("#export").click(function () {
+                        $("#result").val($("#schedule2").jqs('export'));
+                    })
+                });
+
+                $("#schedule2").jqs({
+                    mode: "edit",
+                    data: [
+                        {
+                            day: 0,
+                            periods: [
+                                ["20:00", "00:00"],
+                                ["00:00", "02:00"]
+                            ]
+                        }, {
+                            day: 3,
+                            periods: [
+                                ["00:00", "08:30"],
+                                ["09:00", "12:00"]
+                            ]
+                        }
+                        , {
+                            day: 5,
+                            periods: [
+                                ["03:00", "07:30"],
+                                ["06:00", "12:00"]
+                            ]
+                        }
+                    ]
+                });
+
+            </script>
+
+        </div>
+
+    </div>
+</main>
+
+
+</body>
+</html>

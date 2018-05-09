@@ -4,9 +4,8 @@ var teacherSchema = mongoose.Schema(
         "email":String,
         "name":String,
         "password":String
-        // "address":String,
-        // "distance":String,
-        // "rating":String,
+        // "timezone":String,
+        // "bio":String,
         // "photo":String
     }
 );

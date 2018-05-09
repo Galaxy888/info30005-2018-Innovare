@@ -2,6 +2,7 @@
 // var mongoose = require('mongoose');
 // var Teacher = mongoose.model('Teacher');
 var Teacher = require('../models/db')
+var School = require('../models/db')
 // var School = mongoose.model('School');
 
 //main
@@ -57,6 +58,11 @@ module.exports.fetchSchool_profile =
     };
 
 
+module.exports.fetchSignup_success =
+    function(req,res){
+        res.render('signup_success.ejs');
+    };
+
 
 
 
@@ -91,13 +97,36 @@ module.exports.createTeacher =
         teacher.save(function(err,newTeacher){
             if(!err){
                 res.send(newTeacher);
+
             }else{
                 res.sendStatus(400);
             }
         });
+        res.render('signup_success.ejs')
     };
 
 
+module.exports.createSchool =
+    function(req,res){
+        var school = new School({
+            "school_name":req.body.school_name,
+            "email":req.body.email,
+            "password":req.body.password
+            // "photo":req.body.photo
+        });
+        // console.log(req.body.email);
+        // console.log("666666666");
+
+        school.save(function(err,newSchool){
+            if(!err){
+                res.send(newSchool);
+
+            }else{
+                res.sendStatus(400);
+            }
+        });
+        res.render('signup_success.ejs')
+    };
 
 
 // module.exports.createTeacher =

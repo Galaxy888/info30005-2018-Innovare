@@ -4,12 +4,15 @@ const controllers = require('../controllers/controllers');
 
 //main
 router.get('/', controllers.fetchMainPage);
+router.get('/index',controllers.fetchMainPage);
 
 // sign_up
 router.get('/signup_school', controllers.fetchSignUP_school);
 router.get('/signup_teacher', controllers.fetchSignUP_teacher);
 
-router.post('/signup_teacher',controllers.createTeacher);
+router.post('/signup_success',controllers.createTeacher);
+router.post('/signup_success',controllers.createSchool);
+router.get('/signup_success', controllers.fetchSignup_success);
 
 // profile
 router.get('/teacher_profile', controllers.fetchTeacher_profile);

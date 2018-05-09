@@ -15,7 +15,10 @@ var teacherSchema = mongoose.Schema(
     {
         teacher_name:String,
         email:String,
-        password:String
+        password:String,
+        country:String,
+        timezone:String,
+        bio:String
         // "address":String,
         // "distance":String,
         // "rating":String,

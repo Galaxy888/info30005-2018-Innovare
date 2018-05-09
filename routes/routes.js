@@ -1,15 +1,18 @@
 const express = require('express');
-const router = express.Router(); // ADD ARGUMENT? PERHAPS "EXPRESS"?
+const router = express.Router();
 const controllers = require('../controllers/controllers');
 
 //main
 router.get('/', controllers.fetchMainPage);
+router.post('/login', controllers.logUserIn);
+
 
 // sign_up
 router.get('/signup_school', controllers.fetchSignUP_school);
 router.get('/signup_teacher', controllers.fetchSignUP_teacher);
 
 router.post('/signup_teacher',controllers.createTeacher);
+
 
 // profile
 router.get('/teacher_profile', controllers.fetchTeacher_profile);

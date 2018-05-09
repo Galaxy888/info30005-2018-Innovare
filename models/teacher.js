@@ -3,10 +3,10 @@ var teacherSchema = mongoose.Schema(
     {
         "teacher_name":String,
         "email":String,
-        "password":String
-        // "timezone":String,
-        // "bio":String,
-        // "photo":String
+        "password":String,
+        "country":String,
+        "timezone":String,
+        "bio":String
     }
 );
 

@@ -1,6 +1,7 @@
 // const users = require('../models/db_old')
 // var mongoose = require('mongoose');
 // var Teacher = mongoose.model('Teacher');
+var session = require('express-session');
 var Teacher = require('../models/db')
 // var School = mongoose.model('School');
 
@@ -43,9 +44,10 @@ module.exports.fetchSignUP_teacher =
 
 // profile
 module.exports.fetchTeacher_profile =
-    function(req,res){
-        // var path = require("path");
-        // res.sendFile(path.join(__dirname, '..', '/views/teacher_profile.ejs'));
+    function(req,res) {
+        //if (!logged in) {
+        //    return res.status(401).send();
+        //}
         res.render('teacher_profile.ejs');
     };
 
@@ -82,7 +84,10 @@ module.exports.createTeacher =
         var teacher = new Teacher({
             "teacher_name":req.body.teacher_name,
             "email":req.body.email,
-            "password":req.body.password
+            "password":req.body.password,
+            "country":req.body.country,
+            "timezone":req.body.timezone,
+            "bio":req.body.bio
             // "photo":req.body.photo
         });
         // console.log(req.body.email);
@@ -95,6 +100,32 @@ module.exports.createTeacher =
                 res.sendStatus(400);
             }
         });
+         res.render('teacher_profile.ejs', teacher); // SHOULD ACCESS DATABASE DIRECTLY
+    };
+
+module.exports.logUserIn =
+    function(req,res){
+        var email = req.body.email;
+        var password = req.body.password;
+        console.log("Email: " + email + ", Password: " + password);
+
+        Teacher.findOne({'email': email, 'password': password}, function (err, teacher) {
+            if (err) {
+                console.log(err);
+                return res.status(500).send();
+            }
+            if (!teacher) {
+                console.log("Not there, pal!");
+                return res.status(404).send();
+            }
+
+            res.render('teacher_profile.ejs', teacher);
+        })
+
+
+
+
+        //res.render('teacher_profile.ejs', teacher); // SHOULD ACCESS DATABASE DIRECTLY
     };
 
 

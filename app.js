@@ -1,6 +1,6 @@
 var express = require('express');
-// var users = require("./models/db");
 var app = express();
+var session = require('express-session');
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({
     extended: true
@@ -10,6 +10,8 @@ app.use(bodyParser.json());
 // Database setup
 require('./models/db.js')
 
+// For sessions
+app.use(session({secret: "topsecret", resave:false, saveUninitialized:true}));
 
 app.set('view engine','ejs');
 

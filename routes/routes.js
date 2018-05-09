@@ -5,6 +5,7 @@ const controllers = require('../controllers/controllers');
 //main
 router.get('/', controllers.fetchMainPage);
 router.post('/login', controllers.logUserIn);
+router.post('/logout', controllers.logUserOut);
 
 
 // sign_up

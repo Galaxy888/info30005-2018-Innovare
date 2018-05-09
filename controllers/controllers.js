@@ -1,9 +1,9 @@
 // const users = require('../models/db_old')
 // var mongoose = require('mongoose');
 // var Teacher = mongoose.model('Teacher');
-var Teacher = require('../models/db');
 var alert = require('alert-node');
-
+var Teacher = require('../models/db');
+var School = require('../models/db');
 
 //main
 module.exports.fetchMainPage =
@@ -60,6 +60,11 @@ module.exports.fetchSchool_profile =
     };
 
 
+module.exports.fetchSignup_success =
+    function(req,res){
+        res.render('signup_success.ejs');
+    };
+
 
 module.exports.createTeacher =
     function(req,res){
@@ -78,11 +83,13 @@ module.exports.createTeacher =
         teacher.save(function(err,newTeacher){
             if(!err){
                 res.send(newTeacher);
+
             }else{
                 res.sendStatus(400);
             }
         });
-         res.render('teacher_profile.ejs', teacher); // SHOULD ACCESS DATABASE DIRECTLY
+        //res.render('teacher_profile.ejs', teacher); // SHOULD ACCESS DATABASE DIRECTLY
+        res.render('signup_success.ejs')
     };
 
 module.exports.logUserIn =
@@ -104,6 +111,29 @@ module.exports.logUserIn =
             res.render('teacher_profile.ejs', teacher);
         })
 
+module.exports.createSchool =
+    function(req,res){
+        var school = new School({
+            "school_name":req.body.school_name,
+            "email":req.body.email,
+            "password":req.body.password,
+            "countryId": req.body.countryId,
+            "timezoneId": req.body.timezoneId
+            // "photo":req.body.photo
+        });
+        // console.log(req.body.email);
+        // console.log("666666666");
+
+        school.save(function(err,newSchool){
+            if(!err){
+                res.send(newSchool);
+
+            }else{
+                res.sendStatus(400);
+            }
+        });
+        res.render('signup_success.ejs')
+    };
 
     };
 

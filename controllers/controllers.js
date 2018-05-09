@@ -88,7 +88,11 @@ module.exports.createTeacher =
         var teacher = new Teacher({
             "teacher_name":req.body.teacher_name,
             "email":req.body.email,
-            "password":req.body.password
+            "password":req.body.password,
+            "countryId": req.body.countryId,
+            "timezoneId": req.body.timezoneId,
+            "teacher_bio": req.body.teacher_bio
+
             // "photo":req.body.photo
         });
         // console.log(req.body.email);
@@ -111,7 +115,9 @@ module.exports.createSchool =
         var school = new School({
             "school_name":req.body.school_name,
             "email":req.body.email,
-            "password":req.body.password
+            "password":req.body.password,
+            "countryId": req.body.countryId,
+            "timezoneId": req.body.timezoneId
             // "photo":req.body.photo
         });
         // console.log(req.body.email);

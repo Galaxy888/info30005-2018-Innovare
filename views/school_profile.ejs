@@ -42,7 +42,7 @@
         </script>
 
         <div class="navbar" id="myNavbar">
-            <a href="./">Log out</a>
+            <a href="/logout">Log out</a>
             <a href="#" onclick="c('search_teachers');">Find teachers</a>
             <a href="#" onclick="c('dashboard');">Dashboard</a>
             <div class = "left_menu_button"><a href="#" onclick="c('about');">About LiveSchool</a></div>
@@ -74,6 +74,10 @@
 
                     <div id="dashboard">
                         <h2>Dashboard</h2>
+                        <p>Temporary information for development</p>
+                        <p>Name: <b><i><%= school_name %></i></b></p>
+                        <p>Country: <b><i><%= country %></i></b></p>
+                        <p>Timezone: <b><i><%= timezone %></i></b></p>
                         <p>Your next English class is with Luciano Floridi at 3pm on Wednesday</p>
                         <h3>Your Teachers</h3>
                         <p><b>Luciano Floridi</b><br>

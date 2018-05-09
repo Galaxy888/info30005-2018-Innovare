@@ -34,20 +34,22 @@ var Teacher = module.exports = mongoose.model('Teacher', teacherSchema);
 
 
 
-var schoolSchema = mongoose.Schema(
+// THIS MAY NEED TO BE IN A SEPARATE FILE: TEACHER LOGIN FAILS WHEN IT'S UNCOMMENTED
+/*var schoolSchema = mongoose.Schema(
     {
         school_name:String,
         email:String,
         password:String,
         countryId: String,
         timezoneId: String,
+        bio: String
         // "address":String,
         // "distance":String,
         // "rating":String,
         // "photo":String
     }
 );
-var School = module.exports = mongoose.model('School', schoolSchema);
+var School = module.exports = mongoose.model('School', schoolSchema);*/
 
 
 

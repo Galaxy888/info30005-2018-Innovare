@@ -43,7 +43,7 @@ module.exports.fetchSignUP_teacher =
     };
 
 
-// profile
+// Display teacher profile if signed in
 module.exports.fetchTeacher_profile =
     function(req,res) {
         if (!req.session.user) {
@@ -88,28 +88,9 @@ module.exports.createTeacher =
                 res.sendStatus(400);
             }
         });
-        //res.render('teacher_profile.ejs', teacher); // SHOULD ACCESS DATABASE DIRECTLY
-        res.render('signup_success.ejs')
+        res.render('teacher_profile.ejs', teacher); // SHOULD ACCESS DATABASE DIRECTLY
+        //res.render('signup_success.ejs')
     };
-
-module.exports.logUserIn =
-    function(req,res){
-        var email = req.body.email;
-        var password = req.body.password;
-        console.log("Email: " + email + ", Password: " + password);
-
-        Teacher.findOne({'email': email, 'password': password}, function (err, teacher) {
-            if (err) {
-                console.log(err);
-                return res.status(500).send();
-            }
-            if (!teacher) {
-                alert("Not there, pal!");
-                return res.status(404).send();
-            }
-            req.session.user = teacher;
-            res.render('teacher_profile.ejs', teacher);
-        })
 
 module.exports.createSchool =
     function(req,res){
@@ -132,10 +113,31 @@ module.exports.createSchool =
                 res.sendStatus(400);
             }
         });
-        res.render('signup_success.ejs')
+        res.render('school_profile.ejs', school);
+        //res.render('signup_success.ejs')
     };
 
-    };
+
+module.exports.logUserIn =
+    function(req,res) {
+        var email = req.body.email;
+        var password = req.body.password;
+        console.log("Email: " + email + ", Password: " + password);
+
+        Teacher.findOne({'email': email, 'password': password}, function (err, teacher) {
+            if (err) {
+                console.log(err);
+                return res.status(500).send();
+            }
+            if (!teacher) {
+                console.log("Not there, pal!");
+                return res.status(404).send();
+            }
+            req.session.user = teacher;
+            res.render('teacher_profile.ejs', teacher);
+        })
+    }
+
 
 module.exports.logUserOut = function (req, res, next) {
     if (req.session) {
@@ -147,6 +149,7 @@ module.exports.logUserOut = function (req, res, next) {
                 return res.render('index.ejs');
             }
         });
+        console.log('Logged out.');
     }
 }
 

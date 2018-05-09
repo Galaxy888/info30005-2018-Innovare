@@ -9,6 +9,7 @@ router.get('/', controllers.fetchMainPage);
 router.get('/signup_school', controllers.fetchSignUP_school);
 router.get('/signup_teacher', controllers.fetchSignUP_teacher);
 
+router.post('/signup_teacher',controllers.createTeacher);
 
 // profile
 router.get('/teacher_profile', controllers.fetchTeacher_profile);
@@ -16,10 +17,11 @@ router.get('/school_profile', controllers.fetchSchool_profile);
 
 
 // Create new teacher
-router.post('/signup_teacher',controllers.createTeacher);
+// router.post('/sign_teacher_up',controllers.createTeacher);
+
 
 // Find all teacher
-router.get('/signup_teacher',controllers.findAllTeachers);
+// router.get('/signup_teacher',controllers.findAllTeachers);
 
 // Find one teacher by id
 router.get('/signup_teacher/:id',controllers.findOneTeacher);

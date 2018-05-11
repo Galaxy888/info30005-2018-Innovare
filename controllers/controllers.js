@@ -2,8 +2,9 @@
 // var mongoose = require('mongoose');
 // var Teacher = mongoose.model('Teacher');
 var alert = require('alert-node');
-var Teacher = require('../models/db');
-var School = require('../models/db');
+var mongoose = require('mongoose');
+var Teacher = mongoose.model('Teacher');
+var School = mongoose.model('School');
 
 //main
 module.exports.fetchMainPage =
@@ -127,11 +128,15 @@ module.exports.logUserIn =
         Teacher.findOne({'email': email, 'password': password}, function (err, teacher) {
             if (err) {
                 console.log(err);
-                return res.status(500).send();
+                req.flash('notify', '500: Error.');
+                res.render('index.ejs');
+                return;
             }
             if (!teacher) {
                 console.log("Not there, pal!");
-                return res.status(404).send();
+                req.flash('notify', 'User not found, champ.');
+                res.render('index.ejs');
+                return;
             }
             req.session.user = teacher;
             res.render('teacher_profile.ejs', teacher);

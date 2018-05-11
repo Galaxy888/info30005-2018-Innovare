@@ -10,5 +10,5 @@ var teacherSchema = mongoose.Schema(
     }
 );
 
-// mongoose.model('Teacher', teacherSchema);
-var Teacher = module.exports = mongoose.model('Teacher', teacherSchema);
+mongoose.model('Teacher', teacherSchema);
+//var Teacher = module.exports = mongoose.model('Teacher', teacherSchema);

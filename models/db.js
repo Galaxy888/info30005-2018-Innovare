@@ -8,6 +8,9 @@ mongoose.connect('mongodb://Yu:Yu12345678@ds115420.mlab.com:15420/teacher',funct
     }
 });
 
+require('./teacher.js');
+require('./school.js');
+
 // var mongoose_school = require('mongoose');
 // mongoose_school.connect('mongodb://Yu:Yu12345678@ds111420.mlab.com:11420/school',function(err){
 //     if(!err){
@@ -19,6 +22,7 @@ mongoose.connect('mongodb://Yu:Yu12345678@ds115420.mlab.com:15420/teacher',funct
 
 // require('./teacher.js');
 // require('./school.js')
+/*
 
 var teacherSchema = mongoose.Schema(
     {
@@ -30,8 +34,9 @@ var teacherSchema = mongoose.Schema(
         bio:String
     }
 );
-var Teacher = module.exports = mongoose.model('Teacher', teacherSchema);
+var Teacher = mongoose.model('Teacher', teacherSchema);
 
+*/
 
 
 // THIS MAY NEED TO BE IN A SEPARATE FILE: TEACHER LOGIN FAILS WHEN IT'S UNCOMMENTED

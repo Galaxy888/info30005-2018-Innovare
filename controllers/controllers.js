@@ -123,23 +123,41 @@ module.exports.logUserIn =
     function(req,res) {
         var email = req.body.email;
         var password = req.body.password;
+
         console.log("Email: " + email + ", Password: " + password);
 
         Teacher.findOne({'email': email, 'password': password}, function (err, teacher) {
+            if (err) {
+                console.log(err);
+                req.flash('notify', '500: Error.'); // Error message - not working yet
+                res.render('index.ejs');
+                return;
+            }
+            else if (!teacher) {
+               // Do nothing for now - need to check if user is a school
+            }
+            else {
+                req.session.user = teacher;
+                res.render('teacher_profile.ejs', teacher);
+            }
+        })
+        School.findOne({'email': email, 'password': password}, function (err, school) {
             if (err) {
                 console.log(err);
                 req.flash('notify', '500: Error.');
                 res.render('index.ejs');
                 return;
             }
-            if (!teacher) {
+            else if (!school) {
                 console.log("Not there, pal!");
                 req.flash('notify', 'User not found, champ.');
                 res.render('index.ejs');
                 return;
             }
-            req.session.user = teacher;
-            res.render('teacher_profile.ejs', teacher);
+            else {
+                req.session.user = school;
+                res.render('school_profile.ejs', school);
+            }
         })
     }
 

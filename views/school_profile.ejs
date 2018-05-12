@@ -63,9 +63,7 @@
                 <div class = "profile_summary">
                     <img src="/img/puthukkudiyiruppu_college.jpg" width="150"><br>
                     <b>Puthukkudiyiruppu Central College</b><br>
-                    <p>Our school was founded on 5 January 1955 by the Hindu Vittiya Development
-                        Association with the name Srisubramanya Vidyalayam. The school currently contains
-                        classes from grade six to Advanced Level.<br></p>
+                    <p> <%  %></p></p>
                 </div>
             </td>
 
@@ -75,9 +73,17 @@
                     <div id="dashboard">
                         <h2>Dashboard</h2>
                         <p>Temporary information for development</p>
-                        <p>Name: <b><i><%= school_name %></i></b></p>
-                        <p>Country: <b><i><%= country %></i></b></p>
-                        <p>Timezone: <b><i><%= timezone %></i></b></p>
+                        <p>Name: <b><i><%=  %></i></b></p>
+                        <p>Country: <b><i><%=  %></i></b></p>
+                        <p>Timezone: <b><i><%=  %></i></b></p>
+
+                        <h2>Temporary list of teachers</h2>
+
+                        <% for(var i=0; i<teacher_array.length; i++) {%>
+                            <b>Name: <%= teacher_array[i].teacher_name %></b><br>
+                            <p>Bio: <%= teacher_array[i].bio %></p>
+                        <% } %>
+
                         <p>Your next English class is with Luciano Floridi at 3pm on Wednesday</p>
                         <h3>Your Teachers</h3>
                         <p><b>Luciano Floridi</b><br>

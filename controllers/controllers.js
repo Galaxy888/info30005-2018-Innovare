@@ -12,6 +12,7 @@ module.exports.fetchMainPage =
         if (!req.session.user) {
             res.render('index.ejs');
         }
+        // NEED TO RENDER 'school_profile.ejs' IF USER IS A SCHOOL
         else res.render('teacher_profile.ejs', req.session.user);
     };
 
@@ -99,8 +100,9 @@ module.exports.createSchool =
             "school_name":req.body.school_name,
             "email":req.body.email,
             "password":req.body.password,
-            "countryId": req.body.countryId,
-            "timezoneId": req.body.timezoneId
+            "country": req.body.country,
+            "timezone": req.body.timezone,
+            "bio": req.body.bio
             // "photo":req.body.photo
         });
         // console.log(req.body.email);
@@ -155,8 +157,11 @@ module.exports.logUserIn =
                 return;
             }
             else {
-                req.session.user = school;
-                res.render('school_profile.ejs', school);
+                Teacher.collection.find().toArray(function (err, teacher_array) {
+                    console.log(teacher_array);
+                    req.session.user = school;
+                    res.render('school_profile.ejs', {teacher_array: teacher_array });
+                })
             }
         })
     }

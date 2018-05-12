@@ -158,9 +158,8 @@ module.exports.logUserIn =
             }
             else {
                 Teacher.collection.find().toArray(function (err, teacher_array) {
-                    console.log(teacher_array);
                     req.session.user = school;
-                    res.render('school_profile.ejs', {teacher_array: teacher_array });
+                    res.render('school_profile.ejs', {school: school, teacher_array: teacher_array});
                 })
             }
         })

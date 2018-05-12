@@ -62,8 +62,8 @@
             <td>
                 <div class = "profile_summary">
                     <img src="/img/puthukkudiyiruppu_college.jpg" width="150"><br>
-                    <b>Puthukkudiyiruppu Central College</b><br>
-                    <p> <%  %></p></p>
+                    <b><%= school.school_name %></b><br>
+                    <p> <%= school.bio %></p></p>
                 </div>
             </td>
 
@@ -73,9 +73,9 @@
                     <div id="dashboard">
                         <h2>Dashboard</h2>
                         <p>Temporary information for development</p>
-                        <p>Name: <b><i><%=  %></i></b></p>
-                        <p>Country: <b><i><%=  %></i></b></p>
-                        <p>Timezone: <b><i><%=  %></i></b></p>
+                        <p>Name: <b><i><%= school.school_name %></i></b></p>
+                        <p>Country: <b><i><%= school.country %></i></b></p>
+                        <p>Timezone: <b><i><%= school.timezone %></i></b></p>
 
                         <h2>Temporary list of teachers</h2>
 

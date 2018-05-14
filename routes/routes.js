@@ -16,6 +16,9 @@ router.get('/signup_teacher', controllers.fetchSignUP_teacher);
 router.post('/signup_teacher',controllers.createTeacher);
 router.post('/signup_school',controllers.createSchool);
 
+//Update db
+router.post('/update_teacher',controllers.updateTeacherAvailabilities);
+
 //router.post('/signup_success',controllers.createTeacher);
 //router.post('/signup_success',controllers.createSchool);
 

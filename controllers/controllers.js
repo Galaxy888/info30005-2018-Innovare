@@ -76,7 +76,8 @@ module.exports.createTeacher =
             "password":req.body.password,
             "country":req.body.country,
             "timezone":req.body.timezone,
-            "bio":req.body.bio
+            "bio":req.body.bio,
+            "availabilities": null
             // "photo":req.body.photo
         });
         // console.log(req.body.email);
@@ -92,6 +93,14 @@ module.exports.createTeacher =
         });
         res.render('teacher_profile.ejs', teacher); // SHOULD ACCESS DATABASE DIRECTLY
         //res.render('signup_success.ejs')
+    };
+
+module.exports.updateTeacherAvailabilities =
+    function(req,res){
+        Teacher.collection.updateOne({email: req.session.username.email}, {$set: {availabilities: req.body.availabilities}}, function(err, res) {
+            if (err) throw err;
+            console.log("1 document updated");
+        });
     };
 
 module.exports.createSchool =

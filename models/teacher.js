@@ -6,7 +6,8 @@ var teacherSchema = mongoose.Schema(
         "password":String,
         "country":String,
         "timezone":String,
-        "bio":String
+        "bio":String,
+        "availabilities": Object
     }
 );
 

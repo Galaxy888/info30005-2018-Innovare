@@ -103,6 +103,7 @@
 
                                     $("#schedule2").jqs({
                                         mode: "edit",
+                                        periodBackgroundColor: 'rgba(100, 203, 62, 0.7)',
                                         data: [
                                             {
                                                 day: 0,
@@ -126,6 +127,13 @@
                                             }
                                         ]
                                     });
+
+                                    var data = $('#schedule').jqs('export');
+
+                                    // JS code here to export availabilities as variable
+                                    // JS function here to POST variable to a predefined route/control-path
+                                    // that updates the current teacher's availabilities in the DB.
+                                    // [below script] button with "onClick = "thefunction()"
 
                                 </script>
 

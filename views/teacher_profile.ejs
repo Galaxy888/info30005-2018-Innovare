@@ -92,6 +92,7 @@
                                 <p>Click on timetable and drag to create a new timeslot, or to move an existing one.</p>
 
                                 <div id="schedule2" style="width: 600px; height: 100%"></div>
+
                                 <script>
                                     $(function () {
                                         $("#schedule2").jqs();
@@ -101,34 +102,56 @@
                                         })
                                     });
 
-                                    $("#schedule2").jqs({
-                                        mode: "edit",
-                                        periodBackgroundColor: 'rgba(100, 203, 62, 0.7)',
-                                        data: [
-                                            {
-                                                day: 0,
-                                                periods: [
-                                                    ["20:00", "00:00"],
-                                                    ["00:00", "02:00"]
-                                                ]
-                                            }, {
-                                                day: 3,
-                                                periods: [
-                                                    ["00:00", "08:30"],
-                                                    ["09:00", "12:00"]
-                                                ]
-                                            }
-                                            , {
-                                                day: 5,
-                                                periods: [
-                                                    ["03:00", "07:30"],
-                                                    ["06:00", "12:00"]
-                                                ]
-                                            }
-                                        ]
-                                    });
+                                    // $("#schedule2").jqs({
+                                    //     mode: "edit",
+                                    //     periodBackgroundColor: 'rgba(100, 203, 62, 0.7)',
+                                    //     data: [
+                                    //         {
+                                    //             day: 0,
+                                    //             periods: [
+                                    //                 ["20:00", "00:00"],
+                                    //                 ["00:00", "02:00"]
+                                    //             ]
+                                    //         }, {
+                                    //             day: 3,
+                                    //             periods: [
+                                    //                 ["00:00", "08:30"],
+                                    //                 ["09:00", "12:00"]
+                                    //             ]
+                                    //         }
+                                    //         , {
+                                    //             day: 5,
+                                    //             periods: [
+                                    //                 ["03:00", "07:30"],
+                                    //                 ["06:00", "12:00"]
+                                    //             ]
+                                    //         }
+                                    //     ]
+                                    // });
 
-                                    var data = $('#schedule').jqs('export');
+                                    var time_data = $("#schedule").jqs('export');
+                                    // var time_data;
+                                    function saveTimetable() {
+                                        // time_data = $('#schedule').jqs('export');
+                                        console.log(time_data);
+                                        jQuery.ajax({
+                                            type:"POST",
+                                            url:"/update_teacher",
+                                            dataType:"json",
+                                            contentType: "application/json; charset=utf-8,",
+                                            // data: JSON.stringify()
+
+
+                                            success: function (time_data) {
+                                                alert(time_data);
+
+                                            },
+                                            failure: function (errMsg){
+                                                alert(errMsg);
+                                            }
+                                        });
+
+                                    }
 
                                     // JS code here to export availabilities as variable
                                     // JS function here to POST variable to a predefined route/control-path
@@ -136,6 +159,11 @@
                                     // [below script] button with "onClick = "thefunction()"
 
                                 </script>
+                                <!--<button name="save" onclick="saveTimetable()"></button>-->
+                                <input type="button" value="Click" onclick="saveTimetable() "/>
+
+
+                                <>
 
                             </div>
                         </div>

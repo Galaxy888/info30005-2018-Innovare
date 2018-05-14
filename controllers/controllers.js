@@ -152,6 +152,7 @@ module.exports.logUserIn =
                 res.render('teacher_profile.ejs', teacher);
             }
         })
+
         School.findOne({'email': email, 'password': password}, function (err, school) {
             if (err) {
                 console.log(err);
@@ -214,3 +215,54 @@ module.exports.findOneTeacher =
         });
 
     };
+
+module.exports.schoolAddTeacher =
+    function(req,res){
+    console.log(req.body.teacher_email);
+        req.session.user.teacher_emails.push(req.body.teacher_email);
+        // res.render("school_profile.ejs");
+        School.collection.updateOne({email: req.session.user.email}, {$set: {teacher_emails: req.session.user.teacher_emails}}, function(err, res) {
+            if (err) throw err;
+            // console.log("1 document updated");
+        });
+        Teacher.collection.find().toArray(function (err, teacher_array) {
+            res.render('school_profile.ejs', {school: req.session.user , teacher_array: teacher_array});
+        })
+    };
+
+
+// module.exports.schoolDeleteTeacher =
+//     function(req,res){
+//         console.log(req.body.teacher_email);
+//         req.session.user.teacher_emails.pull(req.body.teacher_email);
+//         // res.render("school_profile.ejs");
+//         School.collection.updateOne({email: req.session.user.email}, {$set: {teacher_emails: req.session.user.teacher_emails}}, function(err, res) {
+//             if (err) throw err;
+//             // console.log("1 document updated");
+//         });
+//         Teacher.collection.find().toArray(function (err, teacher_array) {
+//             res.render('school_profile.ejs', {school: req.session.user , teacher_array: teacher_array});
+//         })
+//     };
+
+
+//
+// module.exports.createSchool =
+//     function(req,res){
+//         var school = new data_time({
+//
+//         });
+//         // console.log(req.body.email);
+//         // console.log("666666666");
+//
+//         school.save(function(err,newSchool){
+//             if(!err){
+//                 res.send(data_time);
+//
+//             }else{
+//                 res.sendStatus(400);
+//             }
+//         });
+//         res.render('school_profile.ejs', school);
+//         //res.render('signup_success.ejs')
+//     };

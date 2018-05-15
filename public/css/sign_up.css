@@ -64,6 +64,7 @@ header-text {
     text-align: center;
 }
 
+
 input[type=text], input[type=password], select, textarea {
     width: 300px;
     padding: 8px 8px;

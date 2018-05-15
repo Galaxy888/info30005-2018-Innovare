@@ -12,9 +12,10 @@ module.exports.fetchMainPage =
         if (!req.session.user) {
             res.render('index.ejs');
         }
-        // NEED TO RENDER 'school_profile.ejs' IF USER IS A SCHOOL
         else if (req.session.user.teacher_name != null) {
-            res.render('teacher_profile.ejs', req.session.user);
+            School.collection.find().toArray(function (err, school_array) {
+                res.render('teacher_profile.ejs', {teacher: req.session.user, school_array: school_array});
+            })
         }
         else {
             Teacher.collection.find().toArray(function (err, teacher_array) {
@@ -84,6 +85,7 @@ module.exports.createTeacher =
             "country":req.body.country,
             "timezone":req.body.timezone,
             "bio":req.body.bio,
+            "school_emails": [], // no need to initilise - see createSchool
             "img_url": req.body.img_url
             // "photo":req.body.photo
         });
@@ -124,7 +126,9 @@ module.exports.createTeacher =
                 res.sendStatus(400);
             }
         });
-        res.render('teacher_profile.ejs', teacher); // SHOULD ACCESS DATABASE DIRECTLY
+        School.collection.find().toArray(function (err, school_array) {
+            res.render('teacher_profile.ejs', {teacher: teacher, school_array: school_array});
+        })
         //res.render('signup_success.ejs')
     };
 
@@ -175,6 +179,7 @@ module.exports.logUserIn =
         console.log("Email: " + email + ", Password: " + password);
 
         Teacher.findOne({'email': email, 'password': password}, function (err, teacher) {
+
             if (err) {
                 console.log(err);
                 req.flash('notify', '500: Error.'); // Error message - not working yet
@@ -182,32 +187,41 @@ module.exports.logUserIn =
             }
             else if (!teacher) {
                // Do nothing for now - need to check if user is a school
-            }
-            else {
-                req.session.user = teacher;
-                res.render('teacher_profile.ejs', teacher);
-            }
-        })
 
-        School.findOne({'email': email, 'password': password}, function (err, school) {
-            if (err) {
-                console.log(err);
-                req.flash('notify', '500: Error.');
-                res.render('index.ejs');
-            }
-            else if (!school) {
-                console.log("Not there, pal!");
-                req.flash('notify', 'User not found, champ.');
-                res.render('index.ejs');
+                School.findOne({'email': email, 'password': password}, function (err, school) {
+                    if (err) {
+                        console.log(err);
+                        req.flash('notify', '500: Error.');
+                        res.render('index.ejs');
+                    }
+                    else if (!school) {
+                        console.log("Not there, pal!");
+                        req.flash('notify', 'User not found, champ.');
+                        res.render('index.ejs');
+                    }
+                    else {
+                        Teacher.collection.find().toArray(function (err, teacher_array) {
+                            req.session.user = school;
+                            res.render('school_profile.ejs', {school: school, teacher_array: teacher_array});
+                        })
+                    }
+                })
+
+
+
+
+
             }
             else {
-                Teacher.collection.find().toArray(function (err, teacher_array) {
-                    req.session.user = school;
-                    res.render('school_profile.ejs', {school: school, teacher_array: teacher_array});
+                School.collection.find().toArray(function (err, school_array) {
+                    req.session.user = teacher;
+                    res.render('teacher_profile.ejs', {teacher: teacher, school_array: school_array});
                 })
             }
-        })
-    }
+        });
+
+
+    };
 
 
 module.exports.logUserOut = function (req, res, next) {
@@ -261,9 +275,9 @@ module.exports.schoolAddTeacher =
         });
 
         Teacher.findOne({'email': req.body.teacher_email}, function (err, teacher) {
-            var updatedEmails = teacher.school_emails;
-            updatedEmails.push(req.session.user.email);
-            Teacher.collection.updateOne({email: teacher.teacher_email}, {$set: {school_emails: updatedEmails}}, function(err, res) {
+            teacher.school_emails.push(req.session.user.email);
+            console.log(teacher.email);
+            Teacher.collection.updateOne({email: teacher.email}, {$set: {school_emails: teacher.school_emails}}, function(err, res) {
                 if (err) throw err;
                 console.log("School email added to teacher schema");
             });

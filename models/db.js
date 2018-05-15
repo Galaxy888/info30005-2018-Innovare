@@ -57,12 +57,6 @@ var Teacher = mongoose.model('Teacher', teacherSchema);
 var School = module.exports = mongoose.model('School', schoolSchema);*/
 
 
-
-
-
-
-
-
 // module.exports.createTeacher = function (newTeacher,callback) {
 //     bcrypt.genSalt(10, function(err, salt) {
 //         bcrypt.hash(newTeacher, password, salt, function (err, hash) {

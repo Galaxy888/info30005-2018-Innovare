@@ -13,6 +13,21 @@
     <link rel="stylesheet" href="/css/jquery-ui.css">
     <script src="/js/jquery-ui.js"></script>
 
+
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+    <!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">-->
+    <!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css">-->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+    <!--<script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
+    <!--<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>-->
+    <!--<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>-->
+    <!--<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.colVis.min.js"></script>-->
+
+
+    <script src="/js/school.js"></script>
+
+
 </head>
 
 <body>
@@ -77,6 +92,65 @@
                         <p>Name: <b><i><%= school.school_name %></i></b></p>
                         <p>Country: <b><i><%= school.country %></i></b></p>
                         <p>Timezone: <b><i><%= school.timezone %></i></b></p>
+
+                        <h2>Temporary list of teachers</h2>
+
+
+
+<table id = "table_id">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Bio</th>
+        <th>email</th>
+        <th>Button</th>
+    </tr>
+    </thead>
+    <tbody>
+                        <% for(var i=0; i<teacher_array.length; i++) {%>
+    <tr>
+
+        <td><%= teacher_array[i].teacher_name %></td>
+        <td> <%= teacher_array[i].bio %></td>
+        <form method="post" action="/add_teacher">
+        <td><input value="<%= teacher_array[i].email%>" name = "teacher_email"></td>
+        <td><input type="submit" value="Add"></td>
+        </form>
+    </tr>
+                        <% } %>
+    </tbody>
+</table>
+
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>>
+                                <th>button</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                             <%len = school.teacher_emails.length%>
+
+
+                             <% for(var i=0; i<len; i++) {%>
+                                <% for(var j=0; j<teacher_array.length; j++) {%>
+                             <% console.log(teacher_array.length)%>
+                                    <% if (school.teacher_emails[i] == teacher_array[j].email) {%>
+                            <tr>
+
+                                <td><%= teacher_array[j].teacher_name %></td>
+                                <form method="post" action="/delete_teacher">
+                                    <td><input value="<%= teacher_array[j].email%>" name = "teacher_email"></td>
+                                    <td><input type="submit" value="delete"></td>
+                                </form>
+                            </tr>
+                                    <% } %>
+                                <% } %>
+                             <% } %>
+                            </tbody>
+                        </table>
+
 
 
                         <p>Your next English class is with Luciano Floridi at 3pm on Wednesday</p>

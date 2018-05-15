@@ -113,7 +113,6 @@
 
                              <% for(var i=0; i<len; i++) {%>
                                 <% for(var j=0; j<teacher_array.length; j++) {%>
-                             <% console.log(teacher_array.length)%>
                                     <% if (school.teacher_emails[i] == teacher_array[j].email) {%>
 
                             <tr>
@@ -129,7 +128,7 @@
                                 <td style="padding-bottom: 20px"><%= teacher_array[j].teacher_name %></td>
                                 <td style="padding-bottom: 20px"> <%= teacher_array[j].bio %></td>
                                 <td style="padding-bottom: 20px"> <%= teacher_array[j].country %></td>
-                                <form method="post" action="/">
+                                <form method="post" action="/delete_teacher">
                                     <td><a href="mailto:<%= teacher_array[j].email%>"><%= teacher_array[j].email%></a>
                                         <input value="<%= teacher_array[j].email%>" name = "teacher_email" style="display: none"></td>
                                     <td><input type="submit" value="delete"></td>

@@ -261,13 +261,22 @@ module.exports.schoolAddTeacher =
         });
 
         Teacher.findOne({'email': req.body.teacher_email}, function (err, teacher) {
-            var updatedEmails = teacher.school_emails;
-            updatedEmails.push(req.session.user.email);
-            Teacher.collection.updateOne({email: teacher.teacher_email}, {$set: {school_emails: updatedEmails}}, function(err, res) {
+            teacher.school_emails.push(req.session.user.email);
+            console.log(teacher.email);
+            Teacher.collection.updateOne({email: teacher.email}, {$set: {school_emails: teacher.school_emails}}, function(err, res) {
                 if (err) throw err;
                 console.log("School email added to teacher schema");
             });
         })
+
+        // Teacher.findOne({'email': req.body.teacher_email}, function (err, teacher) {
+        //     var updatedEmails = teacher.school_emails;
+        //     updatedEmails.push(req.session.user.email);
+        //     Teacher.collection.updateOne({email: teacher.teacher_email}, {$set: {school_emails: updatedEmails}}, function(err, res) {
+        //         if (err) throw err;
+        //         console.log("School email added to teacher schema");
+        //     });
+        // })
 
         Teacher.collection.find().toArray(function (err, teacher_array) {
             res.render('school_profile.ejs', {school: req.session.user , teacher_array: teacher_array});
@@ -276,18 +285,40 @@ module.exports.schoolAddTeacher =
 
 
 module.exports.schoolDeleteTeacher =
-     function(req,res){
+     function(req,res) {
          console.log(req.body.teacher_email);
-//         req.session.user.teacher_emails.pull(req.body.teacher_email);
-//         // res.render("school_profile.ejs");
-//         School.collection.updateOne({email: req.session.user.email}, {$set: {teacher_emails: req.session.user.teacher_emails}}, function(err, res) {
-//             if (err) throw err;
-//             // console.log("1 document updated");
-//         });
+         School.collection.update(
+             {email: req.session.user.email},
+             {$pull: {teacher_emails: req.body.teacher_email}}, function (err, res) {
+             if (err) throw err;
+             console.log("School email delete teacher schema");
+         });
+
+     //     Teacher.collection.update(
+     //         {'email': req.body.teacher_email}
+     // });
+     //
+     //
+     //     Teacher.findOne({'email': req.body.teacher_email}, function (err, teacher) {
+     //         teacher.school_emails.push(req.session.user.email);
+     //         console.log(teacher.email);
+     //         Teacher.collection.updateOne({email: teacher.email}, {$set: {school_emails: teacher.school_emails}}, function(err, res) {
+     //             if (err) throw err;
+     //             console.log("School email added to teacher schema");
+     //         });
+     //     })
+
+        // req.session.user.teacher_emails.pull(req.body.teacher_email);
+        // res.render("school_profile.ejs");
+        // School.collection.updateOne({email: req.session.user.email}, {$set: {teacher_emails: req.session.user.teacher_emails}}, function(err, res) {
+        //     if (err) throw err;
+        //     // console.log("1 document updated");
+        // });
          Teacher.collection.find().toArray(function (err, teacher_array) {
              res.render('school_profile.ejs', {school: req.session.user , teacher_array: teacher_array});
          })
-};
+     };
+
 
 
 //

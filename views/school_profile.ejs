@@ -78,8 +78,14 @@
         <tr>
             <td>
                 <div class = "profile_summary">
+
+                    <% if (school.img_url != "") { %>
+                    <img src="<%= school.img_url %>" width="150"><br>
+                    <% } else { %>
                     <img src="/img/puthukkudiyiruppu_college.jpg" width="150"><br>
-                    <b><%= school.school_name %></b><br>
+                    <% } %>
+                    <br>
+                    <h2>School: <%= school.school_name %></h2>
                     <p> <%= school.bio %></p></p>
                 </div>
             </td>
@@ -92,79 +98,50 @@
                         <p>To browse through LiveSchool's database of teachers, or conduct a text search, click
                         "browse teachers" above. To search for teachers with availabilities matching your specific schedule,
                         click "search teachers". </p>
-                        <p>Temporary information for development:</p>
-                        <p>Name: <b><i><%= school.school_name %></i></b></p>
-                        <p>Country: <b><i><%= school.country %></i></b></p>
-                        <p>Timezone: <b><i><%= school.timezone %></i></b></p>
+                        <p>Your next English class is with <b>Luciano Floridi</b> at <b>3pm</b> on <b>Wednesday</b></p>
+
 
                         <h3>Your Teachers</h3>
 
+                        <table style="padding: 10px; background-color: ghostwhite;">
 
-                        <%len = school.teacher_emails.length%>
-
-
-                        <% for(var i=0; i<len; i++) {%>
-                        <% for(var j=0; j<teacher_array.length; j++) {%>
-                        <% console.log(teacher_array.length)%>
-                        <% if (school.teacher_emails[i] == teacher_array[j].email) {%>
-
-
-                        <b><%= teacher_array[j].teacher_name %></b><br>
-                        <p><%= teacher_array[j].bio %></p><br>
-                            <form method="post" action="/delete_teacher">
-                                <input value="<%= teacher_array[j].email%>" name = "teacher_email" readonly>
-                                <input type="submit" value="delete">
-                        <% } %>
-                        <% } %>
-                        <% } %>
-
-
-
-
-                        <table>
-                            <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Email</th>>
-                                <th>button</th>
-                            </tr>
-                            </thead>
-                            <tbody>
                              <%len = school.teacher_emails.length%>
 
+                            <% if (len < 1) {%>
+                            <p>You are not currently connected with any teachers. Browse or search to find matching teachers.</p>
+                            <% } %>
 
                              <% for(var i=0; i<len; i++) {%>
                                 <% for(var j=0; j<teacher_array.length; j++) {%>
                              <% console.log(teacher_array.length)%>
                                     <% if (school.teacher_emails[i] == teacher_array[j].email) {%>
-                            <tr>
 
-                                <td><%= teacher_array[j].teacher_name %></td>
-                                <form method="post" action="/delete_teacher" >
-                                    <td><input value="<%= teacher_array[j].email%>" name = "teacher_email" readonly></td>
+                            <tr>
+                                <td style="padding-bottom: 20px">
+
+                                    <% if (teacher_array[i].img_url != null && teacher_array[i].img_url != "") { %>
+                                    <img src="<%= teacher_array[i].img_url %>" width="70" style="border-radius: 4px"><br>
+                                    <% } else { %>
+                                    <img src="/img/luciano_floridi.jpg" width="70" style="border-radius: 4px"><br>
+                                    <% } %>
+
+                                </td>
+                                <td style="padding-bottom: 20px"><%= teacher_array[i].teacher_name %></td>
+                                <td style="padding-bottom: 20px"> <%= teacher_array[i].bio %></td>
+                                <td style="padding-bottom: 20px"> <%= teacher_array[i].country %></td>
+                                <form method="post" action="/">
+                                    <td><a href="mailto:<%= teacher_array[i].email%>"><%= teacher_array[i].email%></a>
+                                        <input value="<%= teacher_array[i].email%>" name = "teacher_email" style="display: none"></td>
                                     <td><input type="submit" value="delete"></td>
                                 </form>
                             </tr>
                                     <% } %>
                                 <% } %>
                              <% } %>
-                            </tbody>
                         </table>
 
-
-
-                        <p>Your next English class is with Luciano Floridi at 3pm on Wednesday</p>
-                        <h3>Your Teachers</h3>
-                        <p><b>Luciano Floridi</b><br>
-                            I am currently Professor of Philosophy of Information
-                            and Director of the Digital Ethics Lab, at the University of Oxford,
-                            and Research Associate and Fellow in Information Policy at the Department
-                            of Computer Science, University of Oxford.    [Contact | Remove]</p>
-                        <p><b>Steve Meyer</b><br>
-                            I'm a former college professor with formal training in ESL (English
-                            as a Second Language) teaching, and offer custom classes at all levels
-                            of English proficiency.  [Contact | Remove]</p>
                     </div>
+
 
                     <div id="browse_teachers" style="display: none">
                         <h2>Browse teachers</h2>
@@ -177,6 +154,7 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Bio</th>
+                                <th>Country</th>
                                 <th>email</th>
                                 <th></th>
                             </tr>
@@ -187,6 +165,7 @@
 
                                 <td><i><%= teacher_array[i].teacher_name %></i></td>
                                 <td> <%= teacher_array[i].bio %></td>
+                                <td> <%= teacher_array[i].country %></td>
                                 <form method="post" action="/add_teacher">
                                     <td><a href="mailto:<%= teacher_array[i].email%>"><%= teacher_array[i].email%></a>
                                     <input value="<%= teacher_array[i].email%>" name = "teacher_email" style="display: none"></td>

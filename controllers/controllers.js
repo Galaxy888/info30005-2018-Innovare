@@ -84,6 +84,7 @@ module.exports.createTeacher =
             // "photo":req.body.photo
         });
 
+
         // "push" time values from form into each weekday array
         for (var i=0; i<req.body.monday.length; i++) {
             teacher.monday.push(req.body.monday[i])
@@ -143,7 +144,7 @@ module.exports.createSchool =
             "img_url": req.body.img_url
             // "photo":req.body.photo
         });
-        // console.log(req.body.email);
+        console.log(req.body.email);
         // console.log("666666666");
 
         school.save(function(err,newSchool){
@@ -171,7 +172,6 @@ module.exports.logUserIn =
                 console.log(err);
                 req.flash('notify', '500: Error.'); // Error message - not working yet
                 res.render('index.ejs');
-                return;
             }
             else if (!teacher) {
                // Do nothing for now - need to check if user is a school
@@ -187,13 +187,11 @@ module.exports.logUserIn =
                 console.log(err);
                 req.flash('notify', '500: Error.');
                 res.render('index.ejs');
-                return;
             }
             else if (!school) {
                 console.log("Not there, pal!");
                 req.flash('notify', 'User not found, champ.');
                 res.render('index.ejs');
-                return;
             }
             else {
                 Teacher.collection.find().toArray(function (err, teacher_array) {
@@ -260,19 +258,19 @@ module.exports.schoolAddTeacher =
     };
 
 
-// module.exports.schoolDeleteTeacher =
-//     function(req,res){
-//         console.log(req.body.teacher_email);
+module.exports.schoolDeleteTeacher =
+     function(req,res){
+         console.log(req.body.teacher_email);
 //         req.session.user.teacher_emails.pull(req.body.teacher_email);
 //         // res.render("school_profile.ejs");
 //         School.collection.updateOne({email: req.session.user.email}, {$set: {teacher_emails: req.session.user.teacher_emails}}, function(err, res) {
 //             if (err) throw err;
 //             // console.log("1 document updated");
 //         });
-//         Teacher.collection.find().toArray(function (err, teacher_array) {
-//             res.render('school_profile.ejs', {school: req.session.user , teacher_array: teacher_array});
-//         })
-//     };
+         Teacher.collection.find().toArray(function (err, teacher_array) {
+             res.render('school_profile.ejs', {school: req.session.user , teacher_array: teacher_array});
+         })
+};
 
 
 //

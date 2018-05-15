@@ -61,7 +61,11 @@
                  <tr>
                     <td>
                         <div class = "profile_summary">
-                            <img src="/img/luciano_floridi.jpg" width="150"><br>
+                            <% if (img_url != "") { %>
+                                <img src="<%= img_url %>" width="150"><br>
+                            <% } else { %>
+                                <img src="/img/luciano_floridi.jpg" width="150"><br>
+                            <% } %>
                                 <h2>Teacher: <%= teacher_name %></h2>
                                 <p>Bio: <%= bio %></p>
                         </div>

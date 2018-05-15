@@ -7,7 +7,14 @@ var teacherSchema = mongoose.Schema(
         "country":String,
         "timezone":String,
         "bio":String,
-        "availabilities": Object
+        "img_url": String,
+        "monday": [],
+        "tuesday": [],
+        "wednesday": [],
+        "thursday": [],
+        "friday": [],
+        "saturday": [],
+        "sunday": []
     }
 );
 

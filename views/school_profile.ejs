@@ -45,6 +45,7 @@
             <a href="/logout">Log out</a>
             <a href="#" onclick="c('search_teachers');">Find teachers</a>
             <a href="#" onclick="c('dashboard');">Dashboard</a>
+
             <div class = "left_menu_button"><a href="#" onclick="c('about');">About LiveSchool</a></div>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
         </div>
@@ -77,12 +78,6 @@
                         <p>Country: <b><i><%= school.country %></i></b></p>
                         <p>Timezone: <b><i><%= school.timezone %></i></b></p>
 
-                        <h2>Temporary list of teachers</h2>
-
-                        <% for(var i=0; i<teacher_array.length; i++) {%>
-                            <b>Name: <%= teacher_array[i].teacher_name %></b><br>
-                            <p>Bio: <%= teacher_array[i].bio %></p>
-                        <% } %>
 
                         <p>Your next English class is with Luciano Floridi at 3pm on Wednesday</p>
                         <h3>Your Teachers</h3>
@@ -100,25 +95,56 @@
                     <div id="search_teachers" style="display: none">
                         <h2>Search for matching teachers</h2>
 
-                        <form action="./">
-                            <p>Choose the day of your English class:</p>
-                            <select name="select_day_of_week">
-                                <option value="" disabled selected hidden>select day...</option>
-                                <option value="Monday">Monday</option>
-                                <option value="Tuesday">Tuesday</option>
-                                <option value="Wednesday">Wednesday</option>
-                                <option value="Thursday">Thursday</option>
-                                <option value="Friday">Friday</option>
-                                <option value="Saturday">Saturday</option>
-                                <option value="Sunday">Sunday</option>
-                            </select><br>
-                            <p>Choose the time of your English class (00:00-23:30):</p>
-                            <input type="text" name = "time" placeholder="select time..."><br><br>
-                            <button type="submit">Search teachers</button>
-                        </form><br>
+                        <p>Choose the day of your English class:</p>
+                        <select name="day" id = "day">
+                            <option value="" disabled selected hidden>select day...</option>
+                            <option value="Monday">Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wednesday">Wednesday</option>
+                            <option value="Thursday">Thursday</option>
+                            <option value="Friday">Friday</option>
+                            <option value="Saturday">Saturday</option>
+                            <option value="Sunday">Sunday</option>
+                        </select><br>
+                        <p>Choose the time of your English class:</p>
+                        <select name="time" id = "time">
+                            <option value="" disabled selected hidden>select time...</option>
+                            <% for(var i=6; i<12; i++) {%>
+                            <option value="<%=i%>"><%=i%>am</option>
+                            <% } %>
+                            <% for(var i=0; i<12; i++) {%>
+                            <option value="<%=i%>"><%=i%>pm</option>
+                            <% } %>
+                        </select><br><br>
+                        <button class="" onclick="search(document.getElementById('day'), document.getElementById('time')); c('search_results');">Search teachers</button>
+                        <br>
                     </div>
 
+
                     <div id="search_results" style="display: none">
+
+                        <h2>Matching Teachers</h2>
+
+                        <% function search(day, time) {
+                            %>
+
+                            <p>HELLO!!</p>
+
+                            <%
+                        for(var i=0; i<teacher_array.length; i++) {
+
+                        if (teacher_array[i][day] != null) {
+                              for(var j=0; j<teacher_array[i][day].length; j++) {
+                                     if (teacher_array[i][day][j] == time) { %>
+
+                        <p>Name: <%= teacher_array[i].teacher_name %> </p><br>
+                        <p>Bio: <%= teacher_array[i].bio %></p>
+
+                        <%            }%>
+                        <%       }%>
+                        <%   }%>
+                        <%}%>
+                        <%}%>
 
                     </div>
             </td>

@@ -312,7 +312,136 @@
                 <option value="11.0">(GMT +11:00) Magadan, Solomon Islands, New Caledonia</option>
                 <option value="12.0">(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka</option>
             </select><br>
+
+            <input type="text" name = "img_url" placeholder="Link to your profile image"><br>
+
             <textarea name = "bio" placeholder="Brief bio" required></textarea><br>
+
+            <!--<select id="mondayId" name="monday[]" multiple="multiple">
+                <option value="" disabled selected hidden>Monday...</option>
+                <% for(var i=6; i<12; i++) {%>
+                    <option value="<%i%>"><%=i%>am</option>
+                <% } %>
+                <% for(var i=0; i<12; i++) {%>
+                    <option value="<%i%>"><%=i%>pm</option>
+                <% } %>
+            </select>-->
+
+
+            <!-- Trigger/Open The Modal -->
+            <button id="myBtn" type="button">Open Modal</button>
+
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close">&times;</span>
+                        <h2>Select your availabilities</h2>
+                    </div>
+                    <div class="modal-body">
+                        <select id="mondayId" name="monday[]" multiple="multiple">
+                            <option value="" disabled selected hidden>Monday...</option>
+                            <% for(var i=6; i<12; i++) {%>
+                            <option value="<%=i%>"><%=i%>am</option>
+                            <% } %>
+                            <% for(var i=0; i<12; i++) {%>
+                            <option value="<%=i%>"><%=i%>pm</option>
+                            <% } %>
+                        </select>
+                        <select id="tuesdayId" name="tuesday[]" multiple="multiple">
+                            <option value="" disabled selected hidden>Tuesday...</option>
+                            <% for(var i=6; i<12; i++) {%>
+                            <option value="<%=i%>"><%=i%>am</option>
+                            <% } %>
+                            <% for(var i=0; i<12; i++) {%>
+                            <option value="<%=i%>"><%=i%>pm</option>
+                            <% } %>
+                        </select>
+                        <select id="wednesdayId" name="wednesday[]" multiple="multiple">
+                            <option value="" disabled selected hidden>Wednesday...</option>
+                            <% for(var i=6; i<12; i++) {%>
+                            <option value="<%=i%>"><%=i%>am</option>
+                            <% } %>
+                            <% for(var i=0; i<12; i++) {%>
+                            <option value="<%=i%>"><%=i%>pm</option>
+                            <% } %>
+                        </select>
+                        <select id="thursdayId" name="thursday[]" multiple="multiple">
+                            <option value="" disabled selected hidden>Thursday...</option>
+                            <% for(var i=6; i<12; i++) {%>
+                            <option value="<%=i%>"><%=i%>am</option>
+                            <% } %>
+                            <% for(var i=0; i<12; i++) {%>
+                            <option value="<%=i%>"><%=i%>pm</option>
+                            <% } %>
+                        </select>
+                        <select id="fridayId" name="friday[]" multiple="multiple">
+                            <option value="" disabled selected hidden>Friday...</option>
+                            <% for(var i=6; i<12; i++) {%>
+                            <option value="<%=i%>"><%=i%>am</option>
+                            <% } %>
+                            <% for(var i=0; i<12; i++) {%>
+                            <option value="<%=i%>"><%=i%>pm</option>
+                            <% } %>
+                        </select>
+                        <select id="saturdayId" name="saturday[]" multiple="multiple">
+                            <option value="" disabled selected hidden>Saturday...</option>
+                            <% for(var i=6; i<12; i++) {%>
+                            <option value="<%=i%>"><%=i%>am</option>
+                            <% } %>
+                            <% for(var i=0; i<12; i++) {%>
+                            <option value="<%=i%>"><%=i%>pm</option>
+                            <% } %>
+                        </select>
+                        <select id="sundayId" name="sunday[]" multiple="multiple">
+                            <option value="" disabled selected hidden>Sunday...</option>
+                            <% for(var i=6; i<12; i++) {%>
+                            <option value="<%=i%>"><%=i%>am</option>
+                            <% } %>
+                            <% for(var i=0; i<12; i++) {%>
+                            <option value="<%=i%>"><%=i%>pm</option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <h3>Modal Footer</h3>
+                    </div>
+                </div>
+
+            </div>
+
+            <script>
+                // Get the modal
+                var modal = document.getElementById('myModal');
+
+                // Get the button that opens the modal
+                var btn = document.getElementById("myBtn");
+
+                // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks the button, open the modal
+                btn.onclick = function() {
+                    modal.style.display = "block";
+                }
+
+                // When the user clicks on <span> (x), close the modal
+                span.onclick = function() {
+                    modal.style.display = "none";
+                }
+
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function(event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+            </script>
+
+
+
 
             <button type="submit">Sign up</button>
             <!--<input type="submit" value="Submit">-->

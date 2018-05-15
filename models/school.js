@@ -7,7 +7,8 @@ var schoolSchema = mongoose.Schema(
     "password":String,
     "country":String,
     "timezone":String,
-    "bio":String
+    "bio":String,
+    "img_url": String
     }
 );
 mongoose.model('School', schoolSchema);

@@ -13,7 +13,10 @@ module.exports.fetchMainPage =
             res.render('index.ejs');
         }
         // NEED TO RENDER 'school_profile.ejs' IF USER IS A SCHOOL
-        else res.render('teacher_profile.ejs', req.session.user);
+        else if (req.session.user.teacher_name != null)
+            res.render('teacher_profile.ejs', req.session.user);
+        else
+            res.render('school_profile.ejs', req.session.user);
     };
 
 module.exports.fetchAllUsers =
@@ -77,9 +80,34 @@ module.exports.createTeacher =
             "country":req.body.country,
             "timezone":req.body.timezone,
             "bio":req.body.bio,
-            "availabilities": null
+            "img_url": req.body.img_url
             // "photo":req.body.photo
         });
+
+        // "push" time values from form into each weekday array
+        for (var i=0; i<req.body.monday.length; i++) {
+            teacher.monday.push(req.body.monday[i])
+        }
+        for (var i=0; i<req.body.tuesday.length; i++) {
+            teacher.tuesday.push(req.body.tuesday[i])
+        }
+        for (var i=0; i<req.body.wednesday.length; i++) {
+            teacher.wednesday.push(req.body.wednesday[i])
+        }
+        for (var i=0; i<req.body.thursday.length; i++) {
+            teacher.thursday.push(req.body.thursday[i])
+        }
+        for (var i=0; i<req.body.friday.length; i++) {
+            teacher.friday.push(req.body.friday[i])
+        }
+        for (var i=0; i<req.body.saturday.length; i++) {
+            teacher.saturday.push(req.body.saturday[i])
+        }
+        for (var i=0; i<req.body.sunday.length; i++) {
+            teacher.sunday.push(req.body.sunday[i])
+        }
+
+
         // console.log(req.body.email);
         // console.log("666666666");
 
@@ -97,7 +125,7 @@ module.exports.createTeacher =
 
 module.exports.updateTeacherAvailabilities =
     function(req,res){
-        Teacher.collection.updateOne({email: req.session.username.email}, {$set: {availabilities: req.body.availabilities}}, function(err, res) {
+        Teacher.collection.updateOne({email: req.session.user.email}, {$set: {availabilities: req.body.availabilities}}, function(err, res) {
             if (err) throw err;
             console.log("1 document updated");
         });
@@ -111,7 +139,8 @@ module.exports.createSchool =
             "password":req.body.password,
             "country": req.body.country,
             "timezone": req.body.timezone,
-            "bio": req.body.bio
+            "bio": req.body.bio,
+            "img_url": req.body.img_url
             // "photo":req.body.photo
         });
         // console.log(req.body.email);

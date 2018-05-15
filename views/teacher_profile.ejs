@@ -61,13 +61,13 @@
                  <tr>
                     <td>
                         <div class = "profile_summary">
-                            <% if (img_url != "") { %>
-                                <img src="<%= img_url %>" width="150" style="border-radius: 4px;"><br>
+                            <% if (teacher.img_url != "") { %>
+                                <img src="<%= teacher.img_url %>" width="150" style="border-radius: 4px;"><br>
                             <% } else { %>
                                 <img src="/img/luciano_floridi.jpg" width="150" style="border-radius: 4px;"><br>
                             <% } %>
-                                <h2>Teacher: <%= teacher_name %></h2>
-                                <p>Bio: <%= bio %></p>
+                                <h2>Teacher: <%= teacher.teacher_name %></h2>
+                                <p>Bio: <%= teacher.bio %></p>
                         </div>
                     </td>
 
@@ -79,13 +79,44 @@
                                 <p>Your next English class is with Puthukkudiyiruppu Central College at 8pm on Wednesday</p>
 
                                 <h3>Your Schools</h3>
-                                <b>Puthukkudiyiruppu Central College</b><br>
-                                <p>Our school was founded on 5 January 1955 by the Hindu Vittiya Development
-                                    Association with the name Srisubramanya Vidyalayam. The school currently contains
-                                    classes from grade six to Advanced Level.  [Contact | Remove]<br></p>
-                                <b>Jiangsu Tongzhou High School</b><br>
-                                <p>Large school in eastern China looking for English lessons from a native
-                                    speaker.  [Contact | Remove]<br></p>
+
+                                <table style="padding: 10px; background-color: ghostwhite;">
+
+                                    <%len = teacher.school_emails.length%>
+
+                                    <% if (len < 1) {%>
+                                    <p>You have not yet been added by any schools.</p>
+                                    <% } %>
+
+                                    <% for(var i=0; i<len; i++) {%>
+                                    <% for(var j=0; j<school_array.length; j++) {%>
+                                    <% console.log(school_array.length)%>
+                                    <% if (teacher.school_emails[i] == school_array[j].email) {%>
+
+                                    <tr>
+                                        <td style="padding-bottom: 20px">
+
+                                            <% if (school_array[j].img_url != null && school_array[j].img_url != "") { %>
+                                            <img src="<%= school_array[j].img_url %>" width="70" style="border-radius: 4px"><br>
+                                            <% } else { %>
+                                            <img src="/img/puthukkudiyiruppu_college.jpg" width="70" style="border-radius: 4px"><br>
+                                            <% } %>
+
+                                        </td>
+                                        <td style="padding-bottom: 20px"><%= school_array[j].school_name %></td>
+                                        <td style="padding-bottom: 20px"> <%= school_array[j].bio %></td>
+                                        <td style="padding-bottom: 20px"> <%= school_array[j].country %></td>
+                                        <form method="post" action="/">
+                                            <td><a href="mailto:<%= school_array[j].email%>"><%= school_array[j].email%></a>
+                                                <input value="<%= school_array[j].email%>" name = "school_email" style="display: none"></td>
+                                            <td><input type="submit" value="delete"></td>
+                                        </form>
+                                    </tr>
+                                    <% } %>
+                                    <% } %>
+                                    <% } %>
+                                </table>
+
                             </div>
 
                             <div id="timetable" style="display: none">

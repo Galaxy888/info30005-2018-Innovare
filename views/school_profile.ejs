@@ -58,7 +58,8 @@
 
         <div class="navbar" id="myNavbar">
             <a href="/logout">Log out</a>
-            <a href="#" onclick="c('search_teachers');">Find teachers</a>
+            <a href="#" onclick="c('search_teachers');">Search Teachers</a>
+            <a href="#" onclick="c('browse_teachers');">Browse Teachers</a>
             <a href="#" onclick="c('dashboard');">Dashboard</a>
 
             <div class = "left_menu_button"><a href="#" onclick="c('about');">About LiveSchool</a></div>
@@ -88,38 +89,17 @@
 
                     <div id="dashboard">
                         <h2>Dashboard</h2>
-                        <p>Temporary information for development</p>
+                        <p></p>
+                        <p>Temporary information for development:</p>
                         <p>Name: <b><i><%= school.school_name %></i></b></p>
                         <p>Country: <b><i><%= school.country %></i></b></p>
                         <p>Timezone: <b><i><%= school.timezone %></i></b></p>
 
-                        <h2>Temporary list of teachers</h2>
+                        <h3>Your Teachers</h3>
 
 
 
-<table id = "table_id">
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Bio</th>
-        <th>email</th>
-        <th>Button</th>
-    </tr>
-    </thead>
-    <tbody>
-                        <% for(var i=0; i<teacher_array.length; i++) {%>
-    <tr>
 
-        <td><%= teacher_array[i].teacher_name %></td>
-        <td> <%= teacher_array[i].bio %></td>
-        <form method="post" action="/add_teacher">
-        <td><input value="<%= teacher_array[i].email%>" name = "teacher_email"></td>
-        <td><input type="submit" value="Add"></td>
-        </form>
-    </tr>
-                        <% } %>
-    </tbody>
-</table>
 
                         <table>
                             <thead>
@@ -166,9 +146,41 @@
                             of English proficiency.  [Contact | Remove]</p>
                     </div>
 
-                    <div id="search_teachers" style="display: none">
-                        <h2>Search for matching teachers</h2>
+                    <div id="browse_teachers" style="display: none">
+                        <h2>Browse teachers</h2>
 
+                        <p>Use the following form to browse available teachers. Click "add" to connect with a specific teacher. The search
+                        box allows you to filter results by a key word. </p>
+
+                        <table id = "table_id">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Bio</th>
+                                <th>email</th>
+                                <th>Button</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <% for(var i=0; i<teacher_array.length; i++) {%>
+                            <tr>
+
+                                <td><%= teacher_array[i].teacher_name %></td>
+                                <td> <%= teacher_array[i].bio %></td>
+                                <form method="post" action="/add_teacher">
+                                    <td><input value="<%= teacher_array[i].email%>" name = "teacher_email"></td>
+                                    <td><input type="submit" value="Add"></td>
+                                </form>
+                            </tr>
+                            <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                    <div id="search_teachers" style="display: none">
+
+                        <h2>Find Matching Teachers</h2>
                         <p>Choose the day of your English class:</p>
                         <select name="day" id = "day">
                             <option value="" disabled selected hidden>select day...</option>
@@ -190,8 +202,9 @@
                             <option value="<%=i%>"><%=i%>pm</option>
                             <% } %>
                         </select><br><br>
-                        <button class="" onclick="search(document.getElementById('day'), document.getElementById('time')); c('search_results');">Search teachers</button>
+                        <button type="submit" onclick="search(document.getElementById('day'), document.getElementById('time')); c('search_results');">Search teachers</button>
                         <br>
+
                     </div>
 
 
@@ -200,16 +213,16 @@
                         <h2>Matching Teachers</h2>
 
                         <% function search(day, time) {
-                            %>
+                        %>
 
-                            <p>HELLO!!</p>
+                        <p>HELLO!!</p>
 
-                            <%
+                        <%
                         for(var i=0; i<teacher_array.length; i++) {
 
                         if (teacher_array[i][day] != null) {
-                              for(var j=0; j<teacher_array[i][day].length; j++) {
-                                     if (teacher_array[i][day][j] == time) { %>
+                        for(var j=0; j<teacher_array[i][day].length; j++) {
+                        if (teacher_array[i][day][j] == time) { %>
 
                         <p>Name: <%= teacher_array[i].teacher_name %> </p><br>
                         <p>Bio: <%= teacher_array[i].bio %></p>
@@ -221,6 +234,8 @@
                         <%}%>
 
                     </div>
+
+                </div>
             </td>
         </tr>
     </table>

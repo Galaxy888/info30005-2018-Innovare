@@ -13,10 +13,14 @@ module.exports.fetchMainPage =
             res.render('index.ejs');
         }
         // NEED TO RENDER 'school_profile.ejs' IF USER IS A SCHOOL
-        else if (req.session.user.teacher_name != null)
+        else if (req.session.user.teacher_name != null) {
             res.render('teacher_profile.ejs', req.session.user);
-        else
-            res.render('school_profile.ejs', req.session.user);
+        }
+        else {
+            Teacher.collection.find().toArray(function (err, teacher_array) {
+                res.render('school_profile.ejs', {school: req.session.user, teacher_array: teacher_array});
+            })
+        }
     };
 
 module.exports.fetchAllUsers =
@@ -155,7 +159,10 @@ module.exports.createSchool =
                 res.sendStatus(400);
             }
         });
-        res.render('school_profile.ejs', school);
+        Teacher.collection.find().toArray(function (err, teacher_array) {
+            req.session.user = school;
+            res.render('school_profile.ejs', {school: school, teacher_array: teacher_array});
+        })
         //res.render('signup_success.ejs')
     };
 
@@ -250,8 +257,18 @@ module.exports.schoolAddTeacher =
         // res.render("school_profile.ejs");
         School.collection.updateOne({email: req.session.user.email}, {$set: {teacher_emails: req.session.user.teacher_emails}}, function(err, res) {
             if (err) throw err;
-            // console.log("1 document updated");
+            console.log("Teacher email added to school schema");
         });
+
+        Teacher.findOne({'email': req.body.teacher_email}, function (err, teacher) {
+            var updatedEmails = teacher.school_emails;
+            updatedEmails.push(req.session.user.email);
+            Teacher.collection.updateOne({email: teacher.teacher_email}, {$set: {school_emails: updatedEmails}}, function(err, res) {
+                if (err) throw err;
+                console.log("School email added to teacher schema");
+            });
+        })
+
         Teacher.collection.find().toArray(function (err, teacher_array) {
             res.render('school_profile.ejs', {school: req.session.user , teacher_array: teacher_array});
         })

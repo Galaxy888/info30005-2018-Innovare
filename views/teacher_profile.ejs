@@ -62,9 +62,9 @@
                     <td>
                         <div class = "profile_summary">
                             <% if (img_url != "") { %>
-                                <img src="<%= img_url %>" width="150"><br>
+                                <img src="<%= img_url %>" width="150" style="border-radius: 4px;"><br>
                             <% } else { %>
-                                <img src="/img/luciano_floridi.jpg" width="150"><br>
+                                <img src="/img/luciano_floridi.jpg" width="150" style="border-radius: 4px;"><br>
                             <% } %>
                                 <h2>Teacher: <%= teacher_name %></h2>
                                 <p>Bio: <%= bio %></p>
@@ -76,8 +76,6 @@
 
                             <div id="dashboard">
                                 <h2>Dashboard</h2>
-                                <p>Country: <b><i><%= country %></i></b></p>
-                                <p>Timezone: <b><i><%= timezone %></i></b></p>
                                 <p>Your next English class is with Puthukkudiyiruppu Central College at 8pm on Wednesday</p>
 
                                 <h3>Your Schools</h3>

@@ -79,10 +79,10 @@
             <td>
                 <div class = "profile_summary">
 
-                    <% if (school.img_url != "") { %>
-                    <img src="<%= school.img_url %>" width="150"><br>
+                    <% if (school.img_url != "" && school.img_url != null) { %>
+                    <img src="<%= school.img_url %>" width="150" style="border-radius: 4px;"><br>
                     <% } else { %>
-                    <img src="/img/puthukkudiyiruppu_college.jpg" width="150"><br>
+                    <img src="/img/puthukkudiyiruppu_college.jpg" width="150" style="border-radius: 4px;"><br>
                     <% } %>
                     <br>
                     <h2>School: <%= school.school_name %></h2>
@@ -119,19 +119,19 @@
                             <tr>
                                 <td style="padding-bottom: 20px">
 
-                                    <% if (teacher_array[i].img_url != null && teacher_array[i].img_url != "") { %>
-                                    <img src="<%= teacher_array[i].img_url %>" width="70" style="border-radius: 4px"><br>
+                                    <% if (teacher_array[j].img_url != null && teacher_array[j].img_url != "") { %>
+                                    <img src="<%= teacher_array[j].img_url %>" width="70" style="border-radius: 4px"><br>
                                     <% } else { %>
                                     <img src="/img/luciano_floridi.jpg" width="70" style="border-radius: 4px"><br>
                                     <% } %>
 
                                 </td>
-                                <td style="padding-bottom: 20px"><%= teacher_array[i].teacher_name %></td>
-                                <td style="padding-bottom: 20px"> <%= teacher_array[i].bio %></td>
-                                <td style="padding-bottom: 20px"> <%= teacher_array[i].country %></td>
+                                <td style="padding-bottom: 20px"><%= teacher_array[j].teacher_name %></td>
+                                <td style="padding-bottom: 20px"> <%= teacher_array[j].bio %></td>
+                                <td style="padding-bottom: 20px"> <%= teacher_array[j].country %></td>
                                 <form method="post" action="/">
-                                    <td><a href="mailto:<%= teacher_array[i].email%>"><%= teacher_array[i].email%></a>
-                                        <input value="<%= teacher_array[i].email%>" name = "teacher_email" style="display: none"></td>
+                                    <td><a href="mailto:<%= teacher_array[j].email%>"><%= teacher_array[j].email%></a>
+                                        <input value="<%= teacher_array[j].email%>" name = "teacher_email" style="display: none"></td>
                                     <td><input type="submit" value="delete"></td>
                                 </form>
                             </tr>
@@ -156,7 +156,7 @@
                                 <th>Bio</th>
                                 <th>Country</th>
                                 <th>email</th>
-                                <th></th>
+                                <th>Add</th>
                             </tr>
                             </thead>
                             <tbody>

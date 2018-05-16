@@ -8,7 +8,8 @@ var teacherSchema = mongoose.Schema(
         "timezone":String,
         "bio":String,
         "img_url": String,
-        "school_emails": [],
+        "school_emails": [], // remove later
+        "subjects": [],
         "monday": [],
         "tuesday": [],
         "wednesday": [],

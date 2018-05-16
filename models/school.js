@@ -9,6 +9,7 @@ var schoolSchema = mongoose.Schema(
         "timezone": String,
         "bio": String,
         "img_url": String,
+        "classes": [{teacher_email: String, subject: String, day: String, time: String}],
         "teacher_emails":[]
     }
 );

@@ -217,10 +217,6 @@ module.exports.logUserIn =
                     }
                 })
 
-
-
-
-
             }
             else {
                 School.collection.find().toArray(function (err, school_array) {

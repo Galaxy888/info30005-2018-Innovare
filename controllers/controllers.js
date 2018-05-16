@@ -122,13 +122,17 @@ module.exports.createTeacher =
             if(!err){
                 res.send(newTeacher);
 
+                School.collection.find().toArray(function (err, school_array) {
+                    res.render('teacher_profile.ejs', {teacher: teacher, school_array: school_array});
+                })
+
             }else{
-                res.sendStatus(400);
+                // res.sendStatus(400);
+                alert('User email already exist!');
+                res.render('signup_teacher.ejs');
             }
         });
-        School.collection.find().toArray(function (err, school_array) {
-            res.render('teacher_profile.ejs', {teacher: teacher, school_array: school_array});
-        })
+
         //res.render('signup_success.ejs')
     };
 
@@ -159,14 +163,20 @@ module.exports.createSchool =
             if(!err){
                 res.send(newSchool);
 
+                Teacher.collection.find().toArray(function (err, teacher_array) {
+                    req.session.user = school;
+                    res.render('school_profile.ejs', {school: school, teacher_array: teacher_array});
+                })
+
             }else{
-                res.sendStatus(400);
+                // res.sendStatus(400);
+                    // Duplicate username
+                alert('User email already exist!');
+                res.render('signup_school.ejs');
             }
         });
-        Teacher.collection.find().toArray(function (err, teacher_array) {
-            req.session.user = school;
-            res.render('school_profile.ejs', {school: school, teacher_array: teacher_array});
-        })
+
+
         //res.render('signup_success.ejs')
     };
 
@@ -263,12 +273,22 @@ module.exports.findOneTeacher =
 module.exports.schoolAddTeacher =
     function(req,res){
     console.log(req.body.teacher_email);
-        req.session.user.teacher_emails.push(req.body.teacher_email);
-        // res.render("school_profile.ejs");
-        School.collection.updateOne({email: req.session.user.email}, {$set: {teacher_emails: req.session.user.teacher_emails}}, function(err, res) {
-            if (err) throw err;
-            console.log("Teacher email added to school schema");
-        });
+        School.collection.update(
+            {email: req.session.user.email},
+            {$push: {teacher_emails: req.body.teacher_email}}, function (err, res) {
+                if (err) throw err;
+                console.log("Teacher email added to school schema");
+            });
+
+        School.findOne({'email': req.session.user.email, 'password': req.session.user.password}, function (err, school) {
+            req.session.user = school;
+        })
+        // req.session.user.teacher_emails.push(req.body.teacher_email);
+        // // res.render("school_profile.ejs");
+        // School.collection.updateOne({email: req.session.user.email}, {$set: {teacher_emails: req.session.user.teacher_emails}}, function(err, res) {
+        //     if (err) throw err;
+        //     console.log("Teacher email added to school schema");
+        // });
 
         Teacher.findOne({'email': req.body.teacher_email}, function (err, teacher) {
             teacher.school_emails.push(req.session.user.email);
@@ -304,7 +324,11 @@ module.exports.schoolDeleteTeacher =
              console.log("School email delete teacher schema");
          });
 
-     //     Teacher.collection.update(
+         School.findOne({'email': req.session.user.email, 'password': req.session.user.password}, function (err, school) {
+             req.session.user.teacher_emails = school.teacher_emails;
+         })
+
+         //     Teacher.collection.update(
      //         {'email': req.body.teacher_email}
      // });
      //

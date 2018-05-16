@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var teacherSchema = mongoose.Schema(
     {
         "teacher_name":String,
-        "email":String,
+        "email":{type: String, unique: true},
         "password":String,
         "country":String,
         "timezone":String,

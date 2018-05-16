@@ -8,6 +8,7 @@ body, html {
     -moz-osx-font-smoothing: grayscale;
 }
 
+
 .header_image {
     background-size: 100%;
     background-repeat: no-repeat;
@@ -164,4 +165,25 @@ button[type=submit] {
 }
 button[type=submit]:hover {
     background-color: rgba(100,203,62,0.7);
+}
+
+/* Custom scrollbar, with help from W3 schools
+/* width */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.2);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.6);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0,50,0,0.6);
 }

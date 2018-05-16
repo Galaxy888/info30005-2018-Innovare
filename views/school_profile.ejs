@@ -131,7 +131,7 @@
                                 <form method="post" action="/delete_teacher">
                                     <td><a href="mailto:<%= teacher_array[j].email%>"><%= teacher_array[j].email%></a>
                                         <input value="<%= teacher_array[j].email%>" name = "teacher_email" style="display: none"></td>
-                                    <td><input type="submit" value="delete"></td>
+                                    <td><input type="submit" value="remove teacher"></td>
                                 </form>
                             </tr>
                                     <% } %>
@@ -168,7 +168,7 @@
                                 <form method="post" action="/add_teacher">
                                     <td><a href="mailto:<%= teacher_array[i].email%>"><%= teacher_array[i].email%></a>
                                     <input value="<%= teacher_array[i].email%>" name = "teacher_email" style="display: none"></td>
-                                    <td><input type="submit" value="Add"></td>
+                                    <td><input type="submit" value="hire teacher"></td>
                                 </form>
                             </tr>
                             <% } %>

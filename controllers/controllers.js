@@ -90,6 +90,10 @@ module.exports.createTeacher =
             // "photo":req.body.photo
         });
 
+        // "push" subject values from form into subjects array
+        for (var i=0; i<req.body.subjects.length; i++) {
+            teacher.subjects.push(req.body.subjects[i])
+        }
 
         // "push" time values from form into each weekday array
         for (var i=0; i<req.body.monday.length; i++) {

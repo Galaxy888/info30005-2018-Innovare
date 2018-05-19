@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/css/profiles.css">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Playfair+Display" />
+    <link rel="stylesheet" type="text/css" href="/css/modal_popup.css">
 
     <script src="/js/jquery.js"></script>
     <link rel="stylesheet" href="/css/jquery.schedule.css">
@@ -155,27 +156,110 @@
                                 <th>Bio</th>
                                 <th>Country</th>
                                 <th>email</th>
-                                <th>Add</th>
+                                <th>action</th>
                             </tr>
                             </thead>
                             <tbody>
                             <% for(var i=0; i<teacher_array.length; i++) {%>
-                            <tr>
+                                <tr>
 
-                                <td><i><%= teacher_array[i].teacher_name %></i></td>
-                                <td> <%= teacher_array[i].bio %></td>
-                                <td> <%= teacher_array[i].country %></td>
-                                <form method="post" action="/add_teacher">
-                                    <td><a href="mailto:<%= teacher_array[i].email%>"><%= teacher_array[i].email%></a>
-                                    <input value="<%= teacher_array[i].email%>" name = "teacher_email" style="display: none"></td>
-                                    <td><input type="submit" value="hire teacher"></td>
-                                </form>
-                            </tr>
+                                    <td><i><%= teacher_array[i].teacher_name %></i></td>
+                                    <td> <%= teacher_array[i].bio %></td>
+                                    <td> <%= teacher_array[i].country %></td>
+
+                                    <td><a href="mailto:<%= teacher_array[i].email%>"><%= teacher_array[i].email%></a></td>
+
+                                    <!-- Trigger/Open The Modal -->
+                                    <% //console.log(JSON.stringify(teacher_array[i])); %>
+                                    <td><button type="button" class="myBtn" onclick="hireTeacher(<%=JSON.stringify(teacher_array[i])%>);">hire teacher</button></td>
+
+                                </tr>
                             <% } %>
                             </tbody>
                         </table>
+
+                        <script>
+                        function hireTeacher(selected_teacher) { //pass subjects, days/times, too
+                            c('hire_teacher');
+                            //document.write("YEAH!");
+                            //var teacher = document.teacher_array[index_of_teacher];
+                            // var option = null;
+                            // var select = null;
+                            //document.write(teacher.email);
+
+                            var select_form = document.getElementById('select_teacher_form');
+
+                            while (select_form.hasChildNodes()) {
+                                select_form.removeChild(select_form.lastChild);
+                            }
+                            var input = document.createElement("input");
+                            input.type = "text";
+                            input.value = selected_teacher.email;
+                            //input.style.display = "none";
+                            select_form.appendChild(input);
+                            select_form.appendChild(document.createElement("br"));
+
+
+                            // Dynamically generate day/time selection drop-down menus
+                            var weekday;
+                            for (var day = 0; day < 7; day++) {
+                                if (day == '0')
+                                    weekday = "monday";
+                                else if (day == '1')
+                                    weekday = "tuesday";
+                                else if (day == '2')
+                                    weekday = "wednesday";
+                                else if (day == '3')
+                                    weekday = "thursday";
+                                else if (day == '4')
+                                    weekday = "friday";
+                                else if (day == '5')
+                                    weekday = "saturday";
+                                else
+                                    weekday = "sunday";
+
+                                if (selected_teacher[weekday].length > 0) {
+                                    select_form.appendChild(document.createTextNode(weekday));
+                                    var select_day = document.createElement("select");
+                                    select_day.class = "search"; //works?
+                                    for (var i = 0; i < selected_teacher[weekday].length; i++) {
+                                        var option = document.createElement("option");
+                                        option.value = selected_teacher[weekday][i];
+                                        option.appendChild(document.createTextNode(selected_teacher[weekday][i]));
+                                        select_day.appendChild(option);
+                                    }
+                                    select_form.appendChild(select_day);
+                                }
+                            }
+
+                            // Dynamically generate subject selection drop-down menu
+                            select_form.appendChild(document.createTextNode("Subject (delete text later)"));
+                            var select_subject = document.createElement("select");
+                            select_subject.class = "search"; //works?
+                            for (var j = 0; j < selected_teacher.subjects.length; j++) {
+                                var option2 = document.createElement("option");
+                                option2.value = selected_teacher.subjects[j];
+                                option2.appendChild(document.createTextNode(selected_teacher.subjects[j]));
+                                select_subject.appendChild(option2);
+                            }
+                            select_form.appendChild(select_subject);
+
+                        }
+                        </script>
+
                     </div>
 
+                    <div id="hire_teacher" style="display: none">
+                        <h2>Select Subject and Time</h2>
+                        <p>Choose from this teacher's available subjects and times to connect and create a class. </p>
+
+                        <form id = "select_teacher_form" method="post" action="/add_teacher">
+
+                            <input id="teacher_email" value="" name="teacher_email" style="">
+                            <!--subject, day, time select-->
+                            <input type="submit" value="submit">
+                        </form>
+                    </div>
 
                     <div id="search_teachers" style="display: none">
 
@@ -239,6 +323,7 @@
         </tr>
     </table>
 </div>
+
 
 </body>
 

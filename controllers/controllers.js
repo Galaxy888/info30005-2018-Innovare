@@ -152,21 +152,54 @@ module.exports.updateTeacherProfile =
     function(req,res){
         console.log(req.body.t_name);
         Teacher.collection.update(
+            //???
             {email: req.session.user.email},
             {$set:
                     {teacher_name: req.body.t_name,
                     image_url: req.body.t_image_url,
-                    bio: req.body.t_bio}
-                    },
+                    bio: req.body.t_bio
+                    }},
             function(err, res) {
             if (err) throw err;
 
         });
+
+        req.session.user.teacher_name = req.body.t_name;
+        req.session.user.image_url = req.body.t_image_url;
+        req.session.user.bio = req.body.t_bio;
+
         School.collection.find().toArray(function (err, school_array) {
             res.render('teacher_profile.ejs', {teacher: req.session.user, school_array: school_array});
         })
+
     };
 
+module.exports.updateSchoolProfile =
+    function(req,res){
+        console.log(req.body.s_name);
+        School.collection.update(
+            //???
+            {email: req.session.user.email},
+            {$set:
+                    {school_name: req.body.s_name,
+                        image_url: req.body.s_image_url,
+                        bio: req.body.s_bio
+                    }
+            },
+            function(err, res) {
+                if (err) throw err;
+
+            });
+
+        req.session.user.school_name = req.body.s_name;
+        req.session.user.image_url = req.body.s_image_url;
+        req.session.user.bio = req.body.s_bio;
+
+        Teacher.collection.find().toArray(function (err, teacher_array) {
+            res.render('school_profile.ejs', {school: req.session.user, teacher_array: teacher_array});
+        })
+
+    };
 
 module.exports.createSchool =
     function(req,res){

@@ -20,6 +20,7 @@ router.get('/signup_teacher', controllers.fetchSignUP_teacher);
 //Update db
 router.post('/update_teacher',controllers.updateTeacherAvailabilities);
 router.post('/edit_teacher_profile',controllers.updateTeacherProfile);
+router.post('/edit_school_profile',controllers.updateSchoolProfile);
 
 
 //add teacher

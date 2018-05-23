@@ -59,10 +59,10 @@
 
         <div class="navbar" id="myNavbar">
             <a href="/logout">Log out</a>
+            <a href="#" onclick="c('edit_profile');">Edit Profile</a>
             <a href="#" onclick="c('search_teachers');">Search Teachers</a>
             <a href="#" onclick="c('browse_teachers');">Browse Teachers</a>
             <a href="#" onclick="c('dashboard');">Dashboard</a>
-
             <div class = "left_menu_button"><a href="#" onclick="c('about');">About LiveSchool</a></div>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
         </div>
@@ -316,6 +316,18 @@
                         <%}%>
                         <%}%>
 
+                    </div>
+
+                    <div id="edit_profile" style="display: none">
+                        <h2>Your Profile</h2>
+                        <form method="post" action="/edit_school_profile">
+                            Name: <input type="text" name="s_name" value='<%=school.school_name%>'><br>
+                            Image url: <input type="text" name="s_image_url" value='<%=school.img_url%>'><br>
+                            Bio: <input type="text" name="s_bio" value='<%=school.bio%>'><br>
+                            <!--New Password: <input type="text" name="fpassword"><br>-->
+                            <!--New Time-->
+                            <input type="submit" value="Change">
+                        </form>
                     </div>
 
                 </div>

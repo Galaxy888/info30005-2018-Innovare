@@ -19,6 +19,9 @@ router.get('/signup_teacher', controllers.fetchSignUP_teacher);
 
 //Update db
 router.post('/update_teacher',controllers.updateTeacherAvailabilities);
+router.post('/edit_teacher_profile',controllers.updateTeacherProfile);
+router.post('/edit_school_profile',controllers.updateSchoolProfile);
+
 
 //add teacher (OBSOLETE - JUST HIRE, NOW)
 router.post('/add_teacher',controllers.schoolAddTeacher);
@@ -29,8 +32,8 @@ router.post('/hire_teacher',controllers.schoolHireTeacher);
 //delete teacher
 router.post('/delete_teacher',controllers.schoolDeleteTeacher);
 
-//router.post('/signup_success',controllers.createTeacher);
-//router.post('/signup_success',controllers.createSchool);
+// router.post('/signup_success',controllers.createTeacher);
+// router.post('/signup_success',controllers.createSchool);
 // router.get('/signup_success', controllers.fetchSignup_success);
 
 
@@ -47,6 +50,6 @@ router.get('/school_profile', controllers.fetchSchool_profile);
 // router.get('/signup_teacher',controllers.findAllTeachers);
 
 // Find one teacher by id
-router.get('/signup_teacher/:id',controllers.findOneTeacher);
+// router.get('/signup_teacher/:id',controllers.findOneTeacher);
 
 module.exports = router;

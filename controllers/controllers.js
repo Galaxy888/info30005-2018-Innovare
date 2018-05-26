@@ -40,15 +40,11 @@ module.exports.fetchUser =
 // sign_up
 module.exports.fetchSignUP_school =
     function(req,res){
-        // var path = require("path");
-        // res.sendFile(path.join(__dirname, '..', '/views/signup_school.ejs'));
         res.render('signup_school.ejs');
     };
 
 module.exports.fetchSignUP_teacher =
     function(req,res){
-        // var path = require("path");
-        // res.sendFile(path.join(__dirname, '..', '/views/signup_teacher.ejs'));
         res.render('signup_teacher.ejs');
     };
 
@@ -56,17 +52,22 @@ module.exports.fetchSignUP_teacher =
 // Display teacher profile if signed in
 module.exports.fetchTeacher_profile =
     function(req,res) {
-        if (!req.session.user) {
-            return res.status(401).send();
-        }
-        res.render('teacher_profile.ejs');
+        // if (!req.session.user) {
+        //     return res.status(401).send();
+        // }
+        // res.render('teacher_profile.ejs');
+
+        School.collection.find().toArray(function (err, school_array) {
+                res.render('teacher_profile.ejs', {teacher: req.session.user, school_array: school_array});
+            })
     };
 
 module.exports.fetchSchool_profile =
     function(req,res){
-        // var path = require("path");
-        // res.sendFile(path.join(__dirname, '..', '/views/school_profile.ejs'));
-        res.render('school_profile.ejs');
+        Teacher.collection.find().toArray(function (err, teacher_array) {
+            res.render('school_profile.ejs', {school: req.session.user, teacher_array: teacher_array});
+        })
+
     };
 
 
@@ -91,45 +92,44 @@ module.exports.createTeacher =
         });
 
         // "push" subject values from form into subjects array
-        for (var i=0; i<req.body.subjects.length; i++) {
-            teacher.subjects.push(req.body.subjects[i])
-        }
-
-        // "push" time values from form into each weekday array
-        for (var i=0; i<req.body.monday.length; i++) {
-            teacher.monday.push(req.body.monday[i])
-        }
-        for (var i=0; i<req.body.tuesday.length; i++) {
-            teacher.tuesday.push(req.body.tuesday[i])
-        }
-        for (var i=0; i<req.body.wednesday.length; i++) {
-            teacher.wednesday.push(req.body.wednesday[i])
-        }
-        for (var i=0; i<req.body.thursday.length; i++) {
-            teacher.thursday.push(req.body.thursday[i])
-        }
-        for (var i=0; i<req.body.friday.length; i++) {
-            teacher.friday.push(req.body.friday[i])
-        }
-        for (var i=0; i<req.body.saturday.length; i++) {
-            teacher.saturday.push(req.body.saturday[i])
-        }
-        for (var i=0; i<req.body.sunday.length; i++) {
-            teacher.sunday.push(req.body.sunday[i])
-        }
+        // for (var i=0; i<req.body.subjects.length; i++) {
+        //     teacher.subjects.push(req.body.subjects[i])
+        // }
+        //
+        // // "push" time values from form into each weekday array
+        // for (var i=0; i<req.body.monday.length; i++) {
+        //     teacher.monday.push(req.body.monday[i])
+        // }
+        // for (var i=0; i<req.body.tuesday.length; i++) {
+        //     teacher.tuesday.push(req.body.tuesday[i])
+        // }
+        // for (var i=0; i<req.body.wednesday.length; i++) {
+        //     teacher.wednesday.push(req.body.wednesday[i])
+        // }
+        // for (var i=0; i<req.body.thursday.length; i++) {
+        //     teacher.thursday.push(req.body.thursday[i])
+        // }
+        // for (var i=0; i<req.body.friday.length; i++) {
+        //     teacher.friday.push(req.body.friday[i])
+        // }
+        // for (var i=0; i<req.body.saturday.length; i++) {
+        //     teacher.saturday.push(req.body.saturday[i])
+        // }
+        // for (var i=0; i<req.body.sunday.length; i++) {
+        //     teacher.sunday.push(req.body.sunday[i])
+        // }
 
 
         // console.log(req.body.email);
-        // console.log("666666666");
 
         teacher.save(function(err,newTeacher){
             if(!err){
-                res.send(newTeacher);
 
+                // res.send(newTeacher);
                 School.collection.find().toArray(function (err, school_array) {
                     res.render('teacher_profile.ejs', {teacher: teacher, school_array: school_array});
                 })
-
+                // res.render('index.ejs');
             }else{
                 // res.sendStatus(400);
                 alert('User email already exist!');
@@ -137,15 +137,68 @@ module.exports.createTeacher =
             }
         });
 
-        //res.render('signup_success.ejs')
     };
 
+// ????
 module.exports.updateTeacherAvailabilities =
     function(req,res){
         Teacher.collection.updateOne({email: req.session.user.email}, {$set: {availabilities: req.body.availabilities}}, function(err, res) {
             if (err) throw err;
             console.log("1 document updated");
         });
+    };
+
+module.exports.updateTeacherProfile =
+    function(req,res){
+        console.log(req.body.t_name);
+        Teacher.collection.update(
+            //???
+            {email: req.session.user.email},
+            {$set:
+                    {teacher_name: req.body.t_name,
+                    image_url: req.body.t_image_url,
+                    bio: req.body.t_bio
+                    }},
+            function(err, res) {
+            if (err) throw err;
+
+        });
+
+        req.session.user.teacher_name = req.body.t_name;
+        req.session.user.image_url = req.body.t_image_url;
+        req.session.user.bio = req.body.t_bio;
+
+        School.collection.find().toArray(function (err, school_array) {
+            res.render('teacher_profile.ejs', {teacher: req.session.user, school_array: school_array});
+        })
+
+    };
+
+module.exports.updateSchoolProfile =
+    function(req,res){
+        console.log(req.body.s_name);
+        School.collection.update(
+            //???
+            {email: req.session.user.email},
+            {$set:
+                    {school_name: req.body.s_name,
+                        image_url: req.body.s_image_url,
+                        bio: req.body.s_bio
+                    }
+            },
+            function(err, res) {
+                if (err) throw err;
+
+            });
+
+        req.session.user.school_name = req.body.s_name;
+        req.session.user.image_url = req.body.s_image_url;
+        req.session.user.bio = req.body.s_bio;
+
+        Teacher.collection.find().toArray(function (err, teacher_array) {
+            res.render('school_profile.ejs', {school: req.session.user, teacher_array: teacher_array});
+        })
+
     };
 
 module.exports.createSchool =
@@ -167,10 +220,10 @@ module.exports.createSchool =
             if(!err){
                 res.send(newSchool);
 
-                Teacher.collection.find().toArray(function (err, teacher_array) {
-                    req.session.user = school;
-                    res.render('school_profile.ejs', {school: school, teacher_array: teacher_array});
-                })
+                // Teacher.collection.find().toArray(function (err, teacher_array) {
+                //     req.session.user = school;
+                //     res.render('school_profile.ejs', {school: school, teacher_array: teacher_array});
+                // })
 
             }else{
                 // res.sendStatus(400);

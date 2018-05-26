@@ -43,6 +43,7 @@
 
             <div class="navbar" id="myNavbar">
                 <a href="/logout">Log out</a>
+                <a href="#" onclick="c('edit_profile');">Edit Profile</a>
                 <a href="#" onclick="c('timetable');">Your availabilities</a>
                 <a href="#" onclick="c('dashboard');">Dashboard</a>
                 <div class = "left_menu_button"><a href="#" onclick="c('about');">About LiveSchool</a></div>
@@ -64,7 +65,7 @@
                             <% if (teacher.img_url != "") { %>
                                 <img src="<%= teacher.img_url %>" width="150" style="border-radius: 4px;"><br>
                             <% } else { %>
-                                <img src="/img/luciano_floridi.jpg" width="150" style="border-radius: 4px;"><br>
+                                <img src="/img/default_profile_picture.png" width="150" style="border-radius: 4px;"><br>
                             <% } %>
                                 <h2>Teacher: <%= teacher.teacher_name %></h2>
                                 <p>Bio: <%= teacher.bio %></p>
@@ -213,9 +214,20 @@
                                 <input type="button" value="Click" onclick="saveTimetable() "/>
 
 
-                                <>
-
                             </div>
+
+                            <div id="edit_profile" style="display: none">
+                                <h2>Your Profile</h2>
+                                <form method="post" action="/edit_teacher_profile">
+                                    Name: <input type="text" name="t_name" value='<%=teacher.teacher_name%>'><br>
+                                    Image url: <input type="text" name="t_image_url" value='<%=teacher.img_url%>'><br>
+                                    Bio: <input type="text" name="t_bio" value='<%=teacher.bio%>'><br>
+                                    <!--New Password: <input type="text" name="fpassword"><br>-->
+                                    <!--New Time-->
+                                    <input type="submit" value="Change">
+                                </form>
+                            </div>
+
                         </div>
                      </td>
                  </tr>

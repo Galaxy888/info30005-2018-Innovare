@@ -139,7 +139,7 @@ h2 {
 
 
 /* Search form styling */
-input[type=text], input[type=password], select[class=search], textarea {
+input[type=text], input[type=password], select[class=search], select[class=small_select], textarea {
     width: 300px;
     padding: 8px 8px;
     color: black;
@@ -147,6 +147,10 @@ input[type=text], input[type=password], select[class=search], textarea {
     box-sizing: border-box;
     border: 1px solid black;
     border-radius: 4px;
+}
+
+select[class=small_select] {
+    width: 100px;
 }
 
 input:hover, input:focus {

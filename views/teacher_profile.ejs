@@ -76,45 +76,62 @@
 
                             <div id="dashboard">
                                 <h2>Dashboard</h2>
-                                <p>Your next English class is with Puthukkudiyiruppu Central College at 8pm on Wednesday</p>
 
-                                <h3>Your Schools</h3>
+                                <h3>Your Weekly Classes</h3>
 
                                 <table style="padding: 10px; background-color: ghostwhite;">
 
-                                    <%len = teacher.school_emails.length%>
-
-                                    <% if (len < 1) {%>
-                                    <p>You have not yet been added by any schools.</p>
-                                    <% } %>
-
-                                    <% for(var i=0; i<len; i++) {%>
-                                    <% for(var j=0; j<school_array.length; j++) {%>
-                                    <% console.log(school_array.length)%>
-                                    <% if (teacher.school_emails[i] == school_array[j].email) {%>
+                                    <%var len = school_array.length;%>
+                                    <%var connected_with_at_least_one_school = false;%>
 
                                     <tr>
-                                        <td style="padding-bottom: 20px">
-
-                                            <% if (school_array[j].img_url != null && school_array[j].img_url != "") { %>
-                                            <img src="<%= school_array[j].img_url %>" width="70" style="border-radius: 4px"><br>
-                                            <% } else { %>
-                                            <img src="/img/puthukkudiyiruppu_college.jpg" width="70" style="border-radius: 4px"><br>
-                                            <% } %>
-
-                                        </td>
-                                        <td style="padding-bottom: 20px"><%= school_array[j].school_name %></td>
-                                        <td style="padding-bottom: 20px"> <%= school_array[j].bio %></td>
-                                        <td style="padding-bottom: 20px"> <%= school_array[j].country %></td>
-                                        <form method="post" action="/">
-                                            <td><a href="mailto:<%= school_array[j].email%>"><%= school_array[j].email%></a>
-                                                <input value="<%= school_array[j].email%>" name = "school_email" style="display: none"></td>
-                                            <td><input type="submit" value="delete"></td>
-                                        </form>
+                                        <th></th>
+                                        <th>Class</th>
+                                        <th>School</th>
+                                        <th>School Bio</th>
+                                        <th>Location</th>
+                                        <th>Contact</th>
                                     </tr>
+
+                                    <% for(var i=0; i<len; i++) {%>
+                                        <% if (school_array[i].classes != null) {%>
+                                        <% for(var j=0; j<school_array[i].classes.length; j++) {%>
+                                        <% console.log(school_array.length)%>
+                                            <% if (school_array[i].classes[j].teacher_email == teacher.email) {%>
+                                                <% connected_with_at_least_one_school = true; %>
+
+                                                <tr>
+                                                    <td style="padding-bottom: 20px">
+
+                                                        <% if (school_array[i].img_url != null && school_array[i].img_url != "") { %>
+                                                        <img src="<%= school_array[i].img_url %>" width="70" style="border-radius: 4px"><br>
+                                                        <% } else { %>
+                                                        <img src="/img/puthukkudiyiruppu_college.jpg" width="70" style="border-radius: 4px"><br>
+                                                        <% } %>
+
+                                                    </td>
+                                                    <td style="padding-bottom: 20px"><%=school_array[i].classes[j].subject%> at <%=school_array[i].classes[j].time%>:00
+                                                        on <%=school_array[i].classes[j].day%>.</td>
+                                                    <td style="padding-bottom: 20px"><%= school_array[i].school_name %></td>
+                                                    <td style="padding-bottom: 20px"> <%= school_array[i].bio %></td>
+                                                    <td style="padding-bottom: 20px"> <%= school_array[i].country %></td>
+                                                    <form method="post" action="/">
+                                                        <td><a href="mailto:<%= school_array[i].email%>"><%= school_array[i].email%></a>
+                                                            <input value="<%= school_array[i].email%>" name = "school_email" style="display: none"></td>
+                                                        <td><input type="submit" value="Remove class"></td>
+                                                    </form>
+                                                </tr>
+
+                                            <% } %>
+                                          <% } %>
+                                       <% } %>
+
                                     <% } %>
+
+                                    <% if (connected_with_at_least_one_school == false) {%>
+                                        <p>You have not yet been added by any schools.</p>
                                     <% } %>
-                                    <% } %>
+
                                 </table>
 
                             </div>

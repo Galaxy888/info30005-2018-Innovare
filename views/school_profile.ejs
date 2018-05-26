@@ -99,14 +99,27 @@
                         <p>To browse through LiveSchool's database of teachers, or conduct a text search, click
                         "browse teachers" above. To search for teachers with availabilities matching your specific schedule,
                         click "search teachers". </p>
-                        <p>Your next English class is with <b>Luciano Floridi</b> at <b>3pm</b> on <b>Wednesday</b></p>
+
+                        <h3>Your Classes</h3>
+
+                        <%len = school.classes.length%>
+                        <% if (len < 1) {%>
+                            <p>You do not currently have any scheduled classes. Find and hire a teacher to add a class. </p>
+                        <% } %>
+
+                        <% for(var i=0; i<len; i++) {%>
+                            <p><%=school.classes[i].subject%> at <%=school.classes[i].time %>:00 on <%=school.classes[i].day%>
+                                with <%=school.classes[i].teacher_name%>.
+                            </p>
+                        <%}%>
+
+
+
 
 
                         <h3>Your Teachers</h3>
 
                         <table style="padding: 10px; background-color: ghostwhite;">
-
-                             <%len = school.teacher_emails.length%>
 
                             <% if (len < 1) {%>
                             <p>You are not currently connected with any teachers. Browse or search to find matching teachers.</p>
@@ -114,7 +127,7 @@
 
                              <% for(var i=0; i<len; i++) {%>
                                 <% for(var j=0; j<teacher_array.length; j++) {%>
-                                    <% if (school.teacher_emails[i] == teacher_array[j].email) {%>
+                                    <% if (school.classes[i].teacher_email == teacher_array[j].email) {%>
 
                             <tr>
                                 <td style="padding-bottom: 20px">
@@ -171,7 +184,7 @@
 
                                     <!-- Trigger/Open The Modal -->
                                     <% //console.log(JSON.stringify(teacher_array[i])); %>
-                                    <td><button type="button" class="myBtn" onclick="hireTeacher(<%=JSON.stringify(teacher_array[i])%>);">hire teacher</button></td>
+                                    <td><button type="button" class="myBtn" onclick="hireTeacher(<%=JSON.stringify(teacher_array[i])%>);">Choose a class</button></td>
 
                                 </tr>
                             <% } %>
@@ -181,23 +194,25 @@
                         <script>
                         function hireTeacher(selected_teacher) { //pass subjects, days/times, too
                             c('hire_teacher');
-                            //document.write("YEAH!");
-                            //var teacher = document.teacher_array[index_of_teacher];
-                            // var option = null;
-                            // var select = null;
-                            //document.write(teacher.email);
 
                             var select_form = document.getElementById('select_teacher_form');
 
                             while (select_form.hasChildNodes()) {
                                 select_form.removeChild(select_form.lastChild);
                             }
-                            var input = document.createElement("input");
-                            input.type = "text";
-                            input.value = selected_teacher.email;
-                            //input.style.display = "none";
-                            select_form.appendChild(input);
-                            select_form.appendChild(document.createElement("br"));
+                            var input_email = document.createElement("input");
+                            input_email.type = "text";
+                            input_email.value = selected_teacher.email;
+                            input_email.name = "teacher_email";
+                            input_email.style.display = "none";
+                            select_form.appendChild(input_email);
+
+                            var input_name = document.createElement("input");
+                            input_name.type = "text";
+                            input_name.value = selected_teacher.teacher_name;
+                            input_name.name = "teacher_name";
+                            input_name.style.display = "none";
+                            select_form.appendChild(input_name);
 
 
                             // Dynamically generate day/time selection drop-down menus
@@ -219,9 +234,19 @@
                                     weekday = "sunday";
 
                                 if (selected_teacher[weekday].length > 0) {
-                                    select_form.appendChild(document.createTextNode(weekday));
                                     var select_day = document.createElement("select");
-                                    select_day.class = "search"; //works?
+                                    select_day.name = weekday;
+                                    select_day.className = "small_select"; //works?
+
+                                    // Add "select time..." message to drop-down
+                                    var message = document.createElement("option");
+                                    message.value = "";
+                                    message.selected = true;
+                                    message.disabled = true;
+                                    message.appendChild(document.createTextNode(weekday + "..."));
+                                    select_day.appendChild(message);
+
+                                    // Add times
                                     for (var i = 0; i < selected_teacher[weekday].length; i++) {
                                         var option = document.createElement("option");
                                         option.value = selected_teacher[weekday][i];
@@ -232,10 +257,29 @@
                                 }
                             }
 
+
+                            select_form.appendChild(document.createElement("br"));
+                            select_form.appendChild(document.createElement("br"));
+
                             // Dynamically generate subject selection drop-down menu
-                            select_form.appendChild(document.createTextNode("Subject (delete text later)"));
                             var select_subject = document.createElement("select");
-                            select_subject.class = "search"; //works?
+                            select_subject.name = "subject";
+                            select_subject.className = "search";
+                            select_subject.required = true;
+
+                            // Add "select subject..." message to drop-down
+                            select_form.appendChild(document.createTextNode("Select a subject for the class."));
+                            select_form.appendChild(document.createElement("br"));
+                            select_form.appendChild(document.createElement("br"));
+
+                            var message = document.createElement("option");
+                            message.value = "";
+                            message.selected = true;
+                            message.disabled = true;
+                            message.appendChild(document.createTextNode("Select subject..."));
+                            select_subject.appendChild(message);
+
+                            // Dynamically add teacher's subjects to menu
                             for (var j = 0; j < selected_teacher.subjects.length; j++) {
                                 var option2 = document.createElement("option");
                                 option2.value = selected_teacher.subjects[j];
@@ -244,20 +288,31 @@
                             }
                             select_form.appendChild(select_subject);
 
+                            select_form.appendChild(document.createElement("br"));
+                            select_form.appendChild(document.createElement("br"));
+
+                            var submit_button = document.createElement("button");
+                            submit_button.type = "submit";
+                            submit_button.appendChild(document.createTextNode("Hire teacher for this class!"));
+                            select_form.appendChild(submit_button);
+
+
                         }
+
+
                         </script>
 
                     </div>
 
                     <div id="hire_teacher" style="display: none">
                         <h2>Select Subject and Time</h2>
-                        <p>Choose from this teacher's available subjects and times to connect and create a class. </p>
+                        <p>Choose from this teacher's available subjects and times to create a class with him or her. </p>
+                        <p>Select a class time from <b>a single</b> day of the week. </p>
 
-                        <form id = "select_teacher_form" method="post" action="/add_teacher">
+                        <form id = "select_teacher_form" method="post" action="/hire_teacher">
 
-                            <input id="teacher_email" value="" name="teacher_email" style="">
-                            <!--subject, day, time select-->
-                            <input type="submit" value="submit">
+                            <!--subject, day, time select created dynamically in javascript-->
+
                         </form>
                     </div>
 

@@ -318,6 +318,96 @@ module.exports.schoolAddTeacher =
     };
 
 
+
+
+
+module.exports.schoolHireTeacher =
+    function(req,res){
+        var weekday;
+        var time;
+        if (req.body.monday != null) {
+            console.log("Monday's the day!");
+            weekday = "monday";
+            time = req.body.monday;
+        }
+        else if (req.body.tuesday != null) {
+            console.log("Tuesday's the day!");
+            weekday = "tuesday";
+            time = req.body.tuesday;
+        }
+        else if (req.body.wednesday != null) {
+            console.log("wednesday's the day!");
+            weekday = "wednesday";
+            time = req.body.wednesday;
+        }
+        else if (req.body.thursday != null) {
+            console.log("thursday's the day!");
+            weekday = "thursday";
+            time = req.body.thursday;
+        }
+        else if (req.body.friday != null) {
+            console.log("friday's the day!");
+            weekday = "friday";
+            time = req.body.friday;
+        }
+        else if (req.body.saturday != null) {
+            console.log("saturday's the day!");
+            weekday = "saturday";
+            time = req.body.saturday;
+        }
+        else if (req.body.sunday != null) {
+            console.log("sunday's the day!");
+            weekday = "sunday";
+            time = req.body.sunday;
+        }
+
+        console.log(req.body.teacher_name);
+
+        School.collection.update(
+            {email: req.session.user.email},
+            {$push: {classes: {teacher_email: req.body.teacher_email, teacher_name: req.body.teacher_name,
+                                    subject: req.body.subject, day: weekday, time: time}}}, function (err, res) {
+                    if (err) throw err;
+                    console.log("New class with " + req.body.teacher_name + " added to school schema");
+            });
+
+        School.findOne({'email': req.session.user.email, 'password': req.session.user.password}, function (err, school) {
+            req.session.user = school;
+        })
+        // req.session.user.teacher_emails.push(req.body.teacher_email);
+        // // res.render("school_profile.ejs");
+        // School.collection.updateOne({email: req.session.user.email}, {$set: {teacher_emails: req.session.user.teacher_emails}}, function(err, res) {
+        //     if (err) throw err;
+        //     console.log("Teacher email added to school schema");
+        // });
+
+        Teacher.findOne({'email': req.body.teacher_email}, function (err, teacher) {
+            teacher.school_emails.push(req.session.user.email);
+            console.log(teacher.email);
+            Teacher.collection.updateOne({email: teacher.email}, {$set: {school_emails: teacher.school_emails}}, function(err, res) {
+                if (err) throw err;
+                console.log("School email added to teacher schema");
+            });
+        })
+
+        // Teacher.findOne({'email': req.body.teacher_email}, function (err, teacher) {
+        //     var updatedEmails = teacher.school_emails;
+        //     updatedEmails.push(req.session.user.email);
+        //     Teacher.collection.updateOne({email: teacher.teacher_email}, {$set: {school_emails: updatedEmails}}, function(err, res) {
+        //         if (err) throw err;
+        //         console.log("School email added to teacher schema");
+        //     });
+        // })
+
+        Teacher.collection.find().toArray(function (err, teacher_array) {
+            res.render('school_profile.ejs', {school: req.session.user , teacher_array: teacher_array});
+        })
+    };
+
+
+
+
+
 module.exports.schoolDeleteTeacher =
      function(req,res) {
          console.log(req.body.teacher_email);

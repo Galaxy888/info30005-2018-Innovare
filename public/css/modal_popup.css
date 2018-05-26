@@ -60,7 +60,7 @@
 
 .modal-header {
     padding: 2px 16px;
-    background-color: rgba(100,203,62,1);
+    background-color: rgba(100,203,62,0.8);
     color: white;
 }
 

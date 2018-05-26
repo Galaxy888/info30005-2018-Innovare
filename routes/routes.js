@@ -20,8 +20,11 @@ router.get('/signup_teacher', controllers.fetchSignUP_teacher);
 //Update db
 router.post('/update_teacher',controllers.updateTeacherAvailabilities);
 
-//add teacher
+//add teacher (OBSOLETE - JUST HIRE, NOW)
 router.post('/add_teacher',controllers.schoolAddTeacher);
+
+//hire teacher
+router.post('/hire_teacher',controllers.schoolHireTeacher);
 
 //delete teacher
 router.post('/delete_teacher',controllers.schoolDeleteTeacher);

@@ -389,42 +389,33 @@ module.exports.schoolHireTeacher =
         var weekday;
         var time;
         if (req.body.Monday != null) {
-            console.log("Monday's the day!");
             weekday = "Monday";
             time = req.body.Monday;
         }
         else if (req.body.Tuesday != null) {
-            console.log("Tuesday's the day!");
             weekday = "Tuesday";
             time = req.body.Tuesday;
         }
         else if (req.body.Wednesday != null) {
-            console.log("wednesday's the day!");
             weekday = "Wednesday";
             time = req.body.Wednesday;
         }
         else if (req.body.Thursday != null) {
-            console.log("thursday's the day!");
             weekday = "Thursday";
             time = req.body.Thursday;
         }
         else if (req.body.Friday != null) {
-            console.log("friday's the day!");
             weekday = "Friday";
             time = req.body.Friday;
         }
         else if (req.body.Saturday != null) {
-            console.log("saturday's the day!");
             weekday = "Saturday";
             time = req.body.Saturday;
         }
         else if (req.body.Sunday != null) {
-            console.log("sunday's the day!");
             weekday = "Sunday";
             time = req.body.Sunday;
         }
-
-        console.log(req.body.teacher_name);
 
         School.collection.update(
             {email: req.session.user.email},
@@ -444,7 +435,9 @@ module.exports.schoolHireTeacher =
 
 
 
-
+module.exports.removeClass = function(req,res) {
+    console.log("REM: WE NEED TO ADD CODE TO REMOVE CLASSES");
+}
 
 module.exports.schoolDeleteTeacher =
      function(req,res) {

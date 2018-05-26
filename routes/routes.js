@@ -26,11 +26,14 @@ router.post('/edit_school_profile',controllers.updateSchoolProfile);
 //add teacher (OBSOLETE - JUST HIRE, NOW)
 // router.post('/add_teacher',controllers.schoolAddTeacher);
 
-//hire teacher
+//hire teacher - PERHAPS WE COULD CALL THIS "ADD CLASS"?
 router.post('/hire_teacher',controllers.schoolHireTeacher);
 
 //delete teacher
 router.post('/delete_teacher',controllers.schoolDeleteTeacher);
+
+// "REMOVE CLASS" CAN PROBABLY REPLACE "DELETE TEACHER"
+router.post('/remove_class',controllers.removeClass);
 
 // router.post('/signup_success',controllers.createTeacher);
 // router.post('/signup_success',controllers.createSchool);

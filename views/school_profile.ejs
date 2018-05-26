@@ -124,7 +124,7 @@
                                                 <td style="padding-bottom: 20px"><b>Teacher</b><br><%= teacher_array[j].teacher_name %></td>
                                                 <td style="padding-bottom: 20px"><b>Bio</b><br><%= teacher_array[j].bio %></td>
                                                 <td style="padding-bottom: 20px"><b>Country</b><br><%= teacher_array[j].country %></td>
-                                                <form method="post" action="/">
+                                                <form method="post" action="/remove_class">
                                                     <td><b>Contact</b><br><a href="mailto:<%= teacher_array[j].email%>"><%= teacher_array[j].email%></a>
                                                         <input value="<%= teacher_array[j].email%>" name = "school_email" style="display: none"></td>
                                                     <td><br><input type="submit" value="Remove class"></td>
@@ -306,7 +306,7 @@
 
                         <h2>Find Matching Teachers</h2>
                         <p>Choose a subject requiring a teacher:</p>
-                        <select class = "search" name="subject" id = "subject">
+                        <select class = "search" name="subject" id = "subject" required>
                             <option value="" disabled selected hidden>select subject...</option>
                             <option value="English">English</option>
                             <option value="Mathematics">Mathematics</option>
@@ -316,7 +316,7 @@
                             <option value="Geography">Geography</option>
                         </select><br>
                         <p>Choose a day for your class:</p>
-                        <select class = "search" name="day" id = "day">
+                        <select class = "search" name="day" id = "day" required>
                             <option value="" disabled selected hidden>select day...</option>
                             <option value="Monday">Monday</option>
                             <option value="Tuesday">Tuesday</option>
@@ -327,7 +327,7 @@
                             <option value="Sunday">Sunday</option>
                         </select><br>
                         <p>Choose a time:</p>
-                        <select class = "search" name="time" id = "time">
+                        <select class = "search" name="time" id = "time" required>
                             <option value="" disabled selected hidden>select time...</option>
                             <% for(var i=6; i<24; i++) {%>
                             <option value="<%=i%>"><%=i%>:00</option>
@@ -349,6 +349,11 @@
                                     matching_teachers_div.removeChild(matching_teachers_div.lastChild);
                                 }
 
+                                matching_teachers_div.appendChild(document.createTextNode("Showing all teachers available " +
+                                    "to teach " + subject_needed + " at " + selected_time + ":00 on " + weekday_needed + "s. "));
+
+                                matching_teachers_div.appendChild(document.createElement("br"));
+
                                 var num_teachers_found = 0;
 
                                 for (var i = 0; i < teacher_arr.length; i++) {
@@ -356,14 +361,60 @@
                                         if (teacher_arr[i].subjects.indexOf(subject_needed) !== -1
                                                         && teacher_arr[i][weekday_needed].indexOf(selected_time) !== -1) {
                                             num_teachers_found++;
-                                            matching_teachers_div.appendChild(document.createTextNode("Teacher:" + teacher_arr[i].teacher_name + ", email: " + teacher_arr[i].email
-                                                + ", teachers: " + num_teachers_found + ", all: " + teacher_arr.length));
+
+                                            var matching_teachers_form = document.createElement("form");
+                                            matching_teachers_form.id = "matching_teachers_form" + i;
+                                            matching_teachers_form.method = "post";
+                                            matching_teachers_form.action = "/hire_teacher";
+
+                                            matching_teachers_form.appendChild(document.createElement("br"));
+
+                                            matching_teachers_form.appendChild(document.createTextNode(teacher_arr[i].teacher_name + ", " + teacher_arr[i].email));
+                                            matching_teachers_form.appendChild(document.createElement("br"));
+                                            matching_teachers_form.appendChild(document.createElement("br"));
+
+
+                                            var weekday = document.createElement("input");
+                                            weekday.type = "text";
+                                            weekday.value = selected_time;
+                                            weekday.name = weekday_needed;
+                                            weekday.style.display = "none";
+                                            matching_teachers_form.appendChild(weekday);
+
+                                            var teacher_name = document.createElement("input");
+                                            teacher_name.type = "text";
+                                            teacher_name.value = teacher_arr[i].teacher_name;
+                                            teacher_name.name = "teacher_name";
+                                            teacher_name.style.display = "none";
+                                            matching_teachers_form.appendChild(teacher_name);
+
+                                            var teacher_email = document.createElement("input");
+                                            teacher_email.type = "text";
+                                            teacher_email.value = teacher_arr[i].email;
+                                            teacher_email.name = "teacher_email";
+                                            teacher_email.style.display = "none";
+                                            matching_teachers_form.appendChild(teacher_email);
+
+
+                                            var submit_button = document.createElement("button");
+                                            submit_button.type = "submit";
+                                            submit_button.className = "small_button";
+                                            submit_button.appendChild(document.createTextNode("Hire teacher for this class!"));
+                                            matching_teachers_form.appendChild(submit_button);
+
+                                            matching_teachers_form.appendChild(document.createElement("br"));
+
+                                            matching_teachers_div.appendChild(matching_teachers_form);
+
+
+
                                         }
                                     }
 
                                 }
 
                                 if (num_teachers_found === 0) {
+                                    matching_teachers_div.appendChild(document.createElement("br"));
                                     matching_teachers_div.appendChild(document.createTextNode("No teachers found for " + subject_needed + " at "
                                         + selected_time + ":00" + " on " + weekday_needed + ". Try a different day or time."));
                                 }

@@ -80,25 +80,27 @@
 
                                 <h3>Your Weekly Classes</h3>
 
-                                <table style="padding: 10px; background-color: ghostwhite;">
-
                                     <%var len = school_array.length;%>
                                     <%var connected_with_at_least_one_school = false;%>
 
-                                    <tr>
-                                        <th></th>
-                                        <th>Class</th>
-                                        <th>School</th>
-                                        <th>School Bio</th>
-                                        <th>Location</th>
-                                        <th>Contact</th>
-                                    </tr>
 
                                     <% for(var i=0; i<len; i++) {%>
                                         <% if (school_array[i].classes != null) {%>
+
                                         <% for(var j=0; j<school_array[i].classes.length; j++) {%>
                                             <% if (school_array[i].classes[j].teacher_email == teacher.email) {%>
                                                 <% connected_with_at_least_one_school = true; %>
+
+                                                <table style="padding: 10px; background-color: ghostwhite;">
+
+                                                <tr>
+                                                    <th></th>
+                                                    <th>Class</th>
+                                                    <th>School</th>
+                                                    <th>School Bio</th>
+                                                    <th>Location</th>
+                                                    <th>Contact</th>
+                                                </tr>
 
                                                 <tr>
                                                     <td style="padding-bottom: 20px">
@@ -106,7 +108,7 @@
                                                         <% if (school_array[i].img_url != null && school_array[i].img_url != "") { %>
                                                         <img src="<%= school_array[i].img_url %>" width="70" style="border-radius: 4px"><br>
                                                         <% } else { %>
-                                                        <img src="/img/puthukkudiyiruppu_college.jpg" width="70" style="border-radius: 4px"><br>
+                                                        <img src="/img/default_school_profile_picture.jpg" width="70" style="border-radius: 4px"><br>
                                                         <% } %>
 
                                                     </td>
@@ -115,12 +117,13 @@
                                                     <td style="padding-bottom: 20px"><%= school_array[i].school_name %></td>
                                                     <td style="padding-bottom: 20px"> <%= school_array[i].bio %></td>
                                                     <td style="padding-bottom: 20px"> <%= school_array[i].country %></td>
-                                                    <form method="post" action="/">
+                                                    <form method="post" action="/remove_class">
                                                         <td><a href="mailto:<%= school_array[i].email%>"><%= school_array[i].email%></a>
                                                             <input value="<%= school_array[i].email%>" name = "school_email" style="display: none"></td>
                                                         <td><input type="submit" value="Remove class"></td>
                                                     </form>
                                                 </tr>
+                                                </table>
 
                                             <% } %>
                                           <% } %>
@@ -131,8 +134,6 @@
                                     <% if (connected_with_at_least_one_school == false) {%>
                                         <p>You have not yet been added by any schools.</p>
                                     <% } %>
-
-                                </table>
 
                             </div>
 

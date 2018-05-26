@@ -140,6 +140,8 @@
                             <div id="timetable" style="display: none">
                                 <h2>Your Availabilities</h2>
 
+                                <p>You've signed up to teach <b><%=teacher.subjects%></b> at the following times. </p>
+
                                 <table id="availabilities">
                                     <tr>
                                         <th>Monday</th>
@@ -154,49 +156,49 @@
                                         <td>
                                             <% if (teacher.Monday != null) { %>
                                             <%      for (var i = 0; i < teacher.Monday.length; i++) {%>
-                                                        <%=teacher.Monday[i]%><br>
+                                                        <%=teacher.Monday[i]%>:00<br>
                                             <%      } %>
                                             <%}%>
                                         </td>
                                         <td>
                                             <% if (teacher.Tuesday != null) { %>
                                             <%      for (var i = 0; i < teacher.Tuesday.length; i++) {%>
-                                            <%=teacher.Tuesday[i]%><br>
+                                            <%=teacher.Tuesday[i]%>:00<br>
                                             <%      } %>
                                             <%}%>
                                         </td>
                                         <td>
                                             <% if (teacher.Wednesday != null) { %>
                                             <%      for (var i = 0; i < teacher.Wednesday.length; i++) {%>
-                                            <%=teacher.Wednesday[i]%><br>
+                                            <%=teacher.Wednesday[i]%>:00<br>
                                             <%      } %>
                                             <%}%>
                                         </td>
                                         <td>
                                             <% if (teacher.Thursday != null) { %>
                                             <%      for (var i = 0; i < teacher.Thursday.length; i++) {%>
-                                            <%=teacher.Thursday[i]%><br>
+                                            <%=teacher.Thursday[i]%>:00<br>
                                             <%      } %>
                                             <%}%>
                                         </td>
                                         <td>
                                             <% if (teacher.Friday != null) { %>
                                             <%      for (var i = 0; i < teacher.Friday.length; i++) {%>
-                                            <%=teacher.Friday[i]%><br>
+                                            <%=teacher.Friday[i]%>:00<br>
                                             <%      } %>
                                             <%}%>
                                         </td>
                                         <td>
                                             <% if (teacher.Saturday != null) { %>
                                             <%      for (var i = 0; i < teacher.Saturday.length; i++) {%>
-                                            <%=teacher.Saturday[i]%><br>
+                                            <%=teacher.Saturday[i]%>:00<br>
                                             <%      } %>
                                             <%}%>
                                         </td>
                                         <td>
                                             <% if (teacher.Sunday != null) { %>
                                             <%      for (var i = 0; i < teacher.Sunday.length; i++) {%>
-                                            <%=teacher.Sunday[i]%><br>
+                                            <%=teacher.Sunday[i]%>:00<br>
                                             <%      } %>
                                             <%}%>
                                         </td>

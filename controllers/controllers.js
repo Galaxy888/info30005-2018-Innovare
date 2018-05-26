@@ -96,26 +96,40 @@ module.exports.createTeacher =
         }
 
         // "push" time values from form into each weekday array
-        for (var i=0; i<req.body.Monday.length; i++) {
-            teacher.Monday.push(req.body.Monday[i])
+        if (req.body.Monday != null) {
+            for (var i = 0; i < req.body.Monday.length; i++) {
+                teacher.Monday.push(req.body.Monday[i])
+            }
         }
-        for (var i=0; i<req.body.Tuesday.length; i++) {
-            teacher.Tuesday.push(req.body.Tuesday[i])
+        if (req.body.Tuesday != null) {
+            for (var i = 0; i < req.body.Tuesday.length; i++) {
+                teacher.Tuesday.push(req.body.Tuesday[i])
+            }
         }
-        for (var i=0; i<req.body.Wednesday.length; i++) {
-            teacher.Wednesday.push(req.body.Wednesday[i])
+        if (req.body.Wednesday != null) {
+            for (var i = 0; i < req.body.Wednesday.length; i++) {
+                teacher.Wednesday.push(req.body.Wednesday[i])
+            }
         }
-        for (var i=0; i<req.body.Thursday.length; i++) {
-            teacher.Thursday.push(req.body.Thursday[i])
+        if (req.body.Thursday != null) {
+            for (var i = 0; i < req.body.Thursday.length; i++) {
+                teacher.Thursday.push(req.body.Thursday[i])
+            }
         }
-        for (var i=0; i<req.body.Friday.length; i++) {
-            teacher.Friday.push(req.body.Friday[i])
+        if (req.body.Friday != null) {
+            for (var i = 0; i < req.body.Friday.length; i++) {
+                teacher.Friday.push(req.body.Friday[i])
+            }
         }
-        for (var i=0; i<req.body.Saturday.length; i++) {
-            teacher.Saturday.push(req.body.Saturday[i])
+        if (req.body.Saturday != null) {
+            for (var i = 0; i < req.body.Saturday.length; i++) {
+                teacher.Saturday.push(req.body.Saturday[i])
+            }
         }
-        for (var i=0; i<req.body.Sunday.length; i++) {
-            teacher.Sunday.push(req.body.Sunday[i])
+        if (req.body.Sunday != null) {
+            for (var i = 0; i < req.body.Sunday.length; i++) {
+                teacher.Sunday.push(req.body.Sunday[i])
+            }
         }
 
 

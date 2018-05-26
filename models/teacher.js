@@ -10,13 +10,13 @@ var teacherSchema = mongoose.Schema(
         "img_url": String,
         "school_emails": [], // remove later
         "subjects": [],
-        "monday": [],
-        "tuesday": [],
-        "wednesday": [],
-        "thursday": [],
-        "friday": [],
-        "saturday": [],
-        "sunday": []
+        "Monday": [],
+        "Tuesday": [],
+        "Wednesday": [],
+        "Thursday": [],
+        "Friday": [],
+        "Saturday": [],
+        "Sunday": []
     }
 );
 

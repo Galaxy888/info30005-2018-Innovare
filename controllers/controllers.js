@@ -86,38 +86,37 @@ module.exports.createTeacher =
             "country":req.body.country,
             "timezone":req.body.timezone,
             "bio":req.body.bio,
-            "school_emails": [], // no need to initilise - see createSchool
             "img_url": req.body.img_url
             // "photo":req.body.photo
         });
 
-        // "push" subject values from form into subjects array
-        // for (var i=0; i<req.body.subjects.length; i++) {
-        //     teacher.subjects.push(req.body.subjects[i])
-        // }
-        //
-        // // "push" time values from form into each weekday array
-        // for (var i=0; i<req.body.monday.length; i++) {
-        //     teacher.monday.push(req.body.monday[i])
-        // }
-        // for (var i=0; i<req.body.tuesday.length; i++) {
-        //     teacher.tuesday.push(req.body.tuesday[i])
-        // }
-        // for (var i=0; i<req.body.wednesday.length; i++) {
-        //     teacher.wednesday.push(req.body.wednesday[i])
-        // }
-        // for (var i=0; i<req.body.thursday.length; i++) {
-        //     teacher.thursday.push(req.body.thursday[i])
-        // }
-        // for (var i=0; i<req.body.friday.length; i++) {
-        //     teacher.friday.push(req.body.friday[i])
-        // }
-        // for (var i=0; i<req.body.saturday.length; i++) {
-        //     teacher.saturday.push(req.body.saturday[i])
-        // }
-        // for (var i=0; i<req.body.sunday.length; i++) {
-        //     teacher.sunday.push(req.body.sunday[i])
-        // }
+        //"push" subject values from form into subjects array
+        for (var i=0; i<req.body.subjects.length; i++) {
+            teacher.subjects.push(req.body.subjects[i])
+        }
+
+        // "push" time values from form into each weekday array
+        for (var i=0; i<req.body.Monday.length; i++) {
+            teacher.Monday.push(req.body.Monday[i])
+        }
+        for (var i=0; i<req.body.Tuesday.length; i++) {
+            teacher.Tuesday.push(req.body.Tuesday[i])
+        }
+        for (var i=0; i<req.body.Wednesday.length; i++) {
+            teacher.Wednesday.push(req.body.Wednesday[i])
+        }
+        for (var i=0; i<req.body.Thursday.length; i++) {
+            teacher.Thursday.push(req.body.Thursday[i])
+        }
+        for (var i=0; i<req.body.Friday.length; i++) {
+            teacher.Friday.push(req.body.Friday[i])
+        }
+        for (var i=0; i<req.body.Saturday.length; i++) {
+            teacher.Saturday.push(req.body.Saturday[i])
+        }
+        for (var i=0; i<req.body.Sunday.length; i++) {
+            teacher.Sunday.push(req.body.Sunday[i])
+        }
 
 
         // console.log(req.body.email);
@@ -378,40 +377,40 @@ module.exports.schoolHireTeacher =
     function(req,res){
         var weekday;
         var time;
-        if (req.body.monday != null) {
+        if (req.body.Monday != null) {
             console.log("Monday's the day!");
-            weekday = "monday";
-            time = req.body.monday;
+            weekday = "Monday";
+            time = req.body.Monday;
         }
-        else if (req.body.tuesday != null) {
+        else if (req.body.Tuesday != null) {
             console.log("Tuesday's the day!");
-            weekday = "tuesday";
-            time = req.body.tuesday;
+            weekday = "Tuesday";
+            time = req.body.Tuesday;
         }
-        else if (req.body.wednesday != null) {
+        else if (req.body.Wednesday != null) {
             console.log("wednesday's the day!");
-            weekday = "wednesday";
-            time = req.body.wednesday;
+            weekday = "Wednesday";
+            time = req.body.Wednesday;
         }
-        else if (req.body.thursday != null) {
+        else if (req.body.Thursday != null) {
             console.log("thursday's the day!");
-            weekday = "thursday";
-            time = req.body.thursday;
+            weekday = "Thursday";
+            time = req.body.Thursday;
         }
-        else if (req.body.friday != null) {
+        else if (req.body.Friday != null) {
             console.log("friday's the day!");
-            weekday = "friday";
-            time = req.body.friday;
+            weekday = "Friday";
+            time = req.body.Friday;
         }
-        else if (req.body.saturday != null) {
+        else if (req.body.Saturday != null) {
             console.log("saturday's the day!");
-            weekday = "saturday";
-            time = req.body.saturday;
+            weekday = "Saturday";
+            time = req.body.Saturday;
         }
-        else if (req.body.sunday != null) {
+        else if (req.body.Sunday != null) {
             console.log("sunday's the day!");
-            weekday = "sunday";
-            time = req.body.sunday;
+            weekday = "Sunday";
+            time = req.body.Sunday;
         }
 
         console.log(req.body.teacher_name);

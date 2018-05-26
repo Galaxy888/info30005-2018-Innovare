@@ -84,7 +84,7 @@
                     <% if (school.img_url != "" && school.img_url != null) { %>
                     <img src="<%= school.img_url %>" width="150" style="border-radius: 4px;"><br>
                     <% } else { %>
-                    <img src="/img/puthukkudiyiruppu_college.jpg" width="150" style="border-radius: 4px;"><br>
+                    <img src="/img/default_school_profile_picture.jpg" width="150" style="border-radius: 4px;"><br>
                     <% } %>
                     <br>
                     <h2>School: <%= school.school_name %></h2>
@@ -103,53 +103,41 @@
 
                         <h3>Your Classes</h3>
 
-                        <%len = school.classes.length%>
-                        <% if (len < 1) {%>
-                            <p>You do not currently have any scheduled classes. Find and hire a teacher to add a class. </p>
-                        <% } %>
+                        <% if (school.classes.length != null) {%>
 
-                        <% for(var i=0; i<len; i++) {%>
-                            <p><%=school.classes[i].subject%> at <%=school.classes[i].time %>:00 on <%=school.classes[i].day%>
-                                with <%=school.classes[i].teacher_name%>.
-                            </p>
-                        <%}%>
+                                <% if (school.classes != null) {%>
+                                    <% for(var i=0; i<school.classes.length; i++) {%>
+                                        <% for(var j=0; j<teacher_array.length; j++) {%>
+                                            <% if (school.classes[i].teacher_email == teacher_array[j].email) {%>
+                                              <table style="padding: 10px; background-color: ghostwhite;">
 
+                                                <td style="padding-bottom: 20px"><br>
+                                                    <% if (teacher_array[j].img_url != null && teacher_array[j].img_url != "") { %>
+                                                    <img src="<%= teacher_array[j].img_url %>" width="70" style="border-radius: 4px"><br>
+                                                    <% } else { %>
+                                                    <img src="/img/default_profile_picture.png" width="70" style="border-radius: 4px"><br>
+                                                    <% } %>
 
-                        <h3>Your Teachers</h3>
+                                                </td>
+                                                <td style="padding-bottom: 20px"><b>Class</b><br><%=school.classes[i].subject%> at <%=school.classes[i].time%>:00
+                                                    on <%=school.classes[i].day%>.</td>
+                                                <td style="padding-bottom: 20px"><b>Teacher</b><br><%= teacher_array[j].teacher_name %></td>
+                                                <td style="padding-bottom: 20px"><b>Bio</b><br><%= teacher_array[j].bio %></td>
+                                                <td style="padding-bottom: 20px"><b>Country</b><br><%= teacher_array[j].country %></td>
+                                                <form method="post" action="/">
+                                                    <td><b>Contact</b><br><a href="mailto:<%= teacher_array[j].email%>"><%= teacher_array[j].email%></a>
+                                                        <input value="<%= teacher_array[j].email%>" name = "school_email" style="display: none"></td>
+                                                    <td><br><input type="submit" value="Remove class"></td>
+                                                </form>
+                                            </tr>
+                                            </table><br>
 
-                        <table style="padding: 10px; background-color: ghostwhite;">
-
-                            <% if (len < 1) {%>
-                            <p>You are not currently connected with any teachers. Browse or search to find matching teachers.</p>
-                            <% } %>
-
-                             <% for(var i=0; i<len; i++) {%>
-                                <% for(var j=0; j<teacher_array.length; j++) {%>
-                                    <% if (school.classes[i].teacher_email == teacher_array[j].email) {%>
-
-                            <tr>
-                                <td style="padding-bottom: 20px">
-
-                                    <% if (teacher_array[j].img_url != null && teacher_array[j].img_url != "") { %>
-                                    <img src="<%= teacher_array[j].img_url %>" width="70" style="border-radius: 4px"><br>
-                                    <% } else { %>
-                                    <img src="/img/default_profile_picture.png" width="70" style="border-radius: 4px"><br>
+                                            <% } %>
+                                        <% } %>
                                     <% } %>
 
-                                </td>
-                                <td style="padding-bottom: 20px"><%= teacher_array[j].teacher_name %></td>
-                                <td style="padding-bottom: 20px"> <%= teacher_array[j].bio %></td>
-                                <td style="padding-bottom: 20px"> <%= teacher_array[j].country %></td>
-                                <form method="post" action="/delete_teacher">
-                                    <td><a href="mailto:<%= teacher_array[j].email%>"><%= teacher_array[j].email%></a>
-                                        <input value="<%= teacher_array[j].email%>" name = "teacher_email" style="display: none"></td>
-                                    <td><input type="submit" value="remove teacher"></td>
-                                </form>
-                            </tr>
-                                    <% } %>
                                 <% } %>
-                             <% } %>
-                        </table>
+                        <% } %>
 
                     </div>
 
@@ -341,11 +329,8 @@
                         <p>Choose a time:</p>
                         <select class = "search" name="time" id = "time">
                             <option value="" disabled selected hidden>select time...</option>
-                            <% for(var i=6; i<12; i++) {%>
-                            <option value="<%=i%>"><%=i%>am</option>
-                            <% } %>
-                            <% for(var i=0; i<12; i++) {%>
-                            <option value="<%=i%>"><%=i%>pm</option>
+                            <% for(var i=6; i<24; i++) {%>
+                            <option value="<%=i%>"><%=i%>:00</option>
                             <% } %>
                         </select><br><br>
                         <button type="button" class="search" onclick="search_teachers(<%=JSON.stringify(teacher_array)%>);">Search teachers</button>

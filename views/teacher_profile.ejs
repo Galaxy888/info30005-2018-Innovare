@@ -140,7 +140,18 @@
                             <div id="timetable" style="display: none">
                                 <h2>Your Availabilities</h2>
 
-                                <p>You've signed up to teach <b><%=teacher.subjects%></b> at the following times. </p>
+                                <p>You're available to teach
+                                    <b>
+                                        <%if (teacher.subjects != null) {%>
+                                            <%for (var s = 0; s < teacher.subjects.length; s++) {%>
+                                                <%if (s > 0) {%>
+                                                    </b> and <b>
+                                                <%}%>
+                                                <%=teacher.subjects[s]%>
+                                            <%}%>
+                                        <%}%>
+                                    </b>
+                                    at the following times. </p>
 
                                 <table id="availabilities">
                                     <tr>

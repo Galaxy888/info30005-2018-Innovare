@@ -24,7 +24,7 @@ router.post('/edit_school_profile',controllers.updateSchoolProfile);
 
 
 //add teacher (OBSOLETE - JUST HIRE, NOW)
-router.post('/add_teacher',controllers.schoolAddTeacher);
+// router.post('/add_teacher',controllers.schoolAddTeacher);
 
 //hire teacher
 router.post('/hire_teacher',controllers.schoolHireTeacher);

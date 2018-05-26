@@ -4,6 +4,7 @@ body, html {
     width: 100%;
     height: 100%;
     font-family: "Playfair Display";
+    /*font-family: "Lora";*/
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -157,7 +158,7 @@ input:hover, input:focus {
     background-color: rgba(0,0,0,0.3);
 }
 
-button[type=submit] {
+button[type=submit], button[class=search] {
     background-color: rgba(100,203,62,1);
     width: 300px;
     border: none;
@@ -191,3 +192,34 @@ button[type=submit]:hover {
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(0,50,0,0.6);
 }
+
+
+/* Styling for availabilities table */
+#availabilities {
+    /*font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;*/
+    border-collapse: collapse;
+    color: black;
+    width: 100%;
+    border-radius: 4px;
+    /* Rounded border still not showing - need to change for headers, too. */
+}
+
+#availabilities td, #availabilities th {
+    /*border: 1px solid #ddd;*/
+    background-color: ghostwhite;
+    padding: 8px;
+}
+
+#availabilities td:nth-child(even){background-color: #f4f4fa;}
+
+#availabilities td:hover {background-color: #ebebf1;}
+
+#availabilities th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgb(96, 160, 100);
+    color: white;
+}
+
+

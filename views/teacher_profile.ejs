@@ -140,12 +140,77 @@
                             <div id="timetable" style="display: none">
                                 <h2>Your Availabilities</h2>
 
-                                <p>Click on timetable and drag to create a new timeslot, or to move an existing one.</p>
+                                <table id="availabilities">
+                                    <tr>
+                                        <th>Monday</th>
+                                        <th>Tuesday</th>
+                                        <th>Wednesday</th>
+                                        <th>Thursday</th>
+                                        <th>Friday</th>
+                                        <th>Saturday</th>
+                                        <th>Sunday</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <% if (teacher.Monday != null) { %>
+                                            <%      for (var i = 0; i < teacher.Monday.length; i++) {%>
+                                                        <%=teacher.Monday[i]%><br>
+                                            <%      } %>
+                                            <%}%>
+                                        </td>
+                                        <td>
+                                            <% if (teacher.Tuesday != null) { %>
+                                            <%      for (var i = 0; i < teacher.Tuesday.length; i++) {%>
+                                            <%=teacher.Tuesday[i]%><br>
+                                            <%      } %>
+                                            <%}%>
+                                        </td>
+                                        <td>
+                                            <% if (teacher.Wednesday != null) { %>
+                                            <%      for (var i = 0; i < teacher.Wednesday.length; i++) {%>
+                                            <%=teacher.Wednesday[i]%><br>
+                                            <%      } %>
+                                            <%}%>
+                                        </td>
+                                        <td>
+                                            <% if (teacher.Thursday != null) { %>
+                                            <%      for (var i = 0; i < teacher.Thursday.length; i++) {%>
+                                            <%=teacher.Thursday[i]%><br>
+                                            <%      } %>
+                                            <%}%>
+                                        </td>
+                                        <td>
+                                            <% if (teacher.Friday != null) { %>
+                                            <%      for (var i = 0; i < teacher.Friday.length; i++) {%>
+                                            <%=teacher.Friday[i]%><br>
+                                            <%      } %>
+                                            <%}%>
+                                        </td>
+                                        <td>
+                                            <% if (teacher.Saturday != null) { %>
+                                            <%      for (var i = 0; i < teacher.Saturday.length; i++) {%>
+                                            <%=teacher.Saturday[i]%><br>
+                                            <%      } %>
+                                            <%}%>
+                                        </td>
+                                        <td>
+                                            <% if (teacher.Sunday != null) { %>
+                                            <%      for (var i = 0; i < teacher.Sunday.length; i++) {%>
+                                            <%=teacher.Sunday[i]%><br>
+                                            <%      } %>
+                                            <%}%>
+                                        </td>
+                                    </tr>
 
-                                <div id="schedule2" style="width: 600px; height: 100%"></div>
+                                </table>
+
+
+                                <!--<p>Click on timetable and drag to create a new timeslot, or to move an existing one.</p>
+
+                                <div id="schedule2" style="width: 600px; height: 100%"></div>-->
 
                                 <script>
-                                    $(function () {
+                                    /*$(function () {
                                         $("#schedule2").jqs();
 
                                         $("#export").click(function () {
@@ -208,10 +273,9 @@
                                     // JS function here to POST variable to a predefined route/control-path
                                     // that updates the current teacher's availabilities in the DB.
                                     // [below script] button with "onClick = "thefunction()"
+                                    */
 
                                 </script>
-                                <!--<button name="save" onclick="saveTimetable()"></button>-->
-                                <input type="button" value="Click" onclick="saveTimetable() "/>
 
 
                             </div>

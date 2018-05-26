@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <title>Profile</title>
     <link rel="stylesheet" href="/css/profiles.css">
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Playfair+Display" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Playfair+Display"/>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lora"/>
     <link rel="stylesheet" type="text/css" href="/css/modal_popup.css">
 
     <script src="/js/jquery.js"></script>
@@ -114,9 +115,6 @@
                         <%}%>
 
 
-
-
-
                         <h3>Your Teachers</h3>
 
                         <table style="padding: 10px; background-color: ghostwhite;">
@@ -135,7 +133,7 @@
                                     <% if (teacher_array[j].img_url != null && teacher_array[j].img_url != "") { %>
                                     <img src="<%= teacher_array[j].img_url %>" width="70" style="border-radius: 4px"><br>
                                     <% } else { %>
-                                    <img src="/img/luciano_floridi.jpg" width="70" style="border-radius: 4px"><br>
+                                    <img src="/img/default_profile_picture.png" width="70" style="border-radius: 4px"><br>
                                     <% } %>
 
                                 </td>
@@ -350,7 +348,7 @@
                             <option value="<%=i%>"><%=i%>pm</option>
                             <% } %>
                         </select><br><br>
-                        <button type="button" onclick="search_teachers(<%=JSON.stringify(teacher_array)%>);">Search teachers</button>
+                        <button type="button" class="search" onclick="search_teachers(<%=JSON.stringify(teacher_array)%>);">Search teachers</button>
                         <br>
 
                         <script>
@@ -361,7 +359,10 @@
                                 var weekday_needed = document.getElementById("day").value;
                                 var selected_time = document.getElementById("time").value;
 
-                                var search_results_page = document.getElementById('search_results');
+                                var matching_teachers_div = document.getElementById('matching_teachers');
+                                while (matching_teachers_div.hasChildNodes()) {
+                                    matching_teachers_div.removeChild(matching_teachers_div.lastChild);
+                                }
 
                                 var num_teachers_found = 0;
 
@@ -370,19 +371,17 @@
                                         if (teacher_arr[i].subjects.indexOf(subject_needed) !== -1
                                                         && teacher_arr[i][weekday_needed].indexOf(selected_time) !== -1) {
                                             num_teachers_found++;
-                                            search_results_page.appendChild(document.createTextNode("Teacher:" + teacher_arr[i].teacher_name + ", email: " + teacher_arr[i].email
+                                            matching_teachers_div.appendChild(document.createTextNode("Teacher:" + teacher_arr[i].teacher_name + ", email: " + teacher_arr[i].email
                                                 + ", teachers: " + num_teachers_found + ", all: " + teacher_arr.length));
                                         }
                                     }
 
-
                                 }
 
                                 if (num_teachers_found === 0) {
-                                    search_results_page.appendChild(document.createTextNode("No teachers found for " + subject_needed + " at "
+                                    matching_teachers_div.appendChild(document.createTextNode("No teachers found for " + subject_needed + " at "
                                         + selected_time + ":00" + " on " + weekday_needed + ". Try a different day or time."));
                                 }
-
 
                             }
 
@@ -395,8 +394,9 @@
 
                         <h2>Matching Teachers</h2>
 
-
-
+                        <div id="matching_teachers">
+                            // Dynamically generated from script above.
+                        </div>
 
                     </div>
 

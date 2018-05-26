@@ -433,14 +433,14 @@ module.exports.schoolHireTeacher =
         //     console.log("Teacher email added to school schema");
         // });
 
-        Teacher.findOne({'email': req.body.teacher_email}, function (err, teacher) {
-            teacher.school_emails.push(req.session.user.email);
-            console.log(teacher.email);
-            Teacher.collection.updateOne({email: teacher.email}, {$set: {school_emails: teacher.school_emails}}, function(err, res) {
-                if (err) throw err;
-                console.log("School email added to teacher schema");
-            });
-        })
+        // Teacher.findOne({'email': req.body.teacher_email}, function (err, teacher) {
+        //     teacher.school_emails.push(req.session.user.email);
+        //     console.log(teacher.email);
+        //     Teacher.collection.updateOne({email: teacher.email}, {$set: {school_emails: teacher.school_emails}}, function(err, res) {
+        //         if (err) throw err;
+        //         console.log("School email added to teacher schema");
+        //     });
+        // })
 
         // Teacher.findOne({'email': req.body.teacher_email}, function (err, teacher) {
         //     var updatedEmails = teacher.school_emails;

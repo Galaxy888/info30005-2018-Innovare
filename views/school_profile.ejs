@@ -319,7 +319,17 @@
                     <div id="search_teachers" style="display: none">
 
                         <h2>Find Matching Teachers</h2>
-                        <p>Choose the day of your class:</p>
+                        <p>Choose a subject requiring a teacher:</p>
+                        <select class = "search" name="subject" id = "subject">
+                            <option value="" disabled selected hidden>select subject...</option>
+                            <option value="English">English</option>
+                            <option value="Mathematics">Mathematics</option>
+                            <option value="Science">Science</option>
+                            <option value="History">History</option>
+                            <option value="Programming">Programming</option>
+                            <option value="Geography">Geography</option>
+                        </select><br>
+                        <p>Choose a day for your class:</p>
                         <select class = "search" name="day" id = "day">
                             <option value="" disabled selected hidden>select day...</option>
                             <option value="Monday">Monday</option>
@@ -330,7 +340,7 @@
                             <option value="Saturday">Saturday</option>
                             <option value="Sunday">Sunday</option>
                         </select><br>
-                        <p>Choose the time of your class:</p>
+                        <p>Choose a time:</p>
                         <select class = "search" name="time" id = "time">
                             <option value="" disabled selected hidden>select time...</option>
                             <% for(var i=6; i<12; i++) {%>
@@ -340,32 +350,37 @@
                             <option value="<%=i%>"><%=i%>pm</option>
                             <% } %>
                         </select><br><br>
-                        <button type="button" class="myBtn" onclick="search_teachers(<%=JSON.stringify(teacher_array)%>);">Search teachers</button>
+                        <button type="button" onclick="search_teachers(<%=JSON.stringify(teacher_array)%>);">Search teachers</button>
                         <br>
 
                         <script>
                             function search_teachers(teacher_arr) {
                                 c('search_results');
 
+                                var subject_needed = document.getElementById("subject").value;
                                 var weekday_needed = document.getElementById("day").value;
                                 var selected_time = document.getElementById("time").value;
+
+                                var search_results_page = document.getElementById('search_results');
+
                                 var num_teachers_found = 0;
 
                                 for (var i = 0; i < teacher_arr.length; i++) {
                                     if (teacher_arr[i][weekday_needed] != null) {
-                                        for (var j = 0; j < teacher_arr[i][weekday_needed].length; j++) {
-                                            if (teacher_arr[i][weekday_needed][j] === selected_time) {
-                                                num_teachers_found++;
-                                                document.write("Teacher:" + teacher_arr[i].teacher_name + ", email: " + teacher_arr[i].email
-                                                                    + ", teachers: " + num_teachers_found + ", all: " + teacher_arr.length);
-
-                                            }
+                                        if (teacher_arr[i].subjects.indexOf(subject_needed) !== -1
+                                                        && teacher_arr[i][weekday_needed].indexOf(selected_time) !== -1) {
+                                            num_teachers_found++;
+                                            search_results_page.appendChild(document.createTextNode("Teacher:" + teacher_arr[i].teacher_name + ", email: " + teacher_arr[i].email
+                                                + ", teachers: " + num_teachers_found + ", all: " + teacher_arr.length));
                                         }
                                     }
+
+
                                 }
 
                                 if (num_teachers_found === 0) {
-                                    document.write("NOTHING!!" + weekday_needed + "  " + selected_time);
+                                    search_results_page.appendChild(document.createTextNode("No teachers found for " + subject_needed + " at "
+                                        + selected_time + ":00" + " on " + weekday_needed + ". Try a different day or time."));
                                 }
 
 
@@ -382,27 +397,6 @@
 
 
 
-
-                        <% function search(day, time) {
-                        %>
-
-                        <p>HELLO!!</p>
-
-                        <%
-                        for(var i=0; i<teacher_array.length; i++) {
-
-                        if (teacher_array[i][day] != null) {
-                        for(var j=0; j<teacher_array[i][day].length; j++) {
-                        if (teacher_array[i][day][j] == time) { %>
-
-                        <p>Name: <%= teacher_array[i].teacher_name %> </p><br>
-                        <p>Bio: <%= teacher_array[i].bio %></p>
-
-                        <%            }%>
-                        <%       }%>
-                        <%   }%>
-                        <%}%>
-                        <%}%>
 
                     </div>
 

@@ -192,7 +192,7 @@
                         </table>
 
                         <script>
-                        function hireTeacher(selected_teacher) { //pass subjects, days/times, too
+                        function hireTeacher(selected_teacher) {
                             c('hire_teacher');
 
                             var select_form = document.getElementById('select_teacher_form');
@@ -319,7 +319,7 @@
                     <div id="search_teachers" style="display: none">
 
                         <h2>Find Matching Teachers</h2>
-                        <p>Choose the day of your English class:</p>
+                        <p>Choose the day of your class:</p>
                         <select class = "search" name="day" id = "day">
                             <option value="" disabled selected hidden>select day...</option>
                             <option value="Monday">Monday</option>
@@ -330,7 +330,7 @@
                             <option value="Saturday">Saturday</option>
                             <option value="Sunday">Sunday</option>
                         </select><br>
-                        <p>Choose the time of your English class:</p>
+                        <p>Choose the time of your class:</p>
                         <select class = "search" name="time" id = "time">
                             <option value="" disabled selected hidden>select time...</option>
                             <% for(var i=6; i<12; i++) {%>
@@ -340,8 +340,38 @@
                             <option value="<%=i%>"><%=i%>pm</option>
                             <% } %>
                         </select><br><br>
-                        <button type="submit" onclick="search(document.getElementById('day'), document.getElementById('time')); c('search_results');">Search teachers</button>
+                        <button type="button" class="myBtn" onclick="search_teachers(<%=JSON.stringify(teacher_array)%>);">Search teachers</button>
                         <br>
+
+                        <script>
+                            function search_teachers(teacher_arr) {
+                                c('search_results');
+
+                                var weekday_needed = document.getElementById("day").value;
+                                var selected_time = document.getElementById("time").value;
+                                var num_teachers_found = 0;
+
+                                for (var i = 0; i < teacher_arr.length; i++) {
+                                    if (teacher_arr[i][weekday_needed] != null) {
+                                        for (var j = 0; j < teacher_arr[i][weekday_needed].length; j++) {
+                                            if (teacher_arr[i][weekday_needed][j] === selected_time) {
+                                                num_teachers_found++;
+                                                document.write("Teacher:" + teacher_arr[i].teacher_name + ", email: " + teacher_arr[i].email
+                                                                    + ", teachers: " + num_teachers_found + ", all: " + teacher_arr.length);
+
+                                            }
+                                        }
+                                    }
+                                }
+
+                                if (num_teachers_found === 0) {
+                                    document.write("NOTHING!!" + weekday_needed + "  " + selected_time);
+                                }
+
+
+                            }
+
+                        </script>
 
                     </div>
 
@@ -349,6 +379,9 @@
                     <div id="search_results" style="display: none">
 
                         <h2>Matching Teachers</h2>
+
+
+
 
                         <% function search(day, time) {
                         %>

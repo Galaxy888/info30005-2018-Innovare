@@ -64,7 +64,7 @@ header-text {
     text-align: center;
 }
 
-input[type=text], input[type=password], select {
+input[type=text], input[type=email], input[type=password], select {
     width: 300px;
     padding: 10px 10px;
     color: white;

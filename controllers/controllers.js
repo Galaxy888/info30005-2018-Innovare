@@ -222,7 +222,7 @@ module.exports.updateSchoolProfile =
             {email: req.session.user.email},
             {$set:
                     {school_name: req.body.s_name,
-                        image_url: req.body.s_image_url,
+                        img_url: req.body.s_image_url,
                         bio: req.body.s_bio
                     }
             },
@@ -232,7 +232,7 @@ module.exports.updateSchoolProfile =
             });
 
         req.session.user.school_name = req.body.s_name;
-        req.session.user.image_url = req.body.s_image_url;
+        req.session.user.img_url = req.body.s_image_url;
         req.session.user.bio = req.body.s_bio;
 
         Teacher.collection.find().toArray(function (err, teacher_array) {

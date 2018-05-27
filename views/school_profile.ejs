@@ -468,14 +468,17 @@
                     </div>
 
                     <div id="edit_profile" style="display: none">
-                        <h2>Your Profile</h2>
+                        <h2>Edit Your Profile</h2>
                         <form method="post" action="/edit_school_profile">
-                            Name: <input type="text" name="s_name" value='<%=school.school_name%>'><br>
-                            Image url: <input type="text" name="s_image_url" value='<%=school.img_url%>'><br>
-                            Bio: <input type="text" name="s_bio" value='<%=school.bio%>'><br>
+                            Name: <br>
+                            <input type="text" name="s_name" value='<%=school.school_name%>'><br><br>
+                            Image url: <br>
+                            <input type="text" name="s_image_url" value='<%=school.img_url%>'><br><br>
+                            Bio: <br>
+                            <input type="text" name="s_bio" value='<%=school.bio%>'><br><br>
                             <!--New Password: <input type="text" name="fpassword"><br>-->
                             <!--New Time-->
-                            <input type="submit" value="Change">
+                            <button type="submit" value="Change">Change</button>
                         </form>
                     </div>
 

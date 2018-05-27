@@ -11,6 +11,7 @@ offset1 = 1;
 // school's GMT offset (i.e. -12,-11,....,11,12)
 offset2 = 10;
 
+
 // following function takes start hour and day of week in teacher user's time zone
 // as long as teacher's GMT offset and school's GMT offset as arguments
 // and convert teacher's start hour and day of week into start hour and day of week
@@ -38,6 +39,55 @@ function convertTime (startHour1, dayOfWeek1, offset1, offset2) {
 }
 
 console.log(convertTime(13,6,-10,10));
+
+
+function day_name_to_num(day_name) {
+    if (day_name == "Monday") {
+        return 0;
+    }
+    if (day_name == "Tuesday") {
+        return 1;
+    }
+    if (day_name == "Wednesday") {
+        return 2;
+    }
+    if (day_name == "Thursday") {
+        return 3;
+    }
+    if (day_name == "Friday") {
+        return 4;
+    }
+    if (day_name == "Saturday") {
+        return 5;
+    }
+    if (day_name == "Sunday") {
+        return 6;
+    }
+}
+
+function day_num_to_name(day_num) {
+    if (day_num == 0) {
+        return "Monday";
+    }
+    if (day_num == 1) {
+        return "Tuesday";
+    }
+    if (day_num == 2) {
+        return "Wednesday";
+    }
+    if (day_num == 3) {
+        return "Thursday";
+    }
+    if (day_num == 4) {
+        return "Friday";
+    }
+    if (day_num == 5) {
+        return "Saturday";
+    }
+    if (day_num == 6) {
+        return "Sunday";
+    }
+}
 
 //function calcTime(country, offset) {
 

@@ -176,6 +176,11 @@ button[class=small_button] {
     width: fit-content;
 }
 
+button[class=tiny_button] {
+    width: fit-content;
+    padding: 4px 4px;
+}
+
 /* Custom scrollbar, with help from W3 schools
 /* width */
 ::-webkit-scrollbar {

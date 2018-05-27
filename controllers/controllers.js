@@ -112,7 +112,7 @@ module.exports.createTeacher =
         // console.log(req.body.email) ;
         req.session.user = teacher;
 
-        teacher.save(function(err,newTeacher){
+        teacher.save(function(err,teacher){
             if(!err){
                 School.collection.find().toArray(function (err, school_array) {
                     res.render('teacher_profile.ejs', {teacher: teacher, school_array: school_array});
@@ -203,10 +203,11 @@ module.exports.updateTeacherProfile =
                     bio: req.body.t_bio
                     }},
             function(err, res) {
-            // if (err) throw err;
-                School.collection.find().toArray(function (err, school_array) {
-                    res.render('teacher_profile.ejs', {teacher: req.session.user, school_array: school_array});
-                });
+                if (err){
+                    Teacher.collection.find().toArray(function (err, teacher_array) {
+                        res.render('school_profile.ejs', {school: req.session.user, teacher_array: teacher_array});
+                    });
+                }
 
         });
 

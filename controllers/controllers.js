@@ -189,13 +189,14 @@ module.exports.updateTeacherTimetable =
 
 module.exports.updateTeacherProfile =
     function(req,res){
-        console.log(req.body.t_name);
+        // console.log(req.body.t_name);
+        console.log(req.body.t_image_url);
         Teacher.collection.update(
             //???
             {email: req.session.user.email},
             {$set:
                     {teacher_name: req.body.t_name,
-                    image_url: req.body.t_image_url,
+                    img_url: req.body.t_image_url,
                     bio: req.body.t_bio
                     }},
             function(err, res) {
@@ -204,7 +205,7 @@ module.exports.updateTeacherProfile =
         });
 
         req.session.user.teacher_name = req.body.t_name;
-        req.session.user.image_url = req.body.t_image_url;
+        req.session.user.img_url = req.body.t_image_url;
         req.session.user.bio = req.body.t_bio;
 
         School.collection.find().toArray(function (err, school_array) {

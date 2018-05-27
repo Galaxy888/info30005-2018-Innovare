@@ -153,6 +153,19 @@
                                     </b>
                                     at the following times. </p>
 
+                                <form  method="post" action="/edit_teacher_subject">
+                                    <select id="subjectsId" name="subjects[]" multiple="multiple" required>
+                                        <!--<option value="" disabled style="font-weight: bold; color: white;">Select your subjects...</option>-->
+                                        <option value="English">English</option>
+                                        <option value="Mathematics">Mathematics</option>
+                                        <option value="Science">Science</option>
+                                        <option value="History">History</option>
+                                        <option value="Programming">Programming</option>
+                                        <option value="Geography">Geography</option>
+                                    </select><br>
+                                    <button type="submit">Change subject</button>
+                                </form>
+
                                 <table id="availabilities">
                                     <tr>
                                         <th>Monday</th>
@@ -167,55 +180,112 @@
                                         <td>
                                             <% if (teacher.Monday != null) { %>
                                             <%      for (var i = 0; i < teacher.Monday.length; i++) {%>
-                                                        <%=teacher.Monday[i]%>:00<br>
+                                                    <%var time = parseInt(teacher.Monday[i], 10);%>
+                                                    <%=time%>:00 - <%=(time+1)%>:00<br>
                                             <%      } %>
                                             <%}%>
                                         </td>
                                         <td>
                                             <% if (teacher.Tuesday != null) { %>
                                             <%      for (var i = 0; i < teacher.Tuesday.length; i++) {%>
-                                            <%=teacher.Tuesday[i]%>:00<br>
+                                                    <%var time = parseInt(teacher.Tuesday[i], 10);%>
+                                                    <%=time%>:00 - <%=(time+1)%>:00<br>
                                             <%      } %>
                                             <%}%>
+
                                         </td>
                                         <td>
                                             <% if (teacher.Wednesday != null) { %>
                                             <%      for (var i = 0; i < teacher.Wednesday.length; i++) {%>
-                                            <%=teacher.Wednesday[i]%>:00<br>
+                                                    <%var time = parseInt(teacher.Wednesday[i], 10);%>
+                                                    <%=time%>:00 - <%=(time+1)%>:00<br>
                                             <%      } %>
                                             <%}%>
                                         </td>
                                         <td>
                                             <% if (teacher.Thursday != null) { %>
                                             <%      for (var i = 0; i < teacher.Thursday.length; i++) {%>
-                                            <%=teacher.Thursday[i]%>:00<br>
+                                                    <%var time = parseInt(teacher.Thursday[i], 10);%>
+                                                    <%=time%>:00 - <%=(time+1)%>:00<br>
                                             <%      } %>
                                             <%}%>
                                         </td>
                                         <td>
                                             <% if (teacher.Friday != null) { %>
                                             <%      for (var i = 0; i < teacher.Friday.length; i++) {%>
-                                            <%=teacher.Friday[i]%>:00<br>
+                                                    <%var time = parseInt(teacher.Friday[i], 10);%>
+                                                    <%=time%>:00 - <%=(time+1)%>:00<br>
                                             <%      } %>
                                             <%}%>
                                         </td>
                                         <td>
                                             <% if (teacher.Saturday != null) { %>
                                             <%      for (var i = 0; i < teacher.Saturday.length; i++) {%>
-                                            <%=teacher.Saturday[i]%>:00<br>
+                                                    <%var time = parseInt(teacher.Saturday[i], 10);%>
+                                                    <%=time%>:00 - <%=(time+1)%>:00<br>
                                             <%      } %>
                                             <%}%>
                                         </td>
                                         <td>
                                             <% if (teacher.Sunday != null) { %>
                                             <%      for (var i = 0; i < teacher.Sunday.length; i++) {%>
-                                            <%=teacher.Sunday[i]%>:00<br>
+                                                <%var time = parseInt(teacher.Sunday[i], 10);%>
+                                                <%=time%>:00 - <%=(time+1)%>:00<br>
+                                            <!--<%=teacher.Sunday[i]%>:00 - <%=teacher.Sunday[i+1]%>:00<br>-->
                                             <%      } %>
                                             <%}%>
                                         </td>
                                     </tr>
 
                                 </table>
+
+                                <form  method="post" action="/edit_teacher_timetable">
+                                    <select id="mondayId" name="Monday[]" multiple="multiple">
+                                        <option value="" disabled style="font-weight: bold; color: white;">Monday...</option>
+                                        <% for(var i=6; i<24; i++) {%>
+                                        <option value="<%=i%>"><%=i%>:00 - <%=i+1%>:00</option>
+                                        <% } %>
+                                    </select>
+                                    <select id="tuesdayId" name="Tuesday[]" multiple="multiple">
+                                        <option value="" disabled style="font-weight: bold; color: white;">Tuesday...</option>
+                                        <% for(var i=6; i<24; i++) {%>
+                                        <option value="<%=i%>"><%=i%>:00 - <%=i+1%>:00</option>
+                                        <% } %>
+                                    </select>
+                                    <select id="wednesdayId" name="Wednesday[]" multiple="multiple">
+                                        <option value="" disabled style="font-weight: bold; color: white;">Wednesday...</option>
+                                        <% for(var i=6; i<24; i++) {%>
+                                        <option value="<%=i%>"><%=i%>:00 - <%=i+1%>:00</option>
+                                        <% } %>
+                                    </select>
+                                    <select id="thursdayId" name="Thursday[]" multiple="multiple">
+                                        <option value="" disabled style="font-weight: bold; color: white;">Thursday...</option>
+                                        <% for(var i=6; i<24; i++) {%>
+                                        <option value="<%=i%>"><%=i%>:00 - <%=i+1%>:00</option>
+                                        <% } %>
+                                    </select>
+                                    <select id="fridayId" name="Friday[]" multiple="multiple">
+                                        <option value="" disabled style="font-weight: bold; color: white;">Friday...</option>
+                                        <% for(var i=6; i<24; i++) {%>
+                                        <option value="<%=i%>"><%=i%>:00 - <%=i+1%>:00</option>
+                                        <% } %>
+                                    </select>
+                                    <select id="saturdayId" name="Saturday[]" multiple="multiple">
+                                        <option value="" disabled style="font-weight: bold; color: white;">Saturday...</option>
+                                        <% for(var i=6; i<24; i++) {%>
+                                        <option value="<%=i%>"><%=i%>:00 - <%=i+1%>:00</option>
+                                        <% } %>
+                                    </select>
+                                    <select id="sundayId" name="Sunday[]" multiple="multiple">
+                                        <option value="" disabled style="font-weight: bold; color: white;">Sunday...</option>
+                                        <% for(var i=6; i<24; i++) {%>
+                                        <option value="<%=i%>"><%=i%>:00 - <%=i+1%>:00</option>
+                                        <% } %>
+                                    </select>
+
+                                    <button type="submit">Change Timetable</button>
+
+                                </form>
 
 
                                 <!--<p>Click on timetable and drag to create a new timeslot, or to move an existing one.</p>

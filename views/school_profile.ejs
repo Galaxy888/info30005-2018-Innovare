@@ -103,12 +103,14 @@
 
                         <h3>Your Classes</h3>
 
+                        <% var classes_exist = false; %>
                         <% if (school.classes.length != null) {%>
 
                                 <% if (school.classes != null) {%>
                                     <% for(var i=0; i<school.classes.length; i++) {%>
                                         <% for(var j=0; j<teacher_array.length; j++) {%>
                                             <% if (school.classes[i].teacher_email == teacher_array[j].email) {%>
+                                              <% classes_exist = true; %>
                                               <table style="padding: 10px; background-color: ghostwhite;">
 
                                                 <td style="padding-bottom: 20px"><br>
@@ -137,6 +139,11 @@
                                     <% } %>
 
                                 <% } %>
+                        <% } %>
+
+                        <% if (classes_exist == false) { %>
+                            <p>You do not yet have any classes. Browse the list of available teachers, or search by subject/day/time,
+                                to create one.</p>
                         <% } %>
 
                     </div>

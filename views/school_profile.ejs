@@ -400,7 +400,8 @@
 
                                             matching_teachers_form.appendChild(document.createElement("br"));
 
-                                            matching_teachers_form.appendChild(document.createTextNode(teacher_arr[i].teacher_name + ", " + teacher_arr[i].email + "  "));
+                                            matching_teachers_form.appendChild(document.createTextNode(teacher_arr[i].teacher_name
+                                                                                                    + ", " + teacher_arr[i].email + "  "));
                                             //matching_teachers_form.appendChild(document.createElement("br"));
                                             //matching_teachers_form.appendChild(document.createElement("br"));
 
@@ -418,6 +419,13 @@
                                             teacher_name.name = "teacher_name";
                                             teacher_name.style.display = "none";
                                             matching_teachers_form.appendChild(teacher_name);
+
+                                            var subject = document.createElement("input");
+                                            subject.type = "text";
+                                            subject.value = subject_needed;
+                                            subject.name = "subject";
+                                            subject.style.display = "none";
+                                            matching_teachers_form.appendChild(subject);
 
                                             var teacher_email = document.createElement("input");
                                             teacher_email.type = "text";

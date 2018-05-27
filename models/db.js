@@ -11,3 +11,4 @@ mongoose.connect('mongodb://YU:YU12345678@ds237610.mlab.com:37610/live_school',f
 require('./teacher.js');
 require('./school.js');
 
+// mongodb://Yu:Yu12345678@ds115420.mlab.com:15420/teacher

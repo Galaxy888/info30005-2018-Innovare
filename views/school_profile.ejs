@@ -127,6 +127,9 @@
                                                 <td style="padding-bottom: 20px"><b>Teacher</b><br><%= teacher_array[j].teacher_name %></td>
                                                 <td style="padding-bottom: 20px"><b>Bio</b><br><%= teacher_array[j].bio %></td>
                                                 <td style="padding-bottom: 20px"><b>Country</b><br><%= teacher_array[j].country %></td>
+                                                <td style="padding-bottom: 20px">
+                                                    <b>Contact</b><br><a href="mailto:<%=teacher_array[j].email%>"><%=teacher_array[j].email%></a>
+                                                </td>
                                                 <form method="post" action="/remove_class">
                                                     <!--<td><b>Contact</b><br><a href="mailto:<%= teacher_array[j].email%>"><%= teacher_array[j].email%></a>-->
                                                         <!--<input value="<%= teacher_array[j].email%>" name = "semail" style="display: none"></td>-->
@@ -474,6 +477,15 @@
                             <!--New Time-->
                             <input type="submit" value="Change">
                         </form>
+                    </div>
+
+                    <div id="about" style="display: none">
+                        <h2>About LiveSchool</h2>
+                        <p>LiveSchool was developed by Sam Tanner, Yu Guo, and Cynthia Qian as a semester-long project for <br>
+                            "Web Information Technologies" at the University of Melbourne. It aims to address the challenge,<br>
+                            "how might we improve the availability and affordability of education in developing countries?".<br><br>
+                            Thanks to our tutor Martin Reinoso (and Nam) for tips and guidance throughout the semester at all <br>
+                            those early-morning workshops. </p>
                     </div>
 
                 </div>

@@ -117,7 +117,7 @@
                                                     <td style="padding-bottom: 20px"><%= school_array[i].school_name %></td>
                                                     <td style="padding-bottom: 20px"> <%= school_array[i].bio %></td>
                                                     <td style="padding-bottom: 20px"> <%= school_array[i].country %></td>
-                                                    <td style="padding-bottom: 20px"> <%= school_array[i].email %></td>
+                                                    <td><a href="mailto:<%= school_array[i].email%>"><%= school_array[i].email%></a></td>
                                                     <!--<form method="post" action="/remove_class">-->
                                                         <!--<td><a href="mailto:<%= school_array[i].email%>"><%= school_array[i].email%></a>-->
                                                             <!--<input value="<%= school_array[i].email%>" name = "school_email" style="display: none"></td>-->
@@ -139,6 +139,15 @@
 
                             </div>
 
+                            <div id="about" style="display: none">
+                                <h2>About LiveSchool</h2>
+                                <p>LiveSchool was developed by Sam Tanner, Yu Guo, and Cynthia Qian as a semester-long project for <br>
+                                    "Web Information Technologies" at the University of Melbourne. It aims to address the challenge,<br>
+                                    "how might we improve the availability and affordability of education in developing countries?". <br><br>
+                                    Thanks to our tutor Martin Reinoso (and Nam) for tips and guidance throughout the semester at all <br>
+                                    those early-morning workshops. </p>
+                            </div>
+
                             <div id="timetable" style="display: none">
                                 <h2>Your Availabilities</h2>
 
@@ -153,20 +162,9 @@
                                             <%}%>
                                         <%}%>
                                     </b>
-                                    at the following times. </p>
+                                    at the times shown below.<br><br>
+                                    Click the button at the bottom of the page to change your availabilities.</p>
 
-                                <form  method="post" action="/edit_teacher_subject">
-                                    <select id="subjectsId" name="subjects[]" multiple="multiple" required>
-                                        <!--<option value="" disabled style="font-weight: bold; color: white;">Select your subjects...</option>-->
-                                        <option value="English">English</option>
-                                        <option value="Mathematics">Mathematics</option>
-                                        <option value="Science">Science</option>
-                                        <option value="History">History</option>
-                                        <option value="Programming">Programming</option>
-                                        <option value="Geography">Geography</option>
-                                    </select><br>
-                                    <button type="submit">Change subject</button>
-                                </form>
 
                                 <table id="availabilities">
                                     <tr>
@@ -241,53 +239,102 @@
 
                                 </table>
 
-                                <form  method="post" action="/edit_teacher_timetable">
-                                    <select id="mondayId" name="Monday[]" multiple="multiple">
-                                        <option value="" disabled style="font-weight: bold; color: white;">Monday...</option>
-                                        <% for(var i=6; i<24; i++) {%>
-                                        <option value="<%=i%>"><%=i%>:00 - <%=i+1%>:00</option>
-                                        <% } %>
-                                    </select>
-                                    <select id="tuesdayId" name="Tuesday[]" multiple="multiple">
-                                        <option value="" disabled style="font-weight: bold; color: white;">Tuesday...</option>
-                                        <% for(var i=6; i<24; i++) {%>
-                                        <option value="<%=i%>"><%=i%>:00 - <%=i+1%>:00</option>
-                                        <% } %>
-                                    </select>
-                                    <select id="wednesdayId" name="Wednesday[]" multiple="multiple">
-                                        <option value="" disabled style="font-weight: bold; color: white;">Wednesday...</option>
-                                        <% for(var i=6; i<24; i++) {%>
-                                        <option value="<%=i%>"><%=i%>:00 - <%=i+1%>:00</option>
-                                        <% } %>
-                                    </select>
-                                    <select id="thursdayId" name="Thursday[]" multiple="multiple">
-                                        <option value="" disabled style="font-weight: bold; color: white;">Thursday...</option>
-                                        <% for(var i=6; i<24; i++) {%>
-                                        <option value="<%=i%>"><%=i%>:00 - <%=i+1%>:00</option>
-                                        <% } %>
-                                    </select>
-                                    <select id="fridayId" name="Friday[]" multiple="multiple">
-                                        <option value="" disabled style="font-weight: bold; color: white;">Friday...</option>
-                                        <% for(var i=6; i<24; i++) {%>
-                                        <option value="<%=i%>"><%=i%>:00 - <%=i+1%>:00</option>
-                                        <% } %>
-                                    </select>
-                                    <select id="saturdayId" name="Saturday[]" multiple="multiple">
-                                        <option value="" disabled style="font-weight: bold; color: white;">Saturday...</option>
-                                        <% for(var i=6; i<24; i++) {%>
-                                        <option value="<%=i%>"><%=i%>:00 - <%=i+1%>:00</option>
-                                        <% } %>
-                                    </select>
-                                    <select id="sundayId" name="Sunday[]" multiple="multiple">
-                                        <option value="" disabled style="font-weight: bold; color: white;">Sunday...</option>
-                                        <% for(var i=6; i<24; i++) {%>
-                                        <option value="<%=i%>"><%=i%>:00 - <%=i+1%>:00</option>
-                                        <% } %>
-                                    </select>
+                                <button type="submit" onclick="c('change_availabilities');">Change subjects or available times</button>
 
-                                    <button type="submit">Change Timetable</button>
+                            </div>
 
-                                </form>
+
+                            <div id="change_availabilities" style="display: none">
+
+                                <h2>Change Your Availabilities</h2>
+
+                                <p>Use the forms below to choose the subjects you wish to teach, or to select your available times.<br><br>
+                                    You can select multiple options within the same form by (a) clicking and dragging, or (b) holding [Ctrl] on your
+                                    keyboard while you click.</p>
+                                    <p>To keep your current subjects and times, simply click "dashboard", above, to return to the main page</p>
+
+                                    <form  method="post" action="/edit_teacher_subject">
+                                        <select id="subjectsId" name="subjects[]" multiple="multiple" required>
+                                            <!--<option value="" disabled style="font-weight: bold; color: white;">Select your subjects...</option>-->
+                                            <option value="English">English</option>
+                                            <option value="Mathematics">Mathematics</option>
+                                            <option value="Science">Science</option>
+                                            <option value="History">History</option>
+                                            <option value="Programming">Programming</option>
+                                            <option value="Geography">Geography</option>
+                                        </select><br>
+
+                                        <button type="submit" class="tiny_button">Change subject</button>
+
+                                    </form>
+
+                                    <br>
+
+                                    <form  method="post" action="/edit_teacher_timetable">
+                                        <select id="mondayId" name="Monday[]" multiple="multiple">
+                                            <option value="" disabled style="font-weight: bold; color: black;">Monday...</option>
+                                            <% for(var i=6; i<24; i++) {%>
+                                            <option value="<%=i%>"><%=i%>:00 - <%=i+1%>:00</option>
+                                            <% } %>
+                                        </select>
+                                        <select id="tuesdayId" name="Tuesday[]" multiple="multiple">
+                                            <option value="" disabled style="font-weight: bold; color: black;">Tuesday...</option>
+                                            <% for(var i=6; i<24; i++) {%>
+                                            <option value="<%=i%>"><%=i%>:00 - <%=i+1%>:00</option>
+                                            <% } %>
+                                        </select>
+                                        <select id="wednesdayId" name="Wednesday[]" multiple="multiple">
+                                            <option value="" disabled style="font-weight: bold; color: black;">Wednesday...</option>
+                                            <% for(var i=6; i<24; i++) {%>
+                                            <option value="<%=i%>"><%=i%>:00 - <%=i+1%>:00</option>
+                                            <% } %>
+                                        </select>
+                                        <select id="thursdayId" name="Thursday[]" multiple="multiple">
+                                            <option value="" disabled style="font-weight: bold; color: black;">Thursday...</option>
+                                            <% for(var i=6; i<24; i++) {%>
+                                            <option value="<%=i%>"><%=i%>:00 - <%=i+1%>:00</option>
+                                            <% } %>
+                                        </select>
+                                        <select id="fridayId" name="Friday[]" multiple="multiple">
+                                            <option value="" disabled style="font-weight: bold; color: black;">Friday...</option>
+                                            <% for(var i=6; i<24; i++) {%>
+                                            <option value="<%=i%>"><%=i%>:00 - <%=i+1%>:00</option>
+                                            <% } %>
+                                        </select>
+                                        <select id="saturdayId" name="Saturday[]" multiple="multiple">
+                                            <option value="" disabled style="font-weight: bold; color: black;">Saturday...</option>
+                                            <% for(var i=6; i<24; i++) {%>
+                                            <option value="<%=i%>"><%=i%>:00 - <%=i+1%>:00</option>
+                                            <% } %>
+                                        </select>
+                                        <select id="sundayId" name="Sunday[]" multiple="multiple">
+                                            <option value="" disabled style="font-weight: bold; color: black;">Sunday...</option>
+                                            <% for(var i=6; i<24; i++) {%>
+                                            <option value="<%=i%>"><%=i%>:00 - <%=i+1%>:00</option>
+                                            <% } %>
+                                        </select>
+                                        <br>
+                                        <button type="submit" class="tiny_button">Change Timetable</button>
+
+                                    </form>
+
+                                </div>
+
+                                <div id="edit_profile" style="display: none">
+                                    <h2>Edit Your Profile</h2>
+                                    <form method="post" action="/edit_teacher_profile">
+                                        Name: <br>
+                                        <input type="text" name="t_name" value='<%=teacher.teacher_name%>'><br>
+                                        Image url: <br>
+                                        <input type="text" name="t_image_url" value='<%=teacher.img_url%>'><br>
+                                        Bio: <br>
+                                        <input type="text" name="t_bio" value='<%=teacher.bio%>'><br><br>
+                                        <!--New Password: <input type="text" name="fpassword"><br>-->
+                                        <!--New Time-->
+                                        <button type="submit" value="Change">Change</button>
+
+                                    </form>
+                                </div>
 
 
                                 <!--<p>Click on timetable and drag to create a new timeslot, or to move an existing one.</p>
@@ -363,18 +410,6 @@
                                 </script>
 
 
-                            </div>
-
-                            <div id="edit_profile" style="display: none">
-                                <h2>Your Profile</h2>
-                                <form method="post" action="/edit_teacher_profile">
-                                    Name: <input type="text" name="t_name" value='<%=teacher.teacher_name%>'><br>
-                                    Image url: <input type="text" name="t_image_url" value='<%=teacher.img_url%>'><br>
-                                    Bio: <input type="text" name="t_bio" value='<%=teacher.bio%>'><br>
-                                    <!--New Password: <input type="text" name="fpassword"><br>-->
-                                    <!--New Time-->
-                                    <input type="submit" value="Change">
-                                </form>
                             </div>
 
                         </div>

@@ -345,7 +345,7 @@
                         <select class = "search" name="time" id = "time" required>
                             <option value="" disabled selected hidden>select time...</option>
                             <% for(var i=6; i<24; i++) {%>
-                            <option value="<%=i%>"><%=i%>:00</option>
+                            <option value="<%=i%>"><%=i%>:00 - <%=i+1%>:00</option>
                             <% } %>
                         </select><br><br>
                         <button type="button" class="search" onclick="search_teachers(<%=JSON.stringify(teacher_array)%>, <%=JSON.stringify(school)%>);">Search teachers</button>

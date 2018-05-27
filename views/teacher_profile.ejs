@@ -117,11 +117,12 @@
                                                     <td style="padding-bottom: 20px"><%= school_array[i].school_name %></td>
                                                     <td style="padding-bottom: 20px"> <%= school_array[i].bio %></td>
                                                     <td style="padding-bottom: 20px"> <%= school_array[i].country %></td>
-                                                    <form method="post" action="/remove_class">
-                                                        <td><a href="mailto:<%= school_array[i].email%>"><%= school_array[i].email%></a>
-                                                            <input value="<%= school_array[i].email%>" name = "school_email" style="display: none"></td>
-                                                        <td><input type="submit" value="Remove class"></td>
-                                                    </form>
+                                                    <td style="padding-bottom: 20px"> <%= school_array[i].email %></td>
+                                                    <!--<form method="post" action="/remove_class">-->
+                                                        <!--<td><a href="mailto:<%= school_array[i].email%>"><%= school_array[i].email%></a>-->
+                                                            <!--<input value="<%= school_array[i].email%>" name = "school_email" style="display: none"></td>-->
+                                                        <!--<td><input type="submit" value="Remove class"></td>-->
+                                                    <!--</form>-->
                                                 </tr>
                                                 </table>
 

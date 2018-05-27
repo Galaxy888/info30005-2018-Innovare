@@ -54,6 +54,7 @@ module.exports.fetchSchool_profile =
 
     };
 
+// Create a new teacher
 module.exports.createTeacher =
     function(req,res){
         var teacher = new Teacher({
@@ -125,6 +126,7 @@ module.exports.createTeacher =
 
     };
 
+// Update teacher subjects
 module.exports.updateTeacherSubject =
     function(req,res){
         console.log(req.body.subjects);
@@ -150,6 +152,7 @@ module.exports.updateTeacherSubject =
 
     };
 
+// Update teacher timetable
 module.exports.updateTeacherTimetable =
     function(req,res){
         console.log(req.body.Monday);
@@ -186,6 +189,7 @@ module.exports.updateTeacherTimetable =
 
     };
 
+// Update teacher profile
 module.exports.updateTeacherProfile =
     function(req,res){
         // console.log(req.body.t_name);
@@ -216,6 +220,7 @@ module.exports.updateTeacherProfile =
 
     };
 
+// Update school profile
 module.exports.updateSchoolProfile =
     function(req,res){
         console.log(req.body.s_name);
@@ -247,6 +252,7 @@ module.exports.updateSchoolProfile =
 
     };
 
+// Create a new school
 module.exports.createSchool =
     function(req,res){
         var school = new School({
@@ -276,7 +282,7 @@ module.exports.createSchool =
         });
     };
 
-
+// User log in
 module.exports.logUserIn =
     function(req,res) {
         var email = req.body.email;
@@ -323,7 +329,7 @@ module.exports.logUserIn =
 
     };
 
-
+// User log out
 module.exports.logUserOut =
     function (req, res, next) {
     if (req.session) {
@@ -339,7 +345,7 @@ module.exports.logUserOut =
     }
 };
 
-
+// School hire a teacher
 module.exports.schoolHireTeacher =
     function(req,res){
         var weekday;
@@ -416,7 +422,7 @@ module.exports.schoolHireTeacher =
         })
     };
 
-
+// School remove classes
 module.exports.removeClass =
     function(req,res) {
     School.collection.update(

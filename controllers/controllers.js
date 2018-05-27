@@ -54,6 +54,7 @@ module.exports.fetchSchool_profile =
 
     };
 
+// Create a new teacher
 module.exports.createTeacher =
     function(req,res){
         var teacher = new Teacher({
@@ -125,21 +126,7 @@ module.exports.createTeacher =
 
     };
 
-module.exports.updateTeacherAvailabilities =
-    function(req,res){
-        console.log(req.body.t_name);
-        Teacher.collection.update(
-            {email: req.session.user.email},
-            {$set:
-                    {teacher_name: req.body.t_name,
-                        image_url: req.body.t_image_url,
-                        bio: req.body.t_bio
-                    }},
-            function(err, res) {
-                if (err) throw err;
-            });
-    };
-
+// Update teacher subjects
 module.exports.updateTeacherSubject =
     function(req,res){
         console.log(req.body.subjects);
@@ -150,7 +137,12 @@ module.exports.updateTeacherSubject =
                     {subjects: req.body.subjects
                     }},
             function(err, res) {
-                if (err) throw err;
+                // if (err) throw err;
+                if (err){
+                    School.collection.find().toArray(function (err, school_array) {
+                        res.render('teacher_profile.ejs', {teacher: req.session.user, school_array: school_array});
+                    });
+                }
             });
 
         req.session.user.subjects = req.body.subjects;
@@ -160,12 +152,12 @@ module.exports.updateTeacherSubject =
 
     };
 
+// Update teacher timetable
 module.exports.updateTeacherTimetable =
     function(req,res){
         console.log(req.body.Monday);
         console.log(req.body.Tuesday);
         Teacher.collection.update(
-            //???
             {email: req.session.user.email},
             {$set:
                     {Monday: req.body.Monday,
@@ -177,7 +169,12 @@ module.exports.updateTeacherTimetable =
                     Sunday: req.body.Sunday
                     }},
             function(err, res) {
-                if (err) throw err;
+                // if (err) throw err;
+                if(err){
+                    School.collection.find().toArray(function (err, school_array) {
+                        res.render('teacher_profile.ejs', {teacher: req.session.user, school_array: school_array});
+                    })
+                }
             });
         req.session.user.Monday = req.body.Monday;
         req.session.user.Tuesday = req.body.Tuesday;
@@ -192,6 +189,7 @@ module.exports.updateTeacherTimetable =
 
     };
 
+// Update teacher profile
 module.exports.updateTeacherProfile =
     function(req,res){
         // console.log(req.body.t_name);
@@ -205,7 +203,10 @@ module.exports.updateTeacherProfile =
                     bio: req.body.t_bio
                     }},
             function(err, res) {
-            if (err) throw err;
+            // if (err) throw err;
+                School.collection.find().toArray(function (err, school_array) {
+                    res.render('teacher_profile.ejs', {teacher: req.session.user, school_array: school_array});
+                });
 
         });
 
@@ -219,6 +220,7 @@ module.exports.updateTeacherProfile =
 
     };
 
+// Update school profile
 module.exports.updateSchoolProfile =
     function(req,res){
         console.log(req.body.s_name);
@@ -232,7 +234,11 @@ module.exports.updateSchoolProfile =
                     }
             },
             function(err, res) {
-                if (err) throw err;
+                if (err){
+                    School.collection.find().toArray(function (err, school_array) {
+                        res.render('teacher_profile.ejs', {teacher: req.session.user, school_array: school_array});
+                    });
+                }
 
             });
 
@@ -246,6 +252,7 @@ module.exports.updateSchoolProfile =
 
     };
 
+// Create a new school
 module.exports.createSchool =
     function(req,res){
         var school = new School({
@@ -275,7 +282,7 @@ module.exports.createSchool =
         });
     };
 
-
+// User log in
 module.exports.logUserIn =
     function(req,res) {
         var email = req.body.email;
@@ -286,8 +293,6 @@ module.exports.logUserIn =
         Teacher.findOne({'email': email, 'password': password}, function (err, teacher) {
 
             if (err) {
-                console.log(err);
-                req.flash('notify', '500: Error.'); // Error message - not working yet
                 res.render('index.ejs');
             }
             else if (!teacher) {
@@ -324,8 +329,9 @@ module.exports.logUserIn =
 
     };
 
-
-module.exports.logUserOut = function (req, res, next) {
+// User log out
+module.exports.logUserOut =
+    function (req, res, next) {
     if (req.session) {
         req.session.user = null; // My own fix
         req.session.destroy(function (err) {
@@ -339,7 +345,7 @@ module.exports.logUserOut = function (req, res, next) {
     }
 };
 
-
+// School hire a teacher
 module.exports.schoolHireTeacher =
     function(req,res){
         var weekday;
@@ -401,7 +407,11 @@ module.exports.schoolHireTeacher =
                 {email: req.session.user.email},
                 {$push: {classes: {teacher_email: req.body.teacher_email, teacher_name: req.body.teacher_name,
                             subject: req.body.subject, day: weekday, time: time}}}, function (err, res) {
-                    if (err) throw err;
+                    if (err){
+                        Teacher.collection.find().toArray(function (err, teacher_array) {
+                            res.render('school_profile.ejs', {school: req.session.user , teacher_array: teacher_array});
+                        });
+                    }
                     console.log("New class with " + req.body.teacher_name + " added to school schema");
                 });
         }
@@ -412,8 +422,9 @@ module.exports.schoolHireTeacher =
         })
     };
 
-
-module.exports.removeClass = function(req,res) {
+// School remove classes
+module.exports.removeClass =
+    function(req,res) {
     School.collection.update(
         {email: req.session.user.email},
         {$pull: {classes: {teacher_email: req.body.cemail,
@@ -423,7 +434,11 @@ module.exports.removeClass = function(req,res) {
                             time: req.body.ctime}}
 
         }, function (err, res) {
-            if (err) throw err;
+            if (err){
+                Teacher.collection.find().toArray(function (err, teacher_array) {
+                    res.render('school_profile.ejs', {school: req.session.user , teacher_array: teacher_array});
+                });
+            }
             console.log("School email delete teacher schema");
         });
 
@@ -439,54 +454,3 @@ module.exports.removeClass = function(req,res) {
         res.render('school_profile.ejs', {school: req.session.user , teacher_array: teacher_array});
     })
 };
-
-module.exports.schoolDeleteTeacher =
-     function(req,res) {
-         console.log(req.body.teacher_email);
-         School.collection.update(
-             {email: req.session.user.email},
-             {$pull: {teacher_emails: req.body.teacher_email}}, function (err, res) {
-             if (err) throw err;
-             console.log("School email delete teacher schema");
-         });
-
-         var emails_array = req.session.user.teacher_emails;
-         console.log("Before: ",emails_array);
-         var index = emails_array.indexOf(req.body.teacher_email);
-         if (index > -1) {
-             emails_array.splice(index, 1);
-         }
-         console.log("After: ",emails_array);
-
-
-         School.findOne({'email': req.session.user.email, 'password': req.session.user.password}, function (err, school) {
-             req.session.user.teacher_emails = school.teacher_emails;
-         });
-
-         Teacher.collection.find().toArray(function (err, teacher_array) {
-             res.render('school_profile.ejs', {school: req.session.user , teacher_array: teacher_array});
-         });
-     };
-
-
-
-//
-// module.exports.createSchool =
-//     function(req,res){
-//         var school = new data_time({
-//
-//         });
-//         // console.log(req.body.email);
-//         // console.log("666666666");
-//
-//         school.save(function(err,newSchool){
-//             if(!err){
-//                 res.send(data_time);
-//
-//             }else{
-//                 res.sendStatus(400);
-//             }
-//         });
-//         res.render('school_profile.ejs', school);
-//         //res.render('signup_success.ejs')
-//     };

@@ -204,8 +204,8 @@ module.exports.updateTeacherProfile =
                     }},
             function(err, res) {
                 if (err){
-                    Teacher.collection.find().toArray(function (err, teacher_array) {
-                        res.render('school_profile.ejs', {school: req.session.user, teacher_array: teacher_array});
+                    School.collection.find().toArray(function (err, school_array) {
+                        res.render('teacher_profile.ejs', {teacher: req.session.user, school_array: school_array});
                     });
                 }
 
@@ -236,8 +236,8 @@ module.exports.updateSchoolProfile =
             },
             function(err, res) {
                 if (err){
-                    School.collection.find().toArray(function (err, school_array) {
-                        res.render('teacher_profile.ejs', {teacher: req.session.user, school_array: school_array});
+                    Teacher.collection.find().toArray(function (err, teacher_array) {
+                        res.render('school_profile.ejs', {school: req.session.user, teacher_array: teacher_array});
                     });
                 }
 

@@ -108,7 +108,7 @@ module.exports.createTeacher =
             }
         }
 
-        // console.log(req.body.email);
+        // console.log(req.body.email) ;
         req.session.user = teacher;
 
         teacher.save(function(err,newTeacher){

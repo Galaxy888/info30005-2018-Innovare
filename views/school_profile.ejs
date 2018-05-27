@@ -222,7 +222,6 @@
                             input_name.style.display = "none";
                             select_form.appendChild(input_name);
 
-
                             // Dynamically generate day/time selection drop-down menus
                             var weekday;
                             for (var day = 0; day < 7; day++) {
@@ -241,7 +240,7 @@
                                 else
                                     weekday = "Sunday";
 
-                                if (selected_teacher[weekday].length > 0) {
+                                if (selected_teacher[weekday] != null && selected_teacher[weekday].length > 0) {
                                     var select_day = document.createElement("select");
                                     select_day.name = weekday;
                                     select_day.className = "small_select"; //works?
@@ -268,6 +267,7 @@
                             select_form.appendChild(document.createElement("br"));
                             select_form.appendChild(document.createElement("br"));
 
+
                             // Dynamically generate subject selection drop-down menu
                             var select_subject = document.createElement("select");
                             select_subject.name = "subject";
@@ -278,13 +278,6 @@
                             select_form.appendChild(document.createTextNode("Select a subject for the class."));
                             select_form.appendChild(document.createElement("br"));
                             select_form.appendChild(document.createElement("br"));
-
-                            var message = document.createElement("option");
-                            message.value = "";
-                            message.selected = true;
-                            message.disabled = true;
-                            message.appendChild(document.createTextNode("Select subject..."));
-                            select_subject.appendChild(message);
 
                             // Dynamically add teacher's subjects to menu
                             for (var j = 0; j < selected_teacher.subjects.length; j++) {
@@ -302,6 +295,7 @@
                             submit_button.type = "submit";
                             submit_button.appendChild(document.createTextNode("Hire teacher for this class!"));
                             select_form.appendChild(submit_button);
+
 
 
                         }

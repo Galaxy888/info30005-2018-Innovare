@@ -528,7 +528,33 @@ module.exports.schoolHireTeacher =
 
 
 module.exports.removeClass = function(req,res) {
-    console.log("REM: WE NEED TO ADD CODE TO REMOVE CLASSES");
+    // console.log(req.body.teacher_email);
+    console.log(req.body.cemail);
+    School.collection.update(
+        {email: req.session.user.email},
+        {$pull: {classes: {teacher_email: req.body.cemail,
+                            teacher_name: req.body.cname,
+                            subject: req.body.csubject,
+                            day: req.body.cday,
+                            time: req.body.ctime}}
+
+        }, function (err, res) {
+            if (err) throw err;
+            console.log("School email delete teacher schema");
+        });
+
+    var classes_array = req.session.user.classes;
+    for (var i =0; i < classes_array.length; i++)
+        if (classes_array[i].teacher_email === req.body.cemail && classes_array[i].subject === req.body.csubject
+        && classes_array[i].day === req.body.cday && classes_array[i].time === req.body.ctime) {
+            classes_array.splice(i,1);
+            break;
+        }
+
+    Teacher.collection.find().toArray(function (err, teacher_array) {
+        res.render('school_profile.ejs', {school: req.session.user , teacher_array: teacher_array});
+    })
+    // console.log("REM: WE NEED TO ADD CODE TO REMOVE CLASSES");
 }
 
 module.exports.schoolDeleteTeacher =

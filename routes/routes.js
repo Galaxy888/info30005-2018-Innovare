@@ -32,7 +32,7 @@ router.post('/edit_school_profile',controllers.updateSchoolProfile);
 router.post('/hire_teacher',controllers.schoolHireTeacher);
 
 //delete teacher
-router.post('/delete_teacher',controllers.schoolDeleteTeacher);
+// router.post('/delete_teacher',controllers.schoolDeleteTeacher);
 
 // "REMOVE CLASS" CAN PROBABLY REPLACE "DELETE TEACHER"
 router.post('/remove_class',controllers.removeClass);

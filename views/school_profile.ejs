@@ -127,8 +127,13 @@
                                                 <td style="padding-bottom: 20px"><b>Bio</b><br><%= teacher_array[j].bio %></td>
                                                 <td style="padding-bottom: 20px"><b>Country</b><br><%= teacher_array[j].country %></td>
                                                 <form method="post" action="/remove_class">
-                                                    <td><b>Contact</b><br><a href="mailto:<%= teacher_array[j].email%>"><%= teacher_array[j].email%></a>
-                                                        <input value="<%= teacher_array[j].email%>" name = "school_email" style="display: none"></td>
+                                                    <!--<td><b>Contact</b><br><a href="mailto:<%= teacher_array[j].email%>"><%= teacher_array[j].email%></a>-->
+                                                        <!--<input value="<%= teacher_array[j].email%>" name = "semail" style="display: none"></td>-->
+                                                        <input value="<%=school.classes[i].teacher_email%>" name="cemail" style="display: none"></td>
+                                                        <input value="<%=school.classes[i].teacher_name%>" name="cname" style="display: none"></td>
+                                                        <input value="<%=school.classes[i].subject%>" name="csubject" style="display: none"></td>
+                                                        <input value="<%=school.classes[i].day%>" name="cday" style="display: none"></td>
+                                                        <input value="<%=school.classes[i].time%>" name="ctime" style="display: none">
                                                     <td><br><input type="submit" value="Remove class"></td>
                                                 </form>
                                             </tr>

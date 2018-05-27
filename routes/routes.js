@@ -1,3 +1,7 @@
+/* Routes.js specifies the url relative paths that can be used and links them to functions
+   inside controllers.js.
+*/
+
 const express = require('express');
 const router = express.Router();
 const controllers = require('../controllers/controllers');

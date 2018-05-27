@@ -1,3 +1,11 @@
+<!-- This page displays a logged-in teacher's profile information, and allows them to see any classes they have been
+     added for, as well as update their availabilities or edit their information. Classes are displayed using a mix of
+     EJS and html: teacher_profile.ejs has access to the entire school collection, so this is iterated over and whenever
+     a teacher is found who has a class containing the logged-in teacher's email, that class is added to the dashboard,
+     along with the appropriate school info and contact details.
+
+     Teachers can't add classes themselves - class addition/deletion is all done by schools, from school_profile.ejs. -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

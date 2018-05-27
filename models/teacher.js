@@ -1,3 +1,5 @@
+/* This is the basic MongoDB schema for a teacher user. */
+
 var mongoose = require('mongoose');
 var teacherSchema = mongoose.Schema(
     {
@@ -8,7 +10,6 @@ var teacherSchema = mongoose.Schema(
         "timezone":String,
         "bio":String,
         "img_url": String,
-        "school_emails": [], // remove later
         "subjects": [],
         "Monday": [],
         "Tuesday": [],

@@ -1,3 +1,7 @@
+/* Controllers.js does all of the back-end work: storing and retrieving information from MongoDB,
+   creating new users, logging existing users in, updating schools, teachers, and classes, etc.
+   Its functions are called via paths specified in routes.js. */
+
 var alert = require('alert-node');
 var mongoose = require('mongoose');
 var Teacher = mongoose.model('Teacher');
@@ -105,6 +109,7 @@ module.exports.createTeacher =
         }
 
         // console.log(req.body.email);
+        req.session.user = teacher;
 
         teacher.save(function(err,newTeacher){
             if(!err){

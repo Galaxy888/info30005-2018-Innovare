@@ -1,3 +1,5 @@
+// App.js is the point of entry to the entire web application
+
 var express = require('express');
 var app = express();
 var session = require('express-session');
